@@ -1,12 +1,15 @@
 import FramePlayer from './FramePlayer.jsx'
 import './App.css'
 
+const images = import.meta.glob('./assets/Firefighter*.png', { eager: true })
+
 function App() {
-  const numFireFighters = 2;
+  const numFireFighters = 4;
 
   const array = [];
   for (let i = 1; i <= numFireFighters; i++) {
-    array.push(`./assets/Firefighter${i}`);
+    const key = `./assets/Firefighter${i}.png`;
+    array.push(images[key]?.default || null);
   }
 
   return (

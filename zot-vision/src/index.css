@@ -89,6 +89,8 @@ body {
   border-radius: 14px;
   overflow: hidden;
   transition: border-color 0.2s;
+  display: flex;
+  flex-direction: column;
 }
 
 .camera-feed.is-live {
@@ -145,16 +147,19 @@ body {
 /* ===== Live Camera Body ===== */
 .camera-body {
   padding: 14px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .camera-image {
   width: 100%;
-  height: 400px;
-  object-fit: cover;
   border-radius: 10px;
   background: #0a0a0a;
   display: block;
   border: 1px solid var(--border);
+  flex: 1;
+  object-fit: cover;
 }
 
 /* ===== Controls ===== */
@@ -226,7 +231,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 48px 20px;
+  flex: 1;
+  padding: 20px;
   color: var(--text-dim);
   text-align: center;
   gap: 14px;
