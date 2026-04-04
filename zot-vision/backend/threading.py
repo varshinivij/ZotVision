@@ -1,46 +1,58 @@
 import multiprocessing
+import sys
 import time
 import torch
 import PredictHazard
+import uuid
+
+class FireFighterWorker:  
+    def __init__(self, model_path):
+        self.image_queue = multiprocessing.Queue()
+        self.result_queue = multiprocessing.Queue()
+        while not self.image_queue.empty():
+            self.process = multiprocessing.Process(
+                target=self.worker,
+                args=(self.image_queue, self.result_queue, self.model_path),
+            )
+            self.process.start()
 
 
-def worker(image_queue, result_queue, model_path):
-    """Worker: loads its own model and processes images as they arrive."""
-    model = PredictHazard()
-    model.load_state_dict(torch.load(model_path, weights_only=True))
-    model.eval()
+    def get_image_queue(self):
+        return self.image_queue
 
-    while True:
-        image_path = image_queue.get()  # blocks until an image is available
-        if image_path is None:  # poison pill to shut down
-            break
-        with torch.no_grad():
-            output = model(image_path)
-        result_queue.put((image_path, output))
+    def get_result_queue(self):
+        return self.result_queue
+    
+    def image_id(self, image_path):
+        return uuid.uuid5(uuid.NAMESPACE_URL, image_path)
 
 
-if __name__ == '__main__':
-    image_queue = multiprocessing.Queue()
-    result_queue = multiprocessing.Queue()
+    def worker(self, image_queue, result_queue, model_path):
+        """Worker: loads its own model and processes images as they arrive."""
+        model = PredictHazard()
+        model.load_state_dict(torch.load(model_path, weights_only=True))
+        model.eval()
 
-    # Start worker process (each loads its own model copy)
-    p = multiprocessing.Process(
-        target=worker,
-        args=(image_queue, result_queue, 'model_weights.pth'),
-    )
-    p.start()
+        while True:
+            image_path = image_queue.get()  # blocks until an image is available
+            if image_path is None:  
+                break
+            with torch.no_grad():
+                output = model(image_path)
+            result_queue.put((image_path, output))
+        
+        return output
 
-    # --- Example: feed images as they arrive ---
-    # In practice, replace this with however images enter your system
-    # (e.g., HTTP endpoint, file watcher, etc.)
-    #
-    # image_queue.put("path/to/image.jpg")
+    
+class FireFighterManager:
+    def __init__(self, model_path, num_firefighters=4):
+        self.workers = [FireFighterWorker(model_path) for _ in range(num_firefighters)]
 
-    # --- Example: read results ---
-    # while True:
-    #     image_path, output = result_queue.get()
-    #     print(f"Result for {image_path}: {output}")
+    def send_image(self, image_path, worker_id=0):
+        # Simple round-robin distribution
+        worker = self.workers[worker_id]  # Use the specified worker
+        id_number = worker.get_image_queue().put(image_path)
 
-    # To shut down the worker cleanly:
-    # image_queue.put(None)
-    # p.join()
+    def collect_results(self, worker_id=0):
+        worker = self.workers[worker_id]
+        return worker.get_result_queue().get()
