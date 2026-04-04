@@ -1,16 +1,28 @@
-import myVideo from './assets/video.mp4';
-import { useState } from 'react'
+function FramePlayer({ id, url, live }) {
+  return (
+    <div className={`camera-feed ${live ? 'is-live' : 'is-offline'}`}>
+      <div className="camera-label">
+        <span className={`camera-dot ${live ? 'dot-live' : 'dot-offline'}`} />
+        <span>FF{id} CAMERA - {live ? 'LIVE' : 'OFFLINE'}</span>
+      </div>
 
-function FramePlayer(props) {
-    processed, setProcessed = useState('false')
-    return (
-        <div>
-            <h1> Live Feed: Camera {props.id} </h1>
-            <image src={props.url} />
-            {processed && <h2>Processed</h2>}   
-            {!processed && <h2>Not Processed</h2>}  
+      {live ? (
+        <div className="camera-body">
+          <img src={url} alt={`Camera ${id}`} className="camera-image" />
+          <div className="camera-controls">
+            <button className="ctrl-btn ctrl-left" title="Left" />
+            <button className="ctrl-btn ctrl-obstacle" title="Obstacle" />
+            <button className="ctrl-btn ctrl-right" title="Right" />
+          </div>
         </div>
-    );
+      ) : (
+        <div className="camera-offline">
+          <div className="offline-icon" />
+          <p>FF{id} - Waiting for feed...</p>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default FramePlayer;
