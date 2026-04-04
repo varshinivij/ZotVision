@@ -1,7 +1,7 @@
 import myVideo from './assets/video.mp4';
 import { useState } from 'react'
 
-function VideoPlayer(props) {
+function FramePlayer(props) {
     processed, setProcessed = useState('false')
     return (
         <div>
@@ -12,3 +12,5 @@ function VideoPlayer(props) {
         </div>
     );
 }
+
+export default FramePlayer;
