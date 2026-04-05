@@ -78,10 +78,12 @@ def get_transforms(train: bool):
         return transforms.Compose([
             transforms.RandomResizedCrop(IMG_SIZE),
             transforms.RandomHorizontalFlip(),
+            transforms.RandomRotation(15),
             transforms.ColorJitter(0.2, 0.2, 0.2, 0.1),
             transforms.ToTensor(),
             transforms.Normalize([0.485, 0.456, 0.406],
                                  [0.229, 0.224, 0.225]),
+            transforms.RandomErasing(p=0.2),
         ])
     return transforms.Compose([
         transforms.Resize((IMG_SIZE, IMG_SIZE)),
@@ -97,7 +99,7 @@ def get_transforms(train: bool):
 class CNNViTHybrid(nn.Module):
     """
     Architecture:
-      1. EfficientNet-B4 backbone  →  extracts spatial feature map (C×H×W)
+      1. EfficientNet-B0 backbone  →  extracts spatial feature map (C×H×W)
       2. Patch projection          →  flattens spatial tokens  (N_patches × D)
       3. Prepend learnable CLS token
       4. Add positional embeddings
@@ -108,23 +110,28 @@ class CNNViTHybrid(nn.Module):
 
     def __init__(
         self,
-        efficientnet_variant: str = "efficientnet-b4",
+        efficientnet_variant: str = "efficientnet-b0",
         vit_hidden_size: int = 768,
-        vit_num_layers: int = 6,
+        vit_num_layers: int = 4,
         vit_num_heads: int = 12,
         num_classes: int = NUM_CLASSES,
-        dropout: float = 0.1,
+        dropout: float = 0.3,
     ):
         super().__init__()
 
         # ── 1. EfficientNet backbone (remove classifier + pooling) ──
         self.cnn = EfficientNet.from_pretrained(efficientnet_variant)
-        cnn_out_channels = self.cnn._conv_head.out_channels  # 1792 for B4
+        cnn_out_channels = self.cnn._conv_head.out_channels  # 1280 for B0
 
         # Remove EfficientNet's own pooling & FC so we get a feature map
         self.cnn._avg_pooling  = nn.Identity()
         self.cnn._dropout      = nn.Identity()
         self.cnn._fc           = nn.Identity()
+
+        # Freeze early EfficientNet blocks — only fine-tune last 3 blocks + head
+        for name, param in self.cnn.named_parameters():
+            if not any(k in name for k in ['_blocks.13', '_blocks.14', '_blocks.15', '_conv_head']):
+                param.requires_grad = False
 
         # ── 2. Project CNN feature map channels → ViT hidden dim ──
         self.patch_proj = nn.Conv2d(cnn_out_channels, vit_hidden_size, kernel_size=1)
@@ -294,9 +301,11 @@ def main():
     print(f"Trainable parameters: {total_params:,}")
 
     # ── Optimizer & scheduler ──
-    optimizer = torch.optim.AdamW(model.parameters(), lr=LR, weight_decay=1e-4)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=LR, weight_decay=1e-3)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=NUM_EPOCHS)
-    criterion = nn.CrossEntropyLoss(label_smoothing=0.1)
+    # Class weights: boost underrepresented 'both' class (only ~6% of data)
+    class_weights = torch.tensor([1.0, 1.2, 1.0, 2.5]).to(DEVICE)
+    criterion = nn.CrossEntropyLoss(weight=class_weights, label_smoothing=0.1)
 
     # ── Training loop ──
     best_val_acc = 0.0
