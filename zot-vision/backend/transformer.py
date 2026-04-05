@@ -112,10 +112,9 @@ class CNNViTHybrid(nn.Module):
         self,
         efficientnet_variant: str = "efficientnet-b4",
         vit_hidden_size: int = 768,
-        vit_num_layers: int = 6,
-        vit_num_heads: int = 12,
         num_classes: int = NUM_CLASSES,
         dropout: float = 0.3,
+        freeze_vit_layers: int = 10,
     ):
         super().__init__()
 
@@ -148,20 +147,14 @@ class CNNViTHybrid(nn.Module):
         nn.init.trunc_normal_(self.pos_embed, std=0.02)
         self.vit_hidden_size = vit_hidden_size
 
-        # ── 5. Google ViT transformer encoder ──
-        vit_config = ViTConfig(
-            hidden_size=vit_hidden_size,
-            num_hidden_layers=vit_num_layers,
-            num_attention_heads=vit_num_heads,
-            intermediate_size=vit_hidden_size * 4,
-            hidden_dropout_prob=dropout,
-            attention_probs_dropout_prob=dropout,
-            # We feed our own patch tokens, so image_size / patch_size don't matter here
-            image_size=IMG_SIZE,
-            patch_size=16,
-            num_channels=3,
-        )
-        self.vit_encoder = ViTModel(vit_config)
+        # ── 5. Google ViT transformer encoder (pretrained) ──
+        # vit-base-patch16-224: hidden=768, 12 layers, 12 heads — matches vit_hidden_size default.
+        self.vit_encoder = ViTModel.from_pretrained('google/vit-base-patch16-224')
+        # Freeze early layers; only fine-tune the last (12 - freeze_vit_layers) layers + layernorm
+        for i, layer in enumerate(self.vit_encoder.encoder.layer):
+            if i < freeze_vit_layers:
+                for p in layer.parameters():
+                    p.requires_grad = False
 
         # ── 6. Classification head ──
         self.classifier = nn.Sequential(
@@ -301,7 +294,14 @@ def main():
     print(f"Trainable parameters: {total_params:,}")
 
     # ── Optimizer & scheduler ──
-    optimizer = torch.optim.AdamW(model.parameters(), lr=LR, weight_decay=1e-3)
+    # Differential LRs: pretrained layers get lower LR, new layers get full LR
+    optimizer = torch.optim.AdamW([
+        {'params': model.cnn.parameters(),          'lr': 1e-5},
+        {'params': model.vit_encoder.parameters(),  'lr': 5e-5},
+        {'params': list(model.patch_proj.parameters()) +
+                   list(model.classifier.parameters()) +
+                   [model.cls_token, model.pos_embed], 'lr': LR},
+    ], weight_decay=1e-3)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=NUM_EPOCHS)
     # Class weights: boost underrepresented 'both' class (only ~6% of data)
     class_weights = torch.tensor([1.0, 1.2, 1.0, 2.5]).to(DEVICE)

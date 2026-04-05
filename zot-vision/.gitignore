@@ -25,3 +25,5 @@ dist-ssr
 .venv
 *.pt
 .claude
+__pycache__
+.DS_Store
