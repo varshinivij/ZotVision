@@ -8,8 +8,8 @@
 static const char* TAG = "main";
 
 // --- CHANGE THESE ---
-#define WIFI_SSID     "your_ssid"
-#define WIFI_PASSWORD "your_password"
+#define WIFI_SSID     "KAUSHIK25"
+#define WIFI_PASSWORD "12345678"
 // --------------------
 
 void capture_task(void* pvParameters) {
