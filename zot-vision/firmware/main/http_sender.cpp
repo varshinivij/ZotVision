@@ -9,10 +9,9 @@ static const char* TAG = "http_sender";
 // -------------------
 
 esp_err_t http_send_frame(const uint8_t* buf, size_t len) {
-    esp_http_client_config_t config = {
-        .url    = SERVER_URL,
-        .method = HTTP_METHOD_POST,
-    };
+    esp_http_client_config_t config = {};
+    config.url    = SERVER_URL;
+    config.method = HTTP_METHOD_POST;
 
     // initialize HTTP client
     esp_http_client_handle_t client = esp_http_client_init(&config);
