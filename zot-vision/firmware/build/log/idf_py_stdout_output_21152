@@ -1,0 +1,148 @@
+Command: C:\Espressif\tools\python\v6.0\venv\Scripts\python.exe C:\esp\v6.0\esp-idf\tools/idf_monitor.py -p COM10 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 C:\Users\kaush\Downloads\ZotVision\.claude\worktrees\naughty-hofstadter\zot-vision\firmware\build\zot-vision.elf C:\Users\kaush\Downloads\ZotVision\.claude\worktrees\naughty-hofstadter\zot-vision\firmware\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\tools\python\v6.0\venv\Scripts\python.exe' 'C:\esp\v6.0\esp-idf\tools\idf.py'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15848
+load:0x40080400,len:3920
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v6.0 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Apr  4 2026 17:14:36[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (29) boot: chip revision: v3.1[0m
+[0;32mI (31) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (35) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (39) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (42) boot: Enabling RNG early entropy source...[0m
+[0;32mI (47) boot: Partition Table:[0m
+[0;32mI (49) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (62) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (69) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (75) boot: End of partition table[0m
+[0;32mI (79) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=27a68h (162408) map[0m
+[0;32mI (144) esp_image: segment 1: paddr=00037a90 vaddr=3ffb0000 size=06cfch ( 27900) load[0m
+[0;32mI (155) esp_image: segment 2: paddr=0003e794 vaddr=40080000 size=01884h (  6276) load[0m
+[0;32mI (158) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=b7490h (750736) map[0m
+[0;32mI (426) esp_image: segment 4: paddr=000f74b8 vaddr=40081884 size=17b44h ( 97092) load[0m
+[0;32mI (466) esp_image: segment 5: paddr=0010f004 vaddr=50000000 size=00028h (    40) load[0m
+[0;32mI (479) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (479) boot: Disabling RNG early entropy source...[0m
+[0;32mI (490) quad_psram: This chip is ESP32-D0WD[0m
+[0;32mI (492) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (492) esp_psram: Speed: 40MHz[0m
+[0;32mI (492) esp_psram: PSRAM initialized, cache is in low/high (2-core) mode.[0m
+[0;33mW (497) esp_psram: Virtual address not enough for PSRAM, map as much as we can. 4MB is mapped[0m
+[0;32mI (505) cpu_start: Multicore app[0m
+[0;32mI (1414) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1422) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (1422) cpu_start: Pro cpu start user code[0m
+[0;32mI (1422) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (1424) app_init: Application information:[0m
+[0;32mI (1428) app_init: Project name:     zot-vision[0m
+[0;32mI (1432) app_init: App version:      11f8c2c-dirty[0m
+[0;32mI (1437) app_init: Compile time:     Apr  4 2026 17:11:13[0m
+[0;32mI (1442) app_init: ELF file SHA256:  d55dd4b52...[0m
+[0;32mI (1446) app_init: ESP-IDF:          v6.0[0m
+[0;32mI (1450) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (1454) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (1458) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (1462) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1468) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (1473) heap_init: At 3FFBBFD8 len 00024028 (144 KiB): DRAM[0m
+[0;32mI (1479) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (1484) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (1490) heap_init: At 400993C8 len 00006C38 (27 KiB): IRAM[0m
+[0;32mI (1496) esp_psram: Adding pool of 4096K of PSRAM memory to heap allocator[0m
+[0;33mW (1503) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig[0m
+[0;32mI (1515) spi_flash: detected chip: generic[0m
+[0;32mI (1519) spi_flash: flash io: dio[0m
+[0;33mW (1522) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (1536) main_task: Started on CPU0[0m
+[0;32mI (1546) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1546) main_task: Calling app_main()[0m
+[0;32mI (1606) wifi:wifi driver task: 3ffc3aa0, prio:23, stack:6656, core=0[0m
+[0;32mI (1626) wifi:wifi firmware version: 44738b4[0m
+[0;32mI (1626) wifi:wifi certification version: v7.0[0m
+[0;32mI (1626) wifi:config NVS flash: enabled[0m
+[0;32mI (1626) wifi:config nano formatting: disabled[0m
+[0;32mI (1626) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1636) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1636) wifi:Init management short buffer num: 32[0m
+[0;32mI (1646) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1646) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1646) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1656) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1656) wifi_init: rx ba win: 6[0m
+[0;32mI (1656) wifi_init: accept mbox: 6[0m
+[0;32mI (1666) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1666) wifi_init: udp mbox: 6[0m
+[0;32mI (1666) wifi_init: tcp mbox: 6[0m
+[0;32mI (1676) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1676) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1676) wifi_init: tcp mss: 1440[0m
+[0;32mI (1686) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1686) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;33mW (1696) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (1696) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06[0m
+[0;32mI (1786) wifi:mode : sta (a4:f0:0f:73:f0:30)[0m
+[0;32mI (1786) wifi:enable tsf[0m
+[0;33mW (4206) wifi: Disconnected, retrying...[0m
+[0;33mW (6626) wifi: Disconnected, retrying...[0m
+[0;33mW (9046) wifi: Disconnected, retrying...[0m
+[0;33mW (11466) wifi: Disconnected, retrying...[0m
+[0;33mW (13886) wifi: Disconnected, retrying...[0m
+[0;33mW (16296) wifi: Disconnected, retrying...[0m
+[0;33mW (18716) wifi: Disconnected, retrying...[0m
+[0;33mW (21136) wifi: Disconnected, retrying...[0m
+[0;33mW (23556) wifi: Disconnected, retrying...[0m
+[0;33mW (25966) wifi: Disconnected, retrying...[0m
+[0;33mW (28386) wifi: Disconnected, retrying...[0m
+[0;33mW (30806) wifi: Disconnected, retrying...[0m
+[0;33mW (33226) wifi: Disconnected, retrying...[0m
+[0;33mW (35646) wifi: Disconnected, retrying...[0m
+[0;33mW (38056) wifi: Disconnected, retrying...[0m
+[0;33mW (40476) wifi: Disconnected, retrying...[0m
+[0;33mW (42896) wifi: Disconnected, retrying...[0m
+[0;33mW (45316) wifi: Disconnected, retrying...[0m
+[0;33mW (47736) wifi: Disconnected, retrying...[0m
+[0;33mW (50146) wifi: Disconnected, retrying...[0m
+[0;33mW (52566) wifi: Disconnected, retrying...[0m
+[0;33mW (54986) wifi: Disconnected, retrying...[0m
+[0;33mW (57406) wifi: Disconnected, retrying...[0m
+[0;33mW (59826) wifi: Disconnected, retrying...[0m
+[0;33mW (62236) wifi: Disconnected, retrying...[0m
+[0;33mW (64656) wifi: Disconnected, retrying...[0m
+[0;33mW (67076) wifi: Disconnected, retrying...[0m
+[0;33mW (69496) wifi: Disconnected, retrying...[0m
+[0;33mW (71916) wifi: Disconnected, retrying...[0m
+[0;33mW (74326) wifi: Disconnected, retrying...[0m
+[0;33mW (76746) wifi: Disconnected, retrying...[0m
+[0;33mW (79166) wifi: Disconnected, retrying...[0m
+[0;33mW (81586) wifi: Disconnected, retrying...[0m
+[0;33mW (83996) wifi: Disconnected, retrying...[0m
+[0;33mW (86416) wifi: Disconnected, retrying...[0m
+[0;33mW (88836) wifi: Disconnected, retrying...[0m
+[0;33mW (91256) wifi: Disconnected, retrying...[0m
+[0;33mW (93676) wifi: Disconnected, retrying...[0m
+[0;33mW (96086) wifi: Disconnected, retrying...[0m
+[0;33mW (98506) wifi: Disconnected, retrying...[0m
+[0;33mW (100926) wifi: Disconnected, retrying...[0m
+[0;33mW (103346) wifi: Disconnected, retrying...[0m
+[0;33mW (105766) wifi: Disconnected, retrying...[0m
+[0;33mW (108186) wifi: Disconnected, retrying...[0m
+[0;33mW (110596) wifi: Disconnected, retrying...[0m
+[0;33mW (113016) wifi: Disconnected, retrying...[0m
+[0;33mW (115436) wifi: Disconnected, retrying...[0m
+[0;33mW (117856) wifi: Disconnected, retrying...[0m
+[0;33mW (120276) wifi: Disconnected, retrying...[0m
+[0;33mW (122686) wifi: Disconnected, retrying...[0m
+[0;33mW (125106) wifi: Disconnected, retrying...[0m
+[0;33mW (127526) wifi: Disconnected, retrying...[0m
+[0;33mW (129946) wifi: Disconnected, retrying...[0m
+[0;33mW (132366) wifi: Disconnected, retrying...[0m
+[0;33mW (134786) wifi: Disconnected, retrying...[0m
+[0;33mW (137196) wifi: Disconnected, retrying...[0m

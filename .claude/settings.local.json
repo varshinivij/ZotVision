@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"C:/Users/kaush/Downloads/ZotVision/zot-vision/firmware/main\")",
+      "Bash(mv \"C:/Users/kaush/Downloads/ZotVision/zot-vision/firmware/main.cpp\" \"C:/Users/kaush/Downloads/ZotVision/zot-vision/firmware/camera.cpp\" \"C:/Users/kaush/Downloads/ZotVision/zot-vision/firmware/camera.h\" \"C:/Users/kaush/Downloads/ZotVision/zot-vision/firmware/wifi.cpp\" \"C:/Users/kaush/Downloads/ZotVision/zot-vision/firmware/wifi.h\" \"C:/Users/kaush/Downloads/ZotVision/zot-vision/firmware/http_sender.cpp\" \"C:/Users/kaush/Downloads/ZotVision/zot-vision/firmware/http_sender.h\" \"C:/Users/kaush/Downloads/ZotVision/zot-vision/firmware/main/\")",
+      "Read(//c/Users/kaush/Downloads/ZotVision/**)",
+      "Bash(gh pr:*)",
+      "Bash(where gh:*)"
+    ]
+  }
+}
