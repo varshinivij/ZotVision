@@ -1,9 +1,10 @@
 import os
 import time
+import threading
 
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
-from threading import FireFighterManager
+from workers import FireFighterManager
 
 app = Flask(__name__)
 CORS(app)
@@ -13,7 +14,10 @@ NUM_FIREFIGHTERS = 5
 UPLOAD_DIR = os.path.join(os.path.dirname(__file__), "uploads")
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-manager = FireFighterManager(MODEL_PATH, NUM_FIREFIGHTERS)
+manager = None
+
+# Per-firefighter locks so reads and writes never overlap
+_file_locks = {i: threading.Lock() for i in range(NUM_FIREFIGHTERS)}
 
 # In-memory state for each firefighter
 state = {
@@ -27,15 +31,24 @@ state = {
 @app.route("/api/image", methods=["POST"])
 def receive_image():
     """Receive an image from a firefighter device.
-    Expects multipart form: firefighter_id (int) + image (file).
+    Accepts either:
+      - multipart form: firefighter_id (int) + image (file)
+      - raw JPEG bytes with Content-Type: image/jpeg (firefighter_id from query param)
     """
-    firefighter_id = int(request.form.get("firefighter_id", 0))
-    file = request.files["image"]
+    if request.content_type and "multipart" in request.content_type:
+        firefighter_id = int(request.form.get("firefighter_id", 0))
+        data = request.files["image"].read()
+    else:
+        firefighter_id = int(request.args.get("firefighter_id", 0))
+        data = request.data
 
     path = os.path.join(UPLOAD_DIR, f"firefighter_{firefighter_id}.jpg")
-    file.save(path)
+    with _file_locks[firefighter_id]:
+        with open(path, "wb") as f:
+            f.write(data)
 
-    manager.send_image(path, worker_id=firefighter_id)
+    if manager:
+        manager.send_image(path, worker_id=firefighter_id)
     state[firefighter_id]["live"] = True
     state[firefighter_id]["image_ts"] = time.time()
 
@@ -63,12 +76,11 @@ def receive_gps():
 @app.route("/api/state", methods=["GET"])
 def get_state():
     """Polled by the React frontend. Returns the latest data for every firefighter."""
-    # Drain any finished inference results into state
-    for i in range(NUM_FIREFIGHTERS):
-        result = manager.get_result(worker_id=i)
-        if result is not None:
-            # result is (image_path, numpy_array)
-            state[i]["label"] = result[1].tolist()
+    if manager:
+        for i in range(NUM_FIREFIGHTERS):
+            result = manager.get_result(worker_id=i)
+            if result is not None:
+                state[i]["label"] = result[1]
 
     firefighters = []
     for i in range(NUM_FIREFIGHTERS):
@@ -89,8 +101,11 @@ def get_state():
 @app.route("/api/images/<int:fid>")
 def serve_image(fid):
     """Serve the latest saved image for a firefighter."""
-    return send_from_directory(UPLOAD_DIR, f"firefighter_{fid}.jpg")
+    path = os.path.join(UPLOAD_DIR, f"firefighter_{fid}.jpg")
+    with _file_locks[fid]:
+        return send_file(path, mimetype="image/jpeg")
 
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    manager = FireFighterManager(MODEL_PATH, NUM_FIREFIGHTERS)
+    app.run(host="0.0.0.0", debug=False)

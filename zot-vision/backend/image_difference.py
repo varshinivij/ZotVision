@@ -17,7 +17,7 @@ class ImageDifference:
         gray = clahe.apply(gray)
 
         has_changed = False
-        if self.prev_frame is not None:
+        if self.prev_frame is not None and self.prev_frame.shape == gray.shape:
             diff = cv2.absdiff(gray, self.prev_frame)
             changed = (diff > self.threshold).sum() / diff.size
 
