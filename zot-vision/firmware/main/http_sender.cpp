@@ -13,10 +13,9 @@ static esp_http_client_handle_t client = NULL;
 static void ensure_client() {
     if (client != NULL) return;
 
-    esp_http_client_config_t config = {
-        .url    = SERVER_URL,
-        .method = HTTP_METHOD_POST,
-    };
+    esp_http_client_config_t config = {};
+    config.url    = SERVER_URL;
+    config.method = HTTP_METHOD_POST;
 
     client = esp_http_client_init(&config);
     esp_http_client_set_header(client, "Content-Type", "image/jpeg");

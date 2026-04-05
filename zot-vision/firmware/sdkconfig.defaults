@@ -1,0 +1,6 @@
+# Allocate more stack/heap for camera + HTTP
+CONFIG_ESP32_SPIRAM_SUPPORT=y
+CONFIG_SPIRAM_BOOT_INIT=y
+
+# Camera runs on core 0 by default
+CONFIG_CAMERA_CORE0=y
