@@ -65,7 +65,7 @@ def load_samples(labels_file: str = LABELS_FILE, images_dir: str = IMAGES_DIR):
             if label_name not in LABEL_MAP:
                 print(f"[WARN] Unknown label '{label_name}' at line {i+1}, skipping")
                 continue
-            img_path = os.path.join(images_dir, f"{i+1}.jpg")
+            img_path = os.path.join(images_dir, f"{i+1:03d}.jpg")
             if not os.path.exists(img_path):
                 print(f"[WARN] Missing image {img_path}, skipping")
                 continue
