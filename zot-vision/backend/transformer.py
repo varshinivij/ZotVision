@@ -1,6 +1,6 @@
 """
 CNN-ViT Hybrid Model: EfficientNet + Google ViT
-Output: 4-class classification → ['human', 'none', 'both', 'hazard']
+Output: 4-class classification → ['none', 'hazard', 'person', 'both']
 CLS token is extracted from the ViT's last hidden state for classification.
 """
 
@@ -17,10 +17,12 @@ import numpy as np
 # ──────────────────────────────────────────────
 # CONFIG
 # ──────────────────────────────────────────────
-DATASET_PATH = "/dummy/path/to/dataset"          # ← replace with real path
-NUM_CLASSES  = 4
-LABEL_MAP    = {"human": 0, "none": 1, "both": 2, "hazard": 3}
-ID_TO_LABEL  = {v: k for k, v in LABEL_MAP.items()}
+DATASET_DIR   = os.path.join(os.path.dirname(__file__), "..", "datasets")
+IMAGES_DIR    = os.path.join(DATASET_DIR, "images")
+LABELS_FILE   = os.path.join(DATASET_DIR, "results", "labels.txt")
+NUM_CLASSES   = 4
+LABEL_MAP     = {"null": 0, "hazard": 1, "person": 2, "both": 3}
+ID_TO_LABEL   = {0: "null", 1: "hazard", 2: "person", 3: "both"}
 
 BATCH_SIZE   = 16
 NUM_EPOCHS   = 20
@@ -33,25 +35,12 @@ DEVICE       = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # ──────────────────────────────────────────────
 class CustomDataset(Dataset):
     """
-    Expects directory structure:
-        /dummy/path/to/dataset/
-            human/   *.jpg
-            none/    *.jpg
-            both/    *.jpg
-            hazard/  *.jpg
+    Reads labels.txt (filename,label per line) and resolves images from IMAGES_DIR.
+    No need to move images into class subdirectories.
     """
-    def __init__(self, root_dir: str, transform=None):
-        self.samples   = []
+    def __init__(self, samples: list, transform=None):
+        self.samples   = samples
         self.transform = transform
-
-        for label_name, label_idx in LABEL_MAP.items():
-            class_dir = os.path.join(root_dir, label_name)
-            if not os.path.isdir(class_dir):
-                print(f"[WARN] Missing class folder: {class_dir}")
-                continue
-            for fname in os.listdir(class_dir):
-                if fname.lower().endswith((".jpg", ".jpeg", ".png")):
-                    self.samples.append((os.path.join(class_dir, fname), label_idx))
 
     def __len__(self):
         return len(self.samples)
@@ -62,6 +51,22 @@ class CustomDataset(Dataset):
         if self.transform:
             image = self.transform(image)
         return image, label
+
+
+def load_samples(labels_file: str = LABELS_FILE, images_dir: str = IMAGES_DIR):
+    """Parse labels.txt → list of (image_path, label_idx)."""
+    samples = []
+    with open(labels_file) as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            fname, label_name = line.split(",", 1)
+            if label_name not in LABEL_MAP:
+                print(f"[WARN] Unknown label '{label_name}' for {fname}, skipping")
+                continue
+            samples.append((os.path.join(images_dir, fname), LABEL_MAP[label_name]))
+    return samples
 
 
 def get_transforms(train: bool):
@@ -261,9 +266,13 @@ def predict(model, image_path: str, device=DEVICE) -> str:
 def main():
     print(f"Using device: {DEVICE}")
 
-    # ── Datasets ──
-    train_ds = CustomDataset(os.path.join(DATASET_PATH, "train"), get_transforms(train=True))
-    val_ds   = CustomDataset(os.path.join(DATASET_PATH, "val"),   get_transforms(train=False))
+    # ── Datasets (80/20 split from labels.txt) ──
+    import random
+    all_samples = load_samples()
+    random.shuffle(all_samples)
+    split = int(0.8 * len(all_samples))
+    train_ds = CustomDataset(all_samples[:split], get_transforms(train=True))
+    val_ds   = CustomDataset(all_samples[split:], get_transforms(train=False))
 
     train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True,  num_workers=4, pin_memory=True)
     val_loader   = DataLoader(val_ds,   batch_size=BATCH_SIZE, shuffle=False, num_workers=4, pin_memory=True)
@@ -303,7 +312,7 @@ def main():
 
         if val_acc > best_val_acc:
             best_val_acc = val_acc
-            torch.save(model.state_dict(), "best_cnn_vit.pth")
+            torch.save(model.state_dict(), os.path.join(DATASET_DIR, "results", "model_weights.pth"))
             print(f"  ✓ Saved best model (val_acc={best_val_acc:.4f})")
 
     print(f"\nTraining complete. Best Val Acc: {best_val_acc:.4f}")
