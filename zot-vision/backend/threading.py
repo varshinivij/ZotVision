@@ -5,6 +5,8 @@ import PredictHazard
 import ImageDifference
 import uuid
 
+LABELS = {0: "none", 1: "hazard", 2: "person", 3: "both"}
+
 
 class FireFighterWorker:
     def __init__(self, model_path):
@@ -29,7 +31,9 @@ class FireFighterWorker:
                 break
             with torch.no_grad():
                 output = model(image_path)
-            result_queue.put((image_path, output.cpu().numpy()))
+            pred = int(output.argmax(dim=1).item())
+            label = LABELS.get(pred)
+            result_queue.put((image_path, label))
 
     def enqueue(self, image_path):
         """Non-blocking: push a frame into the FIFO queue and return immediately."""
