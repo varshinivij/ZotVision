@@ -6,10 +6,11 @@ app = Flask(__name__)
 def create_fire_fighter_manager(model_path="", num_firefighters=4):
     return FireFighterManager(model_path, num_firefighters)
 
-
-@app.route('/handle_get', methods=['GET'])
-
 @app.route('/handle_post', methods=['POST'])
+def handle_post():
+    data = request.get_json()
+    print("Received POST data:", data)
+    return "POST request received"
 
 if __name__ == '__main__':
     app.run()
