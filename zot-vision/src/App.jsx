@@ -20,7 +20,7 @@ function App() {
       </div>
       <div className="feeds-grid">
         {array.map((IMAGE_PATH, idx) => (
-          <FramePlayer key={idx} id={idx + 1} url={IMAGE_PATH} live={idx === 0} />
+          <FramePlayer key={idx} id={idx + 1} url={IMAGE_PATH} live={idx === 0} coordinates={{ lat: 0, lng: 0 }} altitude={0} />
         ))}
       </div>
     </div>
