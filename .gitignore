@@ -2,4 +2,6 @@
 *.pt
 .venv
 yolov*.pt
-.venv
+
+# Claude Code
+.claude/

@@ -29,29 +29,54 @@ from ultralytics import YOLO
 # CONFIG
 # ─────────────────────────────────────────────────────────────────
 
-YOLO_CONFIDENCE = 0.50           # ↑ from 0.25 — reduce false positive person detections
-YOLO_MIN_BOX_AREA = 0.005       # minimum bbox area as fraction of image (filters tiny spurious boxes)
+YOLO_CONFIDENCE = 0.50           # minimum confidence for person detection
+YOLO_MIN_BOX_AREA = 0.005        # minimum bbox area as fraction of image (filters tiny spurious boxes)
 
-CLIP_MODEL_NAME = "ViT-B-32"
-CLIP_PRETRAINED = "laion2b_s34b_b79k"
+CLIP_MODEL_NAME = "ViT-L-14"
+CLIP_PRETRAINED = "openai"
 
 HAZARD_PROMPTS = [
+    # fire
     "a photo of fire",
     "a photo of flames burning",
-    "a photo of thick smoke",
-    "a photo of a building on fire",
-    "a photo of a wildfire",
-    "a photo of an active fire emergency",
+    "a photo of a building engulfed in fire",
+    "a photo of a wildfire with orange flames",
+    "a photo of an active fire emergency with visible flames",
+    "a photo of burning structures",
+    "a photo of a house on fire",
+    "a photo of a car on fire",
+    "a photo of flames and smoke in the sky",
+    # smoke
+    "a photo of smoke",
+    "a photo of smoke in the air",
+    "a photo of white smoke rising",
+    "a photo of gray smoke haze",
+    "a photo of thick black smoke",
+    "a photo of smoke filling the air",
+    "a photo of dense smoke billowing from a fire",
+    "a photo of a smoky scene",
+    "a photo of smoke coming from a building",
 ]
 SAFE_PROMPTS = [
     "a normal photo with no fire or smoke",
     "a photo of a safe indoor scene",
-    "a photo of a landscape with clear sky",
+    "a photo of a landscape with a clear blue sky",
     "a photo of a room with no danger",
     "a photo of everyday objects with no emergency",
+    "a photo of people going about their day safely",
+    "a photo of a sunset with orange sky but no fire",
+    "a photo of fog or mist with no fire",
+    "a photo of clouds in the sky",
+    "a photo of steam or vapor with no fire",
+    "a photo of a city street with no emergency",
+    "a photo of trees and nature with no fire",
 ]
 
-CLIP_HAZARD_THRESHOLD = 0.78     # ↑ from 0.70 — reduce false positive hazard detections
+# Primary: mean hazard must exceed mean safe by this margin.
+# Secondary: if any single hazard prompt similarity exceeds this absolute threshold,
+#            also flag as hazard (catches subtle smoke even when mean is low).
+CLIP_HAZARD_MARGIN = 0.03
+CLIP_HAZARD_MAX_THRESHOLD = 0.25
 
 
 # ─────────────────────────────────────────────────────────────────
@@ -76,23 +101,40 @@ def detect_person(model, img_path):
 
 
 def detect_hazard_clip(clip_model, preprocess, tokenizer, device, img_path):
-    """Detect fire/smoke using CLIP zero-shot classification."""
+    """Detect fire/smoke using CLIP zero-shot classification.
+
+    Two-condition detection:
+    1. Mean hazard similarity exceeds mean safe similarity by CLIP_HAZARD_MARGIN
+       (catches clear fire/smoke scenes).
+    2. Any single hazard prompt similarity exceeds CLIP_HAZARD_MAX_THRESHOLD
+       (catches subtle smoke that scores high on one specific prompt but dilutes
+       the mean).
+    """
     image = preprocess(Image.open(img_path).convert("RGB")).unsqueeze(0).to(device)
 
     all_prompts = HAZARD_PROMPTS + SAFE_PROMPTS
     text = tokenizer(all_prompts).to(device)
 
-    with torch.no_grad(), torch.amp.autocast(device_type=device.type if device.type != "mps" else "cpu"):
+    autocast_device = "cpu" if device.type == "mps" else device.type
+    with torch.no_grad(), torch.amp.autocast(device_type=autocast_device):
         image_features = clip_model.encode_image(image)
         text_features = clip_model.encode_text(text)
 
-        image_features /= image_features.norm(dim=-1, keepdim=True)
-        text_features /= text_features.norm(dim=-1, keepdim=True)
+        image_features = image_features / image_features.norm(dim=-1, keepdim=True)
+        text_features = text_features / text_features.norm(dim=-1, keepdim=True)
 
-        similarity = (image_features @ text_features.T).softmax(dim=-1)[0]
+        similarity = (image_features @ text_features.T)[0]
 
-    hazard_score = similarity[: len(HAZARD_PROMPTS)].sum().item()
-    return hazard_score > CLIP_HAZARD_THRESHOLD
+    n_hazard = len(HAZARD_PROMPTS)
+    hazard_sims = similarity[:n_hazard]
+    safe_sims = similarity[n_hazard:]
+
+    hazard_mean = hazard_sims.mean().item()
+    safe_mean = safe_sims.mean().item()
+    hazard_max = hazard_sims.max().item()
+
+    # Flag if mean margin exceeds threshold OR any single prompt is very confident
+    return (hazard_mean > safe_mean + CLIP_HAZARD_MARGIN) or (hazard_max > CLIP_HAZARD_MAX_THRESHOLD)
 
 
 # ─────────────────────────────────────────────────────────────────
@@ -114,7 +156,7 @@ def main():
     image_paths = sorted([
         p for ext in ("*.jpg", "*.jpeg", "*.png", "*.webp", "*.bmp")
         for p in image_dir.rglob(ext)
-    ])
+    ], key=lambda p: int(p.stem) if p.stem.isdigit() else p.stem)
 
     if not image_paths:
         raise SystemExit(f"[ERROR] No images found in {image_dir}")
@@ -154,7 +196,7 @@ def main():
         stats[label] += 1
         label_lines.append(label)
 
-    # Write labels
+    # Write labels (filename + label for traceability)
     labels_path = output_dir / "labels.txt"
     with open(labels_path, "w") as f:
         for line in label_lines:
