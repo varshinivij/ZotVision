@@ -191,9 +191,9 @@ class CNNViTHybrid(nn.Module):
         tokens = tokens + pos                         # (B, N+1, D)
 
         # ── ViT transformer encoder ──
-        # We pass pre-computed patch tokens directly using inputs_embeds
-        vit_out   = self.vit_encoder(inputs_embeds=tokens)
-        last_hidden = vit_out.last_hidden_state       # (B, N+1, D)
+        # Call encoder blocks directly (bypasses ViTEmbeddings which requires pixel_values)
+        vit_out     = self.vit_encoder.encoder(tokens)
+        last_hidden = self.vit_encoder.layernorm(vit_out.last_hidden_state)  # (B, N+1, D)
 
         # ── Extract CLS token (position 0) ──
         cls_out   = last_hidden[:, 0, :]              # (B, D)
