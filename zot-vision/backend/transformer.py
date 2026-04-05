@@ -99,7 +99,7 @@ def get_transforms(train: bool):
 class CNNViTHybrid(nn.Module):
     """
     Architecture:
-      1. EfficientNet-B0 backbone  →  extracts spatial feature map (C×H×W)
+      1. EfficientNet-B4 backbone  →  extracts spatial feature map (C×H×W)
       2. Patch projection          →  flattens spatial tokens  (N_patches × D)
       3. Prepend learnable CLS token
       4. Add positional embeddings
@@ -110,9 +110,9 @@ class CNNViTHybrid(nn.Module):
 
     def __init__(
         self,
-        efficientnet_variant: str = "efficientnet-b0",
+        efficientnet_variant: str = "efficientnet-b4",
         vit_hidden_size: int = 768,
-        vit_num_layers: int = 4,
+        vit_num_layers: int = 6,
         vit_num_heads: int = 12,
         num_classes: int = NUM_CLASSES,
         dropout: float = 0.3,
@@ -121,16 +121,16 @@ class CNNViTHybrid(nn.Module):
 
         # ── 1. EfficientNet backbone (remove classifier + pooling) ──
         self.cnn = EfficientNet.from_pretrained(efficientnet_variant)
-        cnn_out_channels = self.cnn._conv_head.out_channels  # 1280 for B0
+        cnn_out_channels = self.cnn._conv_head.out_channels  # 1792 for B4
 
         # Remove EfficientNet's own pooling & FC so we get a feature map
         self.cnn._avg_pooling  = nn.Identity()
         self.cnn._dropout      = nn.Identity()
         self.cnn._fc           = nn.Identity()
 
-        # Freeze early EfficientNet blocks — only fine-tune last 3 blocks + head
+        # Freeze early B4 blocks (0-27) — only fine-tune last 4 blocks + conv_head
         for name, param in self.cnn.named_parameters():
-            if not any(k in name for k in ['_blocks.13', '_blocks.14', '_blocks.15', '_conv_head']):
+            if not any(k in name for k in ['_blocks.28', '_blocks.29', '_blocks.30', '_blocks.31', '_conv_head']):
                 param.requires_grad = False
 
         # ── 2. Project CNN feature map channels → ViT hidden dim ──
@@ -141,7 +141,7 @@ class CNNViTHybrid(nn.Module):
         nn.init.trunc_normal_(self.cls_token, std=0.02)
 
         # ── 4. Positional embedding ──
-        # Pre-computed for EfficientNet-B4 @ 224x224 → 7x7 = 49 patches.
+        # Pre-computed for EfficientNet-B4 @ 224x224 → 7x7 = 49 patches (same as B0).
         # Registered as nn.Parameter so it's saved in state_dict and moves with .to(device).
         expected_patches = 49
         self.pos_embed = nn.Parameter(torch.zeros(1, expected_patches + 1, vit_hidden_size))
