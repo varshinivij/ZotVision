@@ -1,16 +1,32 @@
+import { useState, useEffect } from 'react'
 import FramePlayer from './FramePlayer.jsx'
 import './App.css'
 
-const images = import.meta.glob('./assets/Firefighter*.png', { eager: true })
-
 function App() {
-  const numFireFighters = 4;
+  const [firefighters, setFirefighters] = useState(
+    Array.from({ length: 5 }, (_, i) => ({
+      id: i,
+      live: false,
+      image_url: null,
+      lat: 0,
+      lon: 0,
+      alt: 0,
+      label: null,
+    }))
+  );
 
-  const array = [];
-  for (let i = 1; i <= numFireFighters; i++) {
-    const key = `./assets/Firefighter${i}.png`;
-    array.push(images[key]?.default || null);
-  }
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch('/api/state');
+        const data = await res.json();
+        setFirefighters(data.firefighters);
+      } catch {
+        // backend not available yet
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="dashboard">
@@ -19,8 +35,16 @@ function App() {
         <h1 className="dashboard-title">Live Camera Feeds</h1>
       </div>
       <div className="feeds-grid">
-        {array.map((IMAGE_PATH, idx) => (
-          <FramePlayer key={idx} id={idx + 1} url={IMAGE_PATH} live={idx === 0} />
+        {firefighters.map((ff) => (
+          <FramePlayer
+            key={ff.id}
+            id={ff.id + 1}
+            url={ff.image_url}
+            live={ff.live}
+            coordinates={{ lat: ff.lat, lng: ff.lon }}
+            altitude={ff.alt}
+            label={ff.label}
+          />
         ))}
       </div>
     </div>

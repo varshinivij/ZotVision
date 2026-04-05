@@ -1,0 +1,5 @@
+# Ignore YOLO .pt files
+*.pt
+.venv
+yolov*.pt
+.venv
