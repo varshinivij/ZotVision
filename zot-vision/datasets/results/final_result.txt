@@ -1,0 +1,5 @@
+Label Count
+hazard 253
+person 300
+both 206
+null 148
