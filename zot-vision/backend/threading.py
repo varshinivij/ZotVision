@@ -48,7 +48,7 @@ class FireFighterWorker:
 
 
 class FireFighterManager:
-    def __init__(self, model_path, num_firefighters=4):
+    def __init__(self, model_path="", num_firefighters=4):
         self.workers = [FireFighterWorker(model_path) for _ in range(num_firefighters)]
         self.images = [ImageDifference() for _ in range(num_firefighters)]
 

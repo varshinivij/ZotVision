@@ -13,6 +13,8 @@ static const char* TAG = "main";
 // --------------------
 
 void capture_task(void* pvParameters) {
+    TickType_t last_wake = xTaskGetTickCount();
+
     while (true) {
         camera_fb_t* fb = camera_capture();
 
@@ -26,7 +28,7 @@ void capture_task(void* pvParameters) {
             camera_release(fb);  // never skip this
         }
 
-        vTaskDelay(pdMS_TO_TICKS(33));  // ~30 FPS
+        vTaskDelayUntil(&last_wake, pdMS_TO_TICKS(33));  // ~30 FPS
     }
 }
 
@@ -37,7 +39,7 @@ extern "C" void app_main() {
     xTaskCreate(
         capture_task,   // function
         "capture_task", // name
-        8192,           // increased stack size for HTTP
+        16384,          // increased stack size for HTTP
         NULL,           // params
         5,              // priority
         NULL            // handle

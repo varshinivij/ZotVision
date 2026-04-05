@@ -29,7 +29,8 @@ from ultralytics import YOLO
 # CONFIG
 # ─────────────────────────────────────────────────────────────────
 
-YOLO_CONFIDENCE = 0.25
+YOLO_CONFIDENCE = 0.50           # ↑ from 0.25 — reduce false positive person detections
+YOLO_MIN_BOX_AREA = 0.005       # minimum bbox area as fraction of image (filters tiny spurious boxes)
 
 CLIP_MODEL_NAME = "ViT-B-32"
 CLIP_PRETRAINED = "laion2b_s34b_b79k"
@@ -37,17 +38,20 @@ CLIP_PRETRAINED = "laion2b_s34b_b79k"
 HAZARD_PROMPTS = [
     "a photo of fire",
     "a photo of flames burning",
-    "a photo of smoke",
+    "a photo of thick smoke",
     "a photo of a building on fire",
     "a photo of a wildfire",
+    "a photo of an active fire emergency",
 ]
 SAFE_PROMPTS = [
     "a normal photo with no fire or smoke",
     "a photo of a safe indoor scene",
     "a photo of a landscape with clear sky",
+    "a photo of a room with no danger",
+    "a photo of everyday objects with no emergency",
 ]
 
-CLIP_HAZARD_THRESHOLD = 0.70  # probability above this = hazard
+CLIP_HAZARD_THRESHOLD = 0.78     # ↑ from 0.70 — reduce false positive hazard detections
 
 
 # ─────────────────────────────────────────────────────────────────
@@ -55,13 +59,19 @@ CLIP_HAZARD_THRESHOLD = 0.70  # probability above this = hazard
 # ─────────────────────────────────────────────────────────────────
 
 def detect_person(model, img_path):
-    """Detect people using YOLOv8x."""
+    """Detect people using YOLOv8x with minimum bounding box area filter."""
     results = model(img_path, verbose=False, conf=YOLO_CONFIDENCE)
     for result in results:
+        img_h, img_w = result.orig_shape
+        img_area = img_h * img_w
         for box in result.boxes:
             cls_id = int(box.cls[0].item())
             if model.names[cls_id] == "person":
-                return True
+                # Filter out tiny spurious detections
+                x1, y1, x2, y2 = box.xyxy[0].tolist()
+                box_area = (x2 - x1) * (y2 - y1)
+                if box_area / img_area >= YOLO_MIN_BOX_AREA:
+                    return True
     return False
 
 
