@@ -54,18 +54,22 @@ class CustomDataset(Dataset):
 
 
 def load_samples(labels_file: str = LABELS_FILE, images_dir: str = IMAGES_DIR):
-    """Parse labels.txt → list of (image_path, label_idx)."""
+    """Parse labels.txt (one label per line) → list of (image_path, label_idx).
+    Image at line i maps to {i+1}.jpg."""
     samples = []
     with open(labels_file) as f:
-        for line in f:
-            line = line.strip()
-            if not line:
+        for i, line in enumerate(f):
+            label_name = line.strip()
+            if not label_name:
                 continue
-            fname, label_name = line.split(",", 1)
             if label_name not in LABEL_MAP:
-                print(f"[WARN] Unknown label '{label_name}' for {fname}, skipping")
+                print(f"[WARN] Unknown label '{label_name}' at line {i+1}, skipping")
                 continue
-            samples.append((os.path.join(images_dir, fname), LABEL_MAP[label_name]))
+            img_path = os.path.join(images_dir, f"{i+1}.jpg")
+            if not os.path.exists(img_path):
+                print(f"[WARN] Missing image {img_path}, skipping")
+                continue
+            samples.append((img_path, LABEL_MAP[label_name]))
     return samples
 
 
@@ -129,9 +133,12 @@ class CNNViTHybrid(nn.Module):
         self.cls_token = nn.Parameter(torch.zeros(1, 1, vit_hidden_size))
         nn.init.trunc_normal_(self.cls_token, std=0.02)
 
-        # ── 4. Positional embedding (built dynamically on first forward) ──
-        #     We'll create it lazily so any spatial resolution works.
-        self.pos_embed = None
+        # ── 4. Positional embedding ──
+        # Pre-computed for EfficientNet-B4 @ 224x224 → 7x7 = 49 patches.
+        # Registered as nn.Parameter so it's saved in state_dict and moves with .to(device).
+        expected_patches = 49
+        self.pos_embed = nn.Parameter(torch.zeros(1, expected_patches + 1, vit_hidden_size))
+        nn.init.trunc_normal_(self.pos_embed, std=0.02)
         self.vit_hidden_size = vit_hidden_size
 
         # ── 5. Google ViT transformer encoder ──
@@ -158,15 +165,6 @@ class CNNViTHybrid(nn.Module):
             nn.Linear(256, num_classes),
         )
 
-    def _build_pos_embed(self, num_patches: int):
-        """Lazily build / update positional embeddings."""
-        total_tokens = num_patches + 1  # +1 for CLS
-        pos = nn.Parameter(
-            torch.zeros(1, total_tokens, self.vit_hidden_size, device=self.cls_token.device)
-        )
-        nn.init.trunc_normal_(pos, std=0.02)
-        return pos
-
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         B = x.size(0)
 
@@ -174,8 +172,7 @@ class CNNViTHybrid(nn.Module):
         feat = self.cnn.extract_features(x)          # (B, C_cnn, H', W')
         feat = self.patch_proj(feat)                  # (B, D, H', W')
 
-        H, W = feat.shape[2], feat.shape[3]
-        N    = H * W                                  # number of patch tokens
+        N    = feat.shape[2] * feat.shape[3]          # number of patch tokens
 
         # Flatten spatial dims → sequence of patch tokens
         feat = feat.flatten(2).transpose(1, 2)        # (B, N, D)
@@ -185,9 +182,13 @@ class CNNViTHybrid(nn.Module):
         tokens     = torch.cat([cls_tokens, feat], dim=1)  # (B, N+1, D)
 
         # ── Positional embedding ──
-        if self.pos_embed is None or self.pos_embed.size(1) != N + 1:
-            self.pos_embed = self._build_pos_embed(N)
-        tokens = tokens + self.pos_embed              # (B, N+1, D)
+        if self.pos_embed.size(1) != N + 1:
+            pos = torch.nn.functional.interpolate(
+                self.pos_embed.transpose(1, 2), size=N + 1, mode='linear', align_corners=False
+            ).transpose(1, 2)
+        else:
+            pos = self.pos_embed
+        tokens = tokens + pos                         # (B, N+1, D)
 
         # ── ViT transformer encoder ──
         # We pass pre-computed patch tokens directly using inputs_embeds
