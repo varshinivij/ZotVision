@@ -1,5 +1,5 @@
-Label Count %
-person 451 41.6%
-null 314 29.0%
-hazard 258 23.8%
-both 61 5.6%
+Label Count
+hazard 253
+person 300
+both 206
+null 148

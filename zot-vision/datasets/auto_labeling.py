@@ -147,6 +147,7 @@ def main():
     )
     parser.add_argument("--image_dir", required=True, help="Folder containing images")
     parser.add_argument("--output", default="./results", help="Output folder")
+    parser.add_argument("--append", action="store_true", help="Append to existing labels.txt instead of overwriting")
     args = parser.parse_args()
 
     image_dir = Path(args.image_dir).resolve()
@@ -196,9 +197,10 @@ def main():
         stats[label] += 1
         label_lines.append(label)
 
-    # Write labels (filename + label for traceability)
+    # Write labels
     labels_path = output_dir / "labels.txt"
-    with open(labels_path, "w") as f:
+    mode = "a" if args.append else "w"
+    with open(labels_path, mode) as f:
         for line in label_lines:
             f.write(line + "\n")
 
