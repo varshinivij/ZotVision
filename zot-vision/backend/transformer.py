@@ -160,9 +160,9 @@ class CNNViTHybrid(nn.Module):
         self.cnn._dropout      = nn.Identity()
         self.cnn._fc           = nn.Identity()
 
-        # Freeze early B4 blocks (0-29) — only fine-tune last 2 blocks + conv_head
+        # Freeze early B4 blocks (0-27) — fine-tune last 4 blocks + conv_head
         for name, param in self.cnn.named_parameters():
-            if not any(k in name for k in ['_blocks.30', '_blocks.31', '_conv_head']):
+            if not any(k in name for k in ['_blocks.28', '_blocks.29', '_blocks.30', '_blocks.31', '_conv_head']):
                 param.requires_grad = False
 
         # ── 2. Project CNN feature map channels → ViT hidden dim ──
