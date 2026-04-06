@@ -100,7 +100,18 @@ def detect_person(model, img_path):
     return False
 
 
-def detect_hazard_clip(clip_model, preprocess, tokenizer, device, img_path):
+def precompute_text_features(clip_model, tokenizer, device):
+    """Precompute and cache normalized text features for all prompts (run once)."""
+    all_prompts = HAZARD_PROMPTS + SAFE_PROMPTS
+    text = tokenizer(all_prompts).to(device)
+    autocast_device = "cpu" if device.type == "mps" else device.type
+    with torch.no_grad(), torch.amp.autocast(device_type=autocast_device):
+        text_features = clip_model.encode_text(text)
+        text_features = text_features / text_features.norm(dim=-1, keepdim=True)
+    return text_features
+
+
+def detect_hazard_clip(clip_model, preprocess, device, text_features, img_path):
     """Detect fire/smoke using CLIP zero-shot classification.
 
     Two-condition detection:
@@ -112,17 +123,10 @@ def detect_hazard_clip(clip_model, preprocess, tokenizer, device, img_path):
     """
     image = preprocess(Image.open(img_path).convert("RGB")).unsqueeze(0).to(device)
 
-    all_prompts = HAZARD_PROMPTS + SAFE_PROMPTS
-    text = tokenizer(all_prompts).to(device)
-
     autocast_device = "cpu" if device.type == "mps" else device.type
     with torch.no_grad(), torch.amp.autocast(device_type=autocast_device):
         image_features = clip_model.encode_image(image)
-        text_features = clip_model.encode_text(text)
-
         image_features = image_features / image_features.norm(dim=-1, keepdim=True)
-        text_features = text_features / text_features.norm(dim=-1, keepdim=True)
-
         similarity = (image_features @ text_features.T)[0]
 
     n_hazard = len(HAZARD_PROMPTS)
@@ -164,16 +168,23 @@ def main():
 
     print(f"[INFO] Found {len(image_paths)} images in {image_dir}")
 
+    device = torch.device("mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu")
+    print(f"[INFO] Using device: {device}")
+
     # Load YOLOv8x
     print("[INFO] Loading YOLOv8x (COCO-pretrained)...")
     yolo_model = YOLO("yolov8x.pt")
+    yolo_model.to(device)
 
     # Load CLIP
-    device = torch.device("mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu")
     print(f"[INFO] Loading CLIP ({CLIP_MODEL_NAME}) on {device}...")
     clip_model, _, preprocess = open_clip.create_model_and_transforms(CLIP_MODEL_NAME, pretrained=CLIP_PRETRAINED)
     clip_model = clip_model.to(device).eval()
     tokenizer = open_clip.get_tokenizer(CLIP_MODEL_NAME)
+
+    # Precompute text features once (big speedup)
+    print("[INFO] Precomputing text features...")
+    text_features = precompute_text_features(clip_model, tokenizer, device)
 
     print("[INFO] Labels: hazard, person, both, null")
     print("-" * 50)
@@ -183,7 +194,7 @@ def main():
 
     for img_path in tqdm(image_paths, desc="Labeling", unit="img"):
         has_person = detect_person(yolo_model, str(img_path))
-        has_hazard = detect_hazard_clip(clip_model, preprocess, tokenizer, device, img_path)
+        has_hazard = detect_hazard_clip(clip_model, preprocess, device, text_features, img_path)
 
         if has_hazard and has_person:
             label = "both"

@@ -9,6 +9,7 @@ import random
 import itertools
 import json
 import torch
+from collections import Counter
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
@@ -56,7 +57,7 @@ LABEL_MAP     = {"null": 0, "hazard": 1, "person": 2, "both": 3}
 ID_TO_LABEL   = {0: "null", 1: "hazard", 2: "person", 3: "both"}
 
 BATCH_SIZE   = 16
-NUM_EPOCHS   = 20
+NUM_EPOCHS   = 50
 LR           = 3e-4
 IMG_SIZE     = 224
 DEVICE       = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -358,6 +359,17 @@ HYPERPARAM_GRID = [
 ]
 
 
+def compute_class_weights(samples):
+    """Compute inverse-frequency class weights from training samples."""
+    counts = Counter([label for _, label in samples])
+    total = sum(counts.values())
+    weights = [total / (NUM_CLASSES * counts[i]) for i in range(NUM_CLASSES)]
+    # Normalize so mean weight = 1
+    mean_w = sum(weights) / NUM_CLASSES
+    weights = [w / mean_w for w in weights]
+    return torch.tensor(weights, dtype=torch.float)
+
+
 def train_config(config, train_samples, val_samples, run_id, results_dir):
     """Train a single hyperparameter configuration and return results."""
     print(f"\n{'='*60}")
@@ -381,7 +393,7 @@ def train_config(config, train_samples, val_samples, run_id, results_dir):
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=config["lr"], weight_decay=config["weight_decay"])
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=config["num_epochs"])
-    class_weights = torch.tensor([1.0, 1.2, 1.0, 2.5]).to(DEVICE)
+    class_weights = compute_class_weights(train_samples).to(DEVICE)
     criterion = nn.CrossEntropyLoss(weight=class_weights, label_smoothing=0.1)
 
     best_val_acc = 0.0
