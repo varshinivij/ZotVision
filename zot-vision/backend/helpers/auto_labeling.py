@@ -17,7 +17,6 @@ Usage:
 import argparse
 from pathlib import Path
 
-import cv2
 import numpy as np
 import open_clip
 import torch
@@ -29,54 +28,50 @@ from ultralytics import YOLO
 # CONFIG
 # ─────────────────────────────────────────────────────────────────
 
-YOLO_CONFIDENCE = 0.50           # minimum confidence for person detection
-YOLO_MIN_BOX_AREA = 0.005        # minimum bbox area as fraction of image (filters tiny spurious boxes)
+YOLO_CONFIDENCE   = 0.50    # minimum YOLO confidence for person
+YOLO_MIN_BOX_AREA = 0.005   # min bbox as fraction of image area
 
 CLIP_MODEL_NAME = "ViT-L-14"
 CLIP_PRETRAINED = "openai"
 
+# Shorter, unambiguous prompts work better with CLIP
 HAZARD_PROMPTS = [
-    # fire
-    "a photo of fire",
-    "a photo of flames burning",
-    "a photo of a building engulfed in fire",
-    "a photo of a wildfire with orange flames",
-    "a photo of an active fire emergency with visible flames",
-    "a photo of burning structures",
-    "a photo of a house on fire",
-    "a photo of a car on fire",
-    "a photo of flames and smoke in the sky",
-    # smoke
-    "a photo of smoke",
-    "a photo of smoke in the air",
-    "a photo of white smoke rising",
-    "a photo of gray smoke haze",
-    "a photo of thick black smoke",
-    "a photo of smoke filling the air",
-    "a photo of dense smoke billowing from a fire",
-    "a photo of a smoky scene",
-    "a photo of smoke coming from a building",
-]
-SAFE_PROMPTS = [
-    "a normal photo with no fire or smoke",
-    "a photo of a safe indoor scene",
-    "a photo of a landscape with a clear blue sky",
-    "a photo of a room with no danger",
-    "a photo of everyday objects with no emergency",
-    "a photo of people going about their day safely",
-    "a photo of a sunset with orange sky but no fire",
-    "a photo of fog or mist with no fire",
-    "a photo of clouds in the sky",
-    "a photo of steam or vapor with no fire",
-    "a photo of a city street with no emergency",
-    "a photo of trees and nature with no fire",
+    # fire — visually unambiguous
+    "visible fire with burning flames",
+    "active fire emergency with flames",
+    "building on fire with flames and smoke",
+    "wildfire burning with orange flames",
+    "car or vehicle on fire",
+    # smoke — heavy and clearly fire-related
+    "heavy black smoke rising from a fire",
+    "thick smoke billowing from a burning building",
+    "dense smoke cloud from fire",
+    "smoke and fire filling the air",
+    "large smoke plume from emergency fire",
 ]
 
-# Primary: mean hazard must exceed mean safe by this margin.
-# Secondary: if any single hazard prompt similarity exceeds this absolute threshold,
-#            also flag as hazard (catches subtle smoke even when mean is low).
-CLIP_HAZARD_MARGIN = 0.03
-CLIP_HAZARD_MAX_THRESHOLD = 0.25
+SAFE_PROMPTS = [
+    "normal outdoor scene with no fire or smoke",
+    "safe indoor environment no emergency",
+    "clear blue sky with no smoke",
+    "orange sunset sky without fire",
+    "morning fog or mist without fire",
+    "steam from cooking or factory no fire",
+    "dust cloud with no fire",
+    "clouds in the sky no smoke",
+    "street scene no emergency",
+    "people in a normal safe environment",
+    "forest or nature with no fire",
+    "industrial smoke from a chimney not a fire",
+]
+
+# ── Tiered hazard detection thresholds ──
+# HIGH:   mean_margin > HIGH_MARGIN                         → hazard (clear evidence)
+# MEDIUM: mean_margin > MED_MARGIN  AND  max > MIN_MAX      → hazard (two signals required)
+# else:   not hazard
+HIGH_MARGIN = 0.015  # clear fire/smoke: mean margin alone sufficient
+MED_MARGIN  = 0.005  # borderline: require BOTH margin AND high max
+MIN_MAX     = 0.23   # single-prompt floor for medium tier
 
 
 # ─────────────────────────────────────────────────────────────────
@@ -92,7 +87,6 @@ def detect_person(model, img_path):
         for box in result.boxes:
             cls_id = int(box.cls[0].item())
             if model.names[cls_id] == "person":
-                # Filter out tiny spurious detections
                 x1, y1, x2, y2 = box.xyxy[0].tolist()
                 box_area = (x2 - x1) * (y2 - y1)
                 if box_area / img_area >= YOLO_MIN_BOX_AREA:
@@ -112,14 +106,10 @@ def precompute_text_features(clip_model, tokenizer, device):
 
 
 def detect_hazard_clip(clip_model, preprocess, device, text_features, img_path):
-    """Detect fire/smoke using CLIP zero-shot classification.
-
-    Two-condition detection:
-    1. Mean hazard similarity exceeds mean safe similarity by CLIP_HAZARD_MARGIN
-       (catches clear fire/smoke scenes).
-    2. Any single hazard prompt similarity exceeds CLIP_HAZARD_MAX_THRESHOLD
-       (catches subtle smoke that scores high on one specific prompt but dilutes
-       the mean).
+    """Tiered hazard detection:
+    - HIGH confidence : mean_margin > HIGH_MARGIN              → hazard
+    - MEDIUM confidence: mean_margin > MED_MARGIN AND max > MIN_MAX → hazard
+    - otherwise        : not hazard
     """
     image = preprocess(Image.open(img_path).convert("RGB")).unsqueeze(0).to(device)
 
@@ -129,16 +119,19 @@ def detect_hazard_clip(clip_model, preprocess, device, text_features, img_path):
         image_features = image_features / image_features.norm(dim=-1, keepdim=True)
         similarity = (image_features @ text_features.T)[0]
 
-    n_hazard = len(HAZARD_PROMPTS)
+    n_hazard    = len(HAZARD_PROMPTS)
     hazard_sims = similarity[:n_hazard]
-    safe_sims = similarity[n_hazard:]
+    safe_sims   = similarity[n_hazard:]
 
     hazard_mean = hazard_sims.mean().item()
-    safe_mean = safe_sims.mean().item()
-    hazard_max = hazard_sims.max().item()
+    safe_mean   = safe_sims.mean().item()
+    hazard_max  = hazard_sims.max().item()
+    margin      = hazard_mean - safe_mean
 
-    # Flag if mean margin exceeds threshold OR any single prompt is very confident
-    return (hazard_mean > safe_mean + CLIP_HAZARD_MARGIN) or (hazard_max > CLIP_HAZARD_MAX_THRESHOLD)
+    high_conf   = margin > HIGH_MARGIN
+    medium_conf = (margin > MED_MARGIN) and (hazard_max > MIN_MAX)
+
+    return high_conf or medium_conf
 
 
 # ─────────────────────────────────────────────────────────────────
@@ -151,10 +144,11 @@ def main():
     )
     parser.add_argument("--image_dir", required=True, help="Folder containing images")
     parser.add_argument("--output", default="./results", help="Output folder")
-    parser.add_argument("--append", action="store_true", help="Append to existing labels.txt instead of overwriting")
+    parser.add_argument("--append", action="store_true",
+                        help="Append to existing labels.txt instead of overwriting")
     args = parser.parse_args()
 
-    image_dir = Path(args.image_dir).resolve()
+    image_dir  = Path(args.image_dir).resolve()
     output_dir = Path(args.output).resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -168,25 +162,28 @@ def main():
 
     print(f"[INFO] Found {len(image_paths)} images in {image_dir}")
 
-    device = torch.device("mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device(
+        "mps"  if torch.backends.mps.is_available()  else
+        "cuda" if torch.cuda.is_available()           else
+        "cpu"
+    )
     print(f"[INFO] Using device: {device}")
 
-    # Load YOLOv8x
     print("[INFO] Loading YOLOv8x (COCO-pretrained)...")
     yolo_model = YOLO("yolov8x.pt")
     yolo_model.to(device)
 
-    # Load CLIP
     print(f"[INFO] Loading CLIP ({CLIP_MODEL_NAME}) on {device}...")
-    clip_model, _, preprocess = open_clip.create_model_and_transforms(CLIP_MODEL_NAME, pretrained=CLIP_PRETRAINED)
+    clip_model, _, preprocess = open_clip.create_model_and_transforms(
+        CLIP_MODEL_NAME, pretrained=CLIP_PRETRAINED
+    )
     clip_model = clip_model.to(device).eval()
-    tokenizer = open_clip.get_tokenizer(CLIP_MODEL_NAME)
+    tokenizer  = open_clip.get_tokenizer(CLIP_MODEL_NAME)
 
-    # Precompute text features once (big speedup)
     print("[INFO] Precomputing text features...")
     text_features = precompute_text_features(clip_model, tokenizer, device)
 
-    print("[INFO] Labels: hazard, person, both, null")
+    print(f"[INFO] Thresholds — HIGH_MARGIN={HIGH_MARGIN}  MED_MARGIN={MED_MARGIN}  MIN_MAX={MIN_MAX}")
     print("-" * 50)
 
     stats = {"hazard": 0, "person": 0, "both": 0, "null": 0}
@@ -208,21 +205,19 @@ def main():
         stats[label] += 1
         label_lines.append(label)
 
-    # Write labels
     labels_path = output_dir / "labels.txt"
     mode = "a" if args.append else "w"
     with open(labels_path, mode) as f:
         for line in label_lines:
             f.write(line + "\n")
 
-    # Summary
     total = len(image_paths)
     print("\n" + "-" * 50)
     print(f"Done! Total: {total}")
-    print(f"  hazard: {stats['hazard']}")
-    print(f"  person: {stats['person']}")
-    print(f"  both:   {stats['both']}")
-    print(f"  null:   {stats['null']}")
+    print(f"  hazard: {stats['hazard']} ({stats['hazard']/total*100:.1f}%)")
+    print(f"  person: {stats['person']} ({stats['person']/total*100:.1f}%)")
+    print(f"  both:   {stats['both']}   ({stats['both']/total*100:.1f}%)")
+    print(f"  null:   {stats['null']}   ({stats['null']/total*100:.1f}%)")
     print(f"Labels file → {labels_path}")
 
 
