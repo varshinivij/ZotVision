@@ -28,7 +28,7 @@ void capture_task(void* pvParameters) {
             camera_release(fb);  // never skip this
         }
 
-        vTaskDelayUntil(&last_wake, pdMS_TO_TICKS(33));  // ~30 FPS
+        vTaskDelayUntil(&last_wake, pdMS_TO_TICKS(100));  // ~10 FPS
     }
 }
 

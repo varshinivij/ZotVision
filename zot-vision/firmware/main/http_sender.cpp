@@ -5,7 +5,7 @@
 static const char* TAG = "http_sender";
 
 // --- CHANGE THIS ---
-#define SERVER_URL  "http://192.168.1.100:8000/classify"
+#define SERVER_URL  "http://192.168.137.1:5000/api/image"
 // -------------------
 
 static esp_http_client_handle_t client = NULL;

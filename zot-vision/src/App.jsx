@@ -24,7 +24,7 @@ function App() {
       } catch {
         // backend not available yet
       }
-    }, 1000);
+    }, 100);
     return () => clearInterval(interval);
   }, []);
 
