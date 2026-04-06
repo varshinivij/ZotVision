@@ -1,5 +1,6 @@
 # Ignore YOLO .pt files
 *.pt
+*.pth
 .venv
 
 # Dataset (stored on Kaggle, kept locally)
