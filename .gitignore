@@ -2,6 +2,8 @@
 *.pt
 *.pth
 .venv
+.claude
+.DS_Store
 
 # Dataset (stored on Kaggle, kept locally)
 zot-vision/datasets/images/
