@@ -1,7 +1,7 @@
 # Ignore YOLO .pt files
 *.pt
 .venv
-yolov*.pt
 
-# Claude Code
-.claude/
+# Dataset (stored on Kaggle, kept locally)
+zot-vision/datasets/images/
+zot-vision/datasets/results/
