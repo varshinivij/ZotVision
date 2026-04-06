@@ -5,6 +5,9 @@ CLS token is extracted from the ViT's last hidden state for classification.
 """
 
 import os
+import random
+import itertools
+import json
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
@@ -13,13 +16,41 @@ from transformers import ViTModel, ViTConfig
 from efficientnet_pytorch import EfficientNet
 from PIL import Image
 import numpy as np
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import confusion_matrix, classification_report
 
 # ──────────────────────────────────────────────
 # CONFIG
 # ──────────────────────────────────────────────
-DATASET_DIR   = os.path.join(os.path.dirname(__file__), "..", "datasets")
-IMAGES_DIR    = os.path.join(DATASET_DIR, "images")
-LABELS_FILE   = os.path.join(DATASET_DIR, "results", "labels.txt")
+KAGGLE_DATASET = "varshvijay05/firefighter-hazard-dataset"
+DATASET_DIR    = os.path.join(os.path.dirname(__file__), "..", "datasets")
+IMAGES_DIR     = os.path.join(DATASET_DIR, "images")
+LABELS_FILE    = os.path.join(DATASET_DIR, "results", "labels.txt")
+
+
+def ensure_dataset():
+    """Download dataset from Kaggle if not already present locally."""
+    if os.path.isdir(IMAGES_DIR) and os.path.isfile(LABELS_FILE):
+        return
+    print(f"[INFO] Dataset not found locally. Downloading from Kaggle: {KAGGLE_DATASET}")
+    import kagglehub
+    path = kagglehub.dataset_download(KAGGLE_DATASET)
+    # Copy downloaded files into expected locations
+    import shutil
+    src_images = os.path.join(path, "images")
+    src_results = os.path.join(path, "results")
+    if os.path.isdir(src_images):
+        os.makedirs(IMAGES_DIR, exist_ok=True)
+        for f in os.listdir(src_images):
+            shutil.copy2(os.path.join(src_images, f), IMAGES_DIR)
+    if os.path.isdir(src_results):
+        os.makedirs(os.path.dirname(LABELS_FILE), exist_ok=True)
+        for f in os.listdir(src_results):
+            shutil.copy2(os.path.join(src_results, f), os.path.dirname(LABELS_FILE))
+    print(f"[INFO] Dataset downloaded to {DATASET_DIR}")
 NUM_CLASSES   = 4
 LABEL_MAP     = {"null": 0, "hazard": 1, "person": 2, "both": 3}
 ID_TO_LABEL   = {0: "null", 1: "hazard", 2: "person", 3: "both"}
@@ -252,6 +283,53 @@ def evaluate(model, loader, criterion, device):
     return total_loss / total, correct / total
 
 
+@torch.no_grad()
+def evaluate_per_class(model, loader, device):
+    """Collect all predictions and labels for detailed metrics."""
+    model.eval()
+    all_preds, all_labels = [], []
+    for imgs, labels in loader:
+        imgs = imgs.to(device)
+        logits = model(imgs)
+        all_preds.extend(logits.argmax(dim=1).cpu().numpy())
+        all_labels.extend(labels.numpy())
+    return np.array(all_preds), np.array(all_labels)
+
+
+def plot_confusion_heatmap(preds, labels, class_names, save_path):
+    """Save a confusion matrix heatmap to disk."""
+    cm = confusion_matrix(labels, preds, labels=range(len(class_names)))
+    # Normalize per row (per true class) for per-class accuracy
+    cm_norm = cm.astype(float) / cm.sum(axis=1, keepdims=True).clip(min=1)
+
+    fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+
+    # Raw counts
+    sns.heatmap(cm, annot=True, fmt="d", cmap="Blues",
+                xticklabels=class_names, yticklabels=class_names, ax=axes[0])
+    axes[0].set_title("Confusion Matrix (counts)")
+    axes[0].set_xlabel("Predicted")
+    axes[0].set_ylabel("True")
+
+    # Normalized (per-class accuracy on diagonal)
+    sns.heatmap(cm_norm, annot=True, fmt=".2f", cmap="Oranges",
+                xticklabels=class_names, yticklabels=class_names, ax=axes[1])
+    axes[1].set_title("Confusion Matrix (normalized)")
+    axes[1].set_xlabel("Predicted")
+    axes[1].set_ylabel("True")
+
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=150)
+    plt.close()
+    print(f"  Heatmap saved → {save_path}")
+
+
+def print_per_class_accuracy(preds, labels, class_names):
+    """Print per-class accuracy and full classification report."""
+    report = classification_report(labels, preds, target_names=class_names, digits=4)
+    print("\n" + report)
+
+
 # ──────────────────────────────────────────────
 # INFERENCE HELPER
 # ──────────────────────────────────────────────
@@ -269,63 +347,154 @@ def predict(model, image_path: str, device=DEVICE) -> str:
 
 
 # ──────────────────────────────────────────────
-# MAIN
+# HYPERPARAMETER CONFIGS
 # ──────────────────────────────────────────────
-def main():
-    print(f"Using device: {DEVICE}")
+HYPERPARAM_GRID = [
+    {"lr": 3e-4, "dropout": 0.1, "weight_decay": 1e-3, "batch_size": 16, "num_epochs": 20},
+    {"lr": 1e-4, "dropout": 0.2, "weight_decay": 1e-4, "batch_size": 16, "num_epochs": 20},
+    {"lr": 5e-4, "dropout": 0.3, "weight_decay": 1e-3, "batch_size": 32, "num_epochs": 20},
+    {"lr": 3e-4, "dropout": 0.2, "weight_decay": 1e-2, "batch_size": 8,  "num_epochs": 20},
+    {"lr": 1e-3, "dropout": 0.1, "weight_decay": 1e-4, "batch_size": 16, "num_epochs": 15},
+]
 
-    # ── Datasets (80/20 split from labels.txt) ──
-    import random
-    all_samples = load_samples()
-    random.shuffle(all_samples)
-    split = int(0.8 * len(all_samples))
-    train_ds = CustomDataset(all_samples[:split], get_transforms(train=True))
-    val_ds   = CustomDataset(all_samples[split:], get_transforms(train=False))
 
-    train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True,  num_workers=4, pin_memory=True)
-    val_loader   = DataLoader(val_ds,   batch_size=BATCH_SIZE, shuffle=False, num_workers=4, pin_memory=True)
+def train_config(config, train_samples, val_samples, run_id, results_dir):
+    """Train a single hyperparameter configuration and return results."""
+    print(f"\n{'='*60}")
+    print(f"Run {run_id}: {config}")
+    print(f"{'='*60}")
 
-    print(f"Train samples: {len(train_ds)} | Val samples: {len(val_ds)}")
+    train_ds = CustomDataset(train_samples, get_transforms(train=True))
+    val_ds   = CustomDataset(val_samples,   get_transforms(train=False))
 
-    # ── Model ──
+    train_loader = DataLoader(train_ds, batch_size=config["batch_size"], shuffle=True,  num_workers=4, pin_memory=True)
+    val_loader   = DataLoader(val_ds,   batch_size=config["batch_size"], shuffle=False, num_workers=4, pin_memory=True)
+
     model = CNNViTHybrid(
         efficientnet_variant="efficientnet-b4",
         vit_hidden_size=768,
         vit_num_layers=6,
         vit_num_heads=12,
         num_classes=NUM_CLASSES,
-        dropout=0.1,
+        dropout=config["dropout"],
     ).to(DEVICE)
 
-    total_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
-    print(f"Trainable parameters: {total_params:,}")
-
-    # ── Optimizer & scheduler ──
-    optimizer = torch.optim.AdamW(model.parameters(), lr=LR, weight_decay=1e-3)
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=NUM_EPOCHS)
-    # Class weights: boost underrepresented 'both' class (only ~6% of data)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=config["lr"], weight_decay=config["weight_decay"])
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=config["num_epochs"])
     class_weights = torch.tensor([1.0, 1.2, 1.0, 2.5]).to(DEVICE)
     criterion = nn.CrossEntropyLoss(weight=class_weights, label_smoothing=0.1)
 
-    # ── Training loop ──
     best_val_acc = 0.0
-    for epoch in range(1, NUM_EPOCHS + 1):
+    history = {"train_loss": [], "val_loss": [], "train_acc": [], "val_acc": []}
+
+    for epoch in range(1, config["num_epochs"] + 1):
         train_loss, train_acc = train_one_epoch(model, train_loader, optimizer, criterion, DEVICE)
         val_loss,   val_acc   = evaluate(model, val_loader, criterion, DEVICE)
         scheduler.step()
 
+        history["train_loss"].append(train_loss)
+        history["val_loss"].append(val_loss)
+        history["train_acc"].append(train_acc)
+        history["val_acc"].append(val_acc)
+
         print(
-            f"Epoch {epoch:03d}/{NUM_EPOCHS} | "
+            f"Epoch {epoch:03d}/{config['num_epochs']} | "
             f"Train Loss: {train_loss:.4f}  Acc: {train_acc:.4f} | "
             f"Val Loss: {val_loss:.4f}  Acc: {val_acc:.4f}"
         )
 
         if val_acc > best_val_acc:
             best_val_acc = val_acc
-            torch.save(model.state_dict(), os.path.join(DATASET_DIR, "results", "model_weights.pth"))
-            print(f"  ✓ Saved best model (val_acc={best_val_acc:.4f})")
+            torch.save(model.state_dict(), os.path.join(results_dir, f"model_run{run_id}.pth"))
 
-    print(f"\nTraining complete. Best Val Acc: {best_val_acc:.4f}")
+    # Per-class evaluation on best model
+    model.load_state_dict(torch.load(os.path.join(results_dir, f"model_run{run_id}.pth"), weights_only=True))
+    class_names = [ID_TO_LABEL[i] for i in range(NUM_CLASSES)]
+    preds, labels = evaluate_per_class(model, val_loader, DEVICE)
+    print_per_class_accuracy(preds, labels, class_names)
+    plot_confusion_heatmap(preds, labels, class_names,
+                           os.path.join(results_dir, f"heatmap_run{run_id}.png"))
+
+    return {"run_id": run_id, "config": config, "best_val_acc": best_val_acc, "history": history}
+
+
+def plot_run_comparison(all_results, results_dir):
+    """Plot val accuracy curves for all runs and a summary bar chart."""
+    fig, axes = plt.subplots(1, 2, figsize=(16, 6))
+
+    # Loss/acc curves per run
+    for r in all_results:
+        label = f"run{r['run_id']} (acc={r['best_val_acc']:.3f})"
+        axes[0].plot(r["history"]["val_acc"], label=label)
+    axes[0].set_title("Validation Accuracy per Epoch")
+    axes[0].set_xlabel("Epoch")
+    axes[0].set_ylabel("Accuracy")
+    axes[0].legend(fontsize=8)
+
+    # Bar chart of best val acc
+    run_labels = [f"run{r['run_id']}" for r in all_results]
+    accs = [r["best_val_acc"] for r in all_results]
+    bars = axes[1].bar(run_labels, accs, color=sns.color_palette("viridis", len(all_results)))
+    axes[1].set_title("Best Validation Accuracy per Config")
+    axes[1].set_ylabel("Accuracy")
+    for bar, acc in zip(bars, accs):
+        axes[1].text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.005,
+                     f"{acc:.3f}", ha="center", fontsize=9)
+
+    plt.tight_layout()
+    save_path = os.path.join(results_dir, "run_comparison.png")
+    plt.savefig(save_path, dpi=150)
+    plt.close()
+    print(f"\nComparison plot saved → {save_path}")
+
+
+# ──────────────────────────────────────────────
+# MAIN
+# ──────────────────────────────────────────────
+def main():
+    print(f"Using device: {DEVICE}")
+    ensure_dataset()
+
+    results_dir = os.path.join(DATASET_DIR, "results")
+    os.makedirs(results_dir, exist_ok=True)
+
+    # ── Datasets (80/20 split from labels.txt, same split for all runs) ──
+    all_samples = load_samples()
+    random.shuffle(all_samples)
+    split = int(0.8 * len(all_samples))
+    train_samples = all_samples[:split]
+    val_samples   = all_samples[split:]
+
+    print(f"Train samples: {len(train_samples)} | Val samples: {len(val_samples)}")
+
+    # ── Run all hyperparameter configs ──
+    all_results = []
+    for i, config in enumerate(HYPERPARAM_GRID):
+        result = train_config(config, train_samples, val_samples, run_id=i, results_dir=results_dir)
+        all_results.append(result)
+
+    # ── Summary ──
+    plot_run_comparison(all_results, results_dir)
+
+    best = max(all_results, key=lambda r: r["best_val_acc"])
+    print(f"\n{'='*60}")
+    print(f"BEST CONFIG: run{best['run_id']} — val_acc={best['best_val_acc']:.4f}")
+    print(f"  {best['config']}")
+    print(f"{'='*60}")
+
+    # Copy best model as the main weights file
+    best_src = os.path.join(results_dir, f"model_run{best['run_id']}.pth")
+    best_dst = os.path.join(results_dir, "model_weights.pth")
+    torch.save(torch.load(best_src, weights_only=True), best_dst)
+    print(f"Best model saved → {best_dst}")
+
+    # Save all results as JSON for reference
+    summary = []
+    for r in all_results:
+        summary.append({"run_id": r["run_id"], "config": r["config"], "best_val_acc": r["best_val_acc"]})
+    with open(os.path.join(results_dir, "hyperparam_results.json"), "w") as f:
+        json.dump(summary, f, indent=2)
+    print(f"Results saved → {os.path.join(results_dir, 'hyperparam_results.json')}")
 
 
 if __name__ == "__main__":
