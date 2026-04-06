@@ -45,10 +45,10 @@ esp_err_t camera_init() {
     config.ledc_channel = LEDC_CHANNEL_0;
     config.pixel_format = PIXFORMAT_JPEG;
     config.frame_size   = FRAMESIZE_QVGA;  // 320x240
-    config.jpeg_quality = 12;
+    config.jpeg_quality = 12;              // lower = better quality (0-63 scale)
     config.fb_count     = 2;
     config.fb_location  = CAMERA_FB_IN_PSRAM;
-    config.grab_mode    = CAMERA_GRAB_WHEN_EMPTY;
+    config.grab_mode    = CAMERA_GRAB_LATEST;  // always send freshest frame
 
     esp_err_t ret = esp_camera_init(&config);
     if (ret != ESP_OK) {

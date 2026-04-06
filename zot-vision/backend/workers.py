@@ -1,9 +1,9 @@
 import multiprocessing
 import queue
 import torch
-import PredictHazard
-import ImageDifference
-import uuid
+import cv2
+from transformer import CNNViTHybrid, predict
+from image_difference import ImageDifference
 
 LABELS = {0: "none", 1: "hazard", 2: "person", 3: "both"}
 
@@ -21,7 +21,7 @@ class FireFighterWorker:
 
     def worker(self, image_queue, result_queue, model_path):
         """Worker: loads its own model and processes images as they arrive FIFO."""
-        model = PredictHazard()
+        model = CNNViTHybrid()
         model.load_state_dict(torch.load(model_path, weights_only=True))
         model.eval()
 
@@ -29,10 +29,7 @@ class FireFighterWorker:
             image_path = image_queue.get()
             if image_path is None:
                 break
-            with torch.no_grad():
-                output = model(image_path)
-            pred = int(output.argmax(dim=1).item())
-            label = LABELS.get(pred)
+            label = predict(model, image_path)
             result_queue.put((image_path, label))
 
     def enqueue(self, image_path):
@@ -60,7 +57,8 @@ class FireFighterManager:
         """Non-blocking: enqueue frame for processing. Returns immediately."""
         worker = self.workers[worker_id]
         image_diff = self.images[worker_id]
-        image_diff.detect(image_path, f"Firefighter{worker_id}")
+        frame = cv2.imread(image_path)
+        image_diff.detect(frame, f"Firefighter{worker_id}")
         worker.enqueue(image_path)
 
     def get_result(self, worker_id=0):
