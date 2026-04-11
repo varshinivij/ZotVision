@@ -341,6 +341,43 @@ def print_per_class_accuracy(preds, labels, class_names):
 
 
 # ──────────────────────────────────────────────
+# GOOGLE DRIVE SAVE
+# ──────────────────────────────────────────────
+def save_to_gdrive(results_dir: str, gdrive_dir: str = GDRIVE_DIR):
+    """
+    Mount Google Drive (Colab) and copy model weights + results into a
+    tidy ZotVision folder.  Silently skips when not running in Colab.
+    """
+    try:
+        from google.colab import drive  # type: ignore
+        drive.mount("/content/drive", force_remount=False)
+    except ImportError:
+        print("[GDRIVE] Not in Colab — skipping Google Drive upload.")
+        return
+
+    import shutil
+
+    os.makedirs(gdrive_dir, exist_ok=True)
+    print(f"\n[GDRIVE] Saving results to: {gdrive_dir}")
+
+    # Always copy the final best-model weights and summary files
+    static_files = ["model_weights.pth", "hyperparam_results.json", "run_comparison.png"]
+    for fname in static_files:
+        src = os.path.join(results_dir, fname)
+        if os.path.exists(src):
+            shutil.copy2(src, os.path.join(gdrive_dir, fname))
+            print(f"  ✓ {fname}")
+
+    # Copy per-run files (model_runN.pth, heatmap_runN.png)
+    for fname in sorted(os.listdir(results_dir)):
+        if fname.startswith(("model_run", "heatmap_run")):
+            shutil.copy2(os.path.join(results_dir, fname), os.path.join(gdrive_dir, fname))
+            print(f"  ✓ {fname}")
+
+    print(f"[GDRIVE] Done — all files in {gdrive_dir}")
+
+
+# ──────────────────────────────────────────────
 # INFERENCE HELPER
 # ──────────────────────────────────────────────
 @torch.no_grad()
