@@ -458,11 +458,17 @@ def train_config(config, train_samples, val_samples, run_id, results_dir):
     model.load_state_dict(torch.load(os.path.join(results_dir, f"model_run{run_id}.pth"), weights_only=True))
     class_names = [ID_TO_LABEL[i] for i in range(NUM_CLASSES)]
     preds, labels = evaluate_per_class(model, val_loader, DEVICE)
-    print_per_class_accuracy(preds, labels, class_names)
+    per_class_acc = print_per_class_accuracy(preds, labels, class_names)
     plot_confusion_heatmap(preds, labels, class_names,
                            os.path.join(results_dir, f"heatmap_run{run_id}.png"))
 
-    return {"run_id": run_id, "config": config, "best_val_acc": best_val_acc, "history": history}
+    return {
+        "run_id": run_id,
+        "config": config,
+        "best_val_acc": best_val_acc,
+        "per_class_acc": per_class_acc,
+        "history": history,
+    }
 
 
 def plot_run_comparison(all_results, results_dir):
@@ -538,10 +544,18 @@ def main():
     # Save all results as JSON for reference
     summary = []
     for r in all_results:
-        summary.append({"run_id": r["run_id"], "config": r["config"], "best_val_acc": r["best_val_acc"]})
+        summary.append({
+            "run_id": r["run_id"],
+            "config": r["config"],
+            "best_val_acc": r["best_val_acc"],
+            "per_class_acc": r["per_class_acc"],
+        })
     with open(os.path.join(results_dir, "hyperparam_results.json"), "w") as f:
         json.dump(summary, f, indent=2)
     print(f"Results saved → {os.path.join(results_dir, 'hyperparam_results.json')}")
+
+    # Upload everything to Google Drive (no-op outside Colab)
+    save_to_gdrive(results_dir)
 
 
 if __name__ == "__main__":
