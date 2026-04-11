@@ -55,8 +55,8 @@ NUM_CLASSES   = 4
 LABEL_MAP     = {"null": 0, "hazard": 1, "person": 2, "both": 3}
 ID_TO_LABEL   = {0: "null", 1: "hazard", 2: "person", 3: "both"}
 
-# Google Drive output folder (used when running in Colab)
-GDRIVE_DIR = "/content/drive/MyDrive/ZotVision/model_weights"
+# Google Drive root folder (used when running in Colab)
+GDRIVE_ROOT = "/content/drive/MyDrive/ZotVision"
 
 BATCH_SIZE   = 16
 NUM_EPOCHS   = 20
@@ -343,10 +343,46 @@ def print_per_class_accuracy(preds, labels, class_names):
 # ──────────────────────────────────────────────
 # GOOGLE DRIVE SAVE
 # ──────────────────────────────────────────────
-def save_to_gdrive(results_dir: str, gdrive_dir: str = GDRIVE_DIR):
+import hashlib
+import time
+
+
+def _next_iter_folder(gdrive_root: str = GDRIVE_ROOT) -> str:
     """
-    Mount Google Drive (Colab) and copy model weights + results into a
-    tidy ZotVision folder.  Silently skips when not running in Colab.
+    Returns a unique, human-readable folder path for this training run, e.g.
+      .../ZotVision/iter3_a4f8c2
+    An 'iterations.json' index in GDRIVE_ROOT tracks the counter so folders
+    never collide across runs, even if you delete old ones.
+    """
+    index_path = os.path.join(gdrive_root, "iterations.json")
+    if os.path.exists(index_path):
+        with open(index_path) as f:
+            index = json.load(f)
+    else:
+        index = {"count": 0, "runs": []}
+
+    index["count"] += 1
+    run_num = index["count"]
+
+    # 6-char hash from timestamp + run number — short but collision-proof
+    raw = f"{run_num}-{time.time()}"
+    short_hash = hashlib.sha1(raw.encode()).hexdigest()[:6]
+    folder_name = f"iter{run_num}_{short_hash}"
+    folder_path = os.path.join(gdrive_root, folder_name)
+
+    index["runs"].append({"iter": run_num, "hash": short_hash, "folder": folder_name})
+    os.makedirs(gdrive_root, exist_ok=True)
+    with open(index_path, "w") as f:
+        json.dump(index, f, indent=2)
+
+    return folder_path
+
+
+def save_to_gdrive(results_dir: str, gdrive_root: str = GDRIVE_ROOT):
+    """
+    Mount Google Drive (Colab) and copy model weights, heatmaps, and results
+    into a uniquely-named iteration folder (e.g. iter3_a4f8c2/).
+    Silently skips when not running in Colab.
     """
     try:
         from google.colab import drive  # type: ignore
@@ -357,24 +393,24 @@ def save_to_gdrive(results_dir: str, gdrive_dir: str = GDRIVE_DIR):
 
     import shutil
 
-    os.makedirs(gdrive_dir, exist_ok=True)
-    print(f"\n[GDRIVE] Saving results to: {gdrive_dir}")
+    iter_dir = _next_iter_folder(gdrive_root)
+    os.makedirs(iter_dir, exist_ok=True)
+    print(f"\n[GDRIVE] Saving results to: {iter_dir}")
 
-    # Always copy the final best-model weights and summary files
-    static_files = ["model_weights.pth", "hyperparam_results.json", "run_comparison.png"]
-    for fname in static_files:
+    # Top-level summary files
+    for fname in ["model_weights.pth", "hyperparam_results.json", "run_comparison.png"]:
         src = os.path.join(results_dir, fname)
         if os.path.exists(src):
-            shutil.copy2(src, os.path.join(gdrive_dir, fname))
+            shutil.copy2(src, os.path.join(iter_dir, fname))
             print(f"  ✓ {fname}")
 
-    # Copy per-run files (model_runN.pth, heatmap_runN.png)
+    # Per-run weights and heatmaps  (model_runN.pth, heatmap_runN.png)
     for fname in sorted(os.listdir(results_dir)):
         if fname.startswith(("model_run", "heatmap_run")):
-            shutil.copy2(os.path.join(results_dir, fname), os.path.join(gdrive_dir, fname))
+            shutil.copy2(os.path.join(results_dir, fname), os.path.join(iter_dir, fname))
             print(f"  ✓ {fname}")
 
-    print(f"[GDRIVE] Done — all files in {gdrive_dir}")
+    print(f"[GDRIVE] Done — all files in {iter_dir}")
 
 
 # ──────────────────────────────────────────────
