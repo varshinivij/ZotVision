@@ -55,6 +55,9 @@ NUM_CLASSES   = 4
 LABEL_MAP     = {"null": 0, "hazard": 1, "person": 2, "both": 3}
 ID_TO_LABEL   = {0: "null", 1: "hazard", 2: "person", 3: "both"}
 
+# Google Drive output folder (used when running in Colab)
+GDRIVE_DIR = "/content/drive/MyDrive/ZotVision/model_weights"
+
 BATCH_SIZE   = 16
 NUM_EPOCHS   = 20
 LR           = 3e-4
@@ -325,9 +328,16 @@ def plot_confusion_heatmap(preds, labels, class_names, save_path):
 
 
 def print_per_class_accuracy(preds, labels, class_names):
-    """Print per-class accuracy and full classification report."""
-    report = classification_report(labels, preds, target_names=class_names, digits=4)
-    print("\n" + report)
+    """Print per-class accuracy and full classification report. Returns per-class recall dict."""
+    report_dict = classification_report(labels, preds, target_names=class_names, digits=4, output_dict=True)
+    report_str  = classification_report(labels, preds, target_names=class_names, digits=4)
+    print("\n" + report_str)
+    # recall == per-class accuracy (fraction of true instances correctly predicted)
+    per_class_acc = {cls: round(report_dict[cls]["recall"], 4) for cls in class_names}
+    print("Per-label accuracy:")
+    for cls, acc in per_class_acc.items():
+        print(f"  {cls:>8s}: {acc:.4f}")
+    return per_class_acc
 
 
 # ──────────────────────────────────────────────
