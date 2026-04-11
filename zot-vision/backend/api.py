@@ -2,14 +2,14 @@ import os
 import time
 import threading
 
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify, send_file, Response
 from flask_cors import CORS
 from workers import FireFighterManager
 
 app = Flask(__name__)
 CORS(app)
 
-MODEL_PATH = "../datasets/results/model_weights.pth"
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "..", "datasets", "results", "model_weights.pth")
 NUM_FIREFIGHTERS = 5
 UPLOAD_DIR = os.path.join(os.path.dirname(__file__), "uploads")
 os.makedirs(UPLOAD_DIR, exist_ok=True)
@@ -103,9 +103,18 @@ def serve_image(fid):
     """Serve the latest saved image for a firefighter."""
     path = os.path.join(UPLOAD_DIR, f"firefighter_{fid}.jpg")
     with _file_locks[fid]:
-        return send_file(path, mimetype="image/jpeg")
+        if not os.path.exists(path):
+            return jsonify({"error": "no image"}), 404
+        with open(path, "rb") as f:
+            data = f.read()
+    return Response(data, mimetype="image/jpeg")
 
 
 if __name__ == "__main__":
-    manager = FireFighterManager(MODEL_PATH, NUM_FIREFIGHTERS)
+    if os.path.exists(MODEL_PATH):
+        manager = FireFighterManager(MODEL_PATH, NUM_FIREFIGHTERS)
+    else:
+        print(f"WARNING: model weights not found at {MODEL_PATH}")
+        print("Running without ML inference — images will stream but labels will be None.")
+        print("Train the model first: python transformer.py")
     app.run(host="0.0.0.0", debug=False)
