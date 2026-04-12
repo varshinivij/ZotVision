@@ -28,7 +28,9 @@ void capture_task(void* pvParameters) {
             camera_release(fb);  // never skip this
         }
 
-        vTaskDelayUntil(&last_wake, pdMS_TO_TICKS(100));  // ~10 FPS
+        // No artificial delay — loop as fast as WiFi allows.
+        // A minimal yield keeps the watchdog happy without capping FPS.
+        vTaskDelay(pdMS_TO_TICKS(1));
     }
 }
 

@@ -20,7 +20,8 @@ class FireFighterWorker:
         self.process.start()
 
     def worker(self, image_queue, result_queue, model_path):
-        """Worker: loads its own model and processes images as they arrive FIFO."""
+        """Worker: loads its own model and processes images as they arrive.
+        Drains stale frames so inference always runs on the latest one."""
         model = CNNViTHybrid()
         model.load_state_dict(torch.load(model_path, weights_only=True))
         model.eval()
@@ -29,6 +30,17 @@ class FireFighterWorker:
             image_path = image_queue.get()
             if image_path is None:
                 break
+
+            # Drain any frames that piled up while we were busy — keep only latest
+            while True:
+                try:
+                    newer = image_queue.get_nowait()
+                    if newer is None:
+                        return
+                    image_path = newer
+                except queue.Empty:
+                    break
+
             label = predict(model, image_path)
             result_queue.put((image_path, label))
 
@@ -54,12 +66,8 @@ class FireFighterManager:
         self.images = [ImageDifference() for _ in range(num_firefighters)]
 
     def send_image(self, image_path, worker_id=0):
-        """Non-blocking: enqueue frame for processing. Returns immediately."""
-        worker = self.workers[worker_id]
-        image_diff = self.images[worker_id]
-        frame = cv2.imread(image_path)
-        image_diff.detect(frame, f"Firefighter{worker_id}")
-        worker.enqueue(image_path)
+        """Non-blocking: enqueue frame for ML processing. Returns immediately."""
+        self.workers[worker_id].enqueue(image_path)
 
     def get_result(self, worker_id=0):
         """Non-blocking: check if a worker has a result ready. Returns (image_path, output) or None."""
