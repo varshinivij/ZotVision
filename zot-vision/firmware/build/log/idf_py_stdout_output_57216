@@ -1,0 +1,2729 @@
+Command: C:\Espressif\tools\python\v6.0\venv\Scripts\python.exe C:\esp\v6.0\esp-idf\tools/idf_monitor.py -p COM10 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 C:\Users\kaush\Downloads\ZotVision\zot-vision\firmware\build\zot-vision.elf C:\Users\kaush\Downloads\ZotVision\zot-vision\firmware\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\tools\python\v6.0\venv\Scripts\python.exe' 'C:\esp\v6.0\esp-idf\tools\idf.py'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15848
+load:0x40080400,len:3920
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v6.0 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Apr  5 2026 15:00:38[0m
+[0;32mI (28) boot: Multicore bootloader[0m
+[0;32mI (29) boot: chip revision: v3.1[0m
+[0;32mI (31) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (35) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (39) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (42) boot: Enabling RNG early entropy source...[0m
+[0;32mI (47) boot: Partition Table:[0m
+[0;32mI (49) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (62) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (69) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (75) boot: End of partition table[0m
+[0;32mI (79) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=27bc8h (162760) map[0m
+[0;32mI (144) esp_image: segment 1: paddr=00037bf0 vaddr=3ffb0000 size=06cfch ( 27900) load[0m
+[0;32mI (155) esp_image: segment 2: paddr=0003e8f4 vaddr=40080000 size=01724h (  5924) load[0m
+[0;32mI (158) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=b78f0h (751856) map[0m
+[0;32mI (427) esp_image: segment 4: paddr=000f7918 vaddr=40081724 size=17ce0h ( 97504) load[0m
+[0;32mI (467) esp_image: segment 5: paddr=0010f600 vaddr=50000000 size=00028h (    40) load[0m
+[0;32mI (480) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (480) boot: Disabling RNG early entropy source...[0m
+[0;32mI (491) quad_psram: This chip is ESP32-D0WD[0m
+[0;32mI (492) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (492) esp_psram: Speed: 40MHz[0m
+[0;32mI (492) esp_psram: PSRAM initialized, cache is in low/high (2-core) mode.[0m
+[0;33mW (498) esp_psram: Virtual address not enough for PSRAM, map as much as we can. 4MB is mapped[0m
+[0;32mI (506) cpu_start: Multicore app[0m
+[0;32mI (1414) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1422) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (1423) cpu_start: Pro cpu start user code[0m
+[0;32mI (1423) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (1425) app_init: Application information:[0m
+[0;32mI (1429) app_init: Project name:     zot-vision[0m
+[0;32mI (1433) app_init: App version:      6f07897[0m
+[0;32mI (1437) app_init: Compile time:     Apr  5 2026 14:59:10[0m
+[0;32mI (1442) app_init: ELF file SHA256:  00f6f1587...[0m
+[0;32mI (1446) app_init: ESP-IDF:          v6.0[0m
+[0;32mI (1450) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (1454) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (1458) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (1462) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1469) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (1474) heap_init: At 3FFBBFE0 len 00024020 (144 KiB): DRAM[0m
+[0;32mI (1479) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (1484) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (1490) heap_init: At 40099404 len 00006BFC (26 KiB): IRAM[0m
+[0;32mI (1496) esp_psram: Adding pool of 4096K of PSRAM memory to heap allocator[0m
+[0;33mW (1503) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig[0m
+[0;32mI (1515) spi_flash: detected chip: generic[0m
+[0;32mI (1519) spi_flash: flash io: dio[0m
+[0;33mW (1522) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (1536) main_task: Started on CPU0[0m
+[0;32mI (1546) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1546) main_task: Calling app_main()[0m
+[0;32mI (1596) wifi:wifi driver task: 3ffc3a50, prio:23, stack:6656, core=0[0m
+[0;32mI (1606) wifi:wifi firmware version: 44738b4[0m
+[0;32mI (1606) wifi:wifi certification version: v7.0[0m
+[0;32mI (1606) wifi:config NVS flash: enabled[0m
+[0;32mI (1606) wifi:config nano formatting: disabled[0m
+[0;32mI (1616) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1616) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1616) wifi:Init management short buffer num: 32[0m
+[0;32mI (1626) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1626) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1636) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1636) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1646) wifi_init: rx ba win: 6[0m
+[0;32mI (1646) wifi_init: accept mbox: 6[0m
+[0;32mI (1646) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1646) wifi_init: udp mbox: 6[0m
+[0;32mI (1656) wifi_init: tcp mbox: 6[0m
+[0;32mI (1656) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1656) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1666) wifi_init: tcp mss: 1440[0m
+[0;32mI (1666) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1666) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;33mW (1676) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (1686) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06[0m
+[0;32mI (1766) wifi:mode : sta (a4:f0:0f:73:f0:30)[0m
+[0;32mI (1766) wifi:enable tsf[0m
+[0;32mI (1786) wifi:new:<11,0>, old:<1,0>, ap:<255,255>, sta:<11,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (1786) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (1806) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (1816) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (1866) wifi:connected with KAUSHIK25, aid = 5, channel 11, BW20, bssid = e6:c7:67:fd:4a:5d[0m
+[0;32mI (1866) wifi:security: WPA2-PSK, phy: bgn, rssi: -36[0m
+[0;32mI (1876) wifi:pm start, type: 1[0m
+
+[0;32mI (1876) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (1946) wifi:AP's beacon interval = 102400 us, DTIM period = 3[0m
+[0;32mI (2946) esp_netif_handlers: sta ip: 192.168.137.26, mask: 255.255.255.0, gw: 192.168.137.1[0m
+[0;32mI (2946) wifi: WiFi connected[0m
+[0;32mI (2946) cam_hal: cam init ok[0m
+[0;32mI (2946) sccb-ng: pin_sda 26 pin_scl 27[0m
+[0;32mI (2946) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (2986) camera: Camera PID=0x26 VER=0x42 MIDL=0x7f MIDH=0xa2[0m
+[0;32mI (2986) camera: Detected OV2640 camera[0m
+[0;32mI (2986) camera: Detected camera at address=0x30[0m
+[0;32mI (3066) cam_hal: PSRAM DMA mode disabled[0m
+[0;32mI (3066) cam_hal: buffer_size: 32768, half_buffer_size: 4096, node_buffer_size: 2048, node_cnt: 16, total_cnt: 3[0m
+[0;32mI (3066) cam_hal: Allocating 15360 Byte frame buffer in PSRAM[0m
+[0;32mI (3076) cam_hal: Allocating 15360 Byte frame buffer in PSRAM[0m
+[0;32mI (3086) cam_hal: cam config ok[0m
+[0;32mI (3086) ov2640: Set PLL: clk_2x: 0, clk_div: 0, pclk_auto: 0, pclk_div: 8[0m
+[0;32mI (3166) main_task: Returned from app_main()[0m
+[0;32mI (3196) main: Frame: 9055 bytes, 320x240[0m
+[1;31mE (8216) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (8216) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (8216) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (8216) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (8216) main: Frame: 9037 bytes, 320x240[0m
+[1;31mE (13246) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (13246) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (13246) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (13246) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (13256) main: Frame: 8536 bytes, 320x240[0m
+[1;31mE (18276) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (18276) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (18276) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (18276) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (18286) main: Frame: 8149 bytes, 320x240[0m
+[1;31mE (23306) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (23306) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (23306) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (23306) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (23316) main: Frame: 8544 bytes, 320x240[0m
+[1;31mE (28336) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (28336) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (28336) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (28336) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (28346) main: Frame: 8514 bytes, 320x240[0m
+[1;31mE (33366) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (33366) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (33366) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (33366) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (33376) main: Frame: 8531 bytes, 320x240[0m
+[1;31mE (38396) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (38396) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (38396) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (38396) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (38406) main: Frame: 8514 bytes, 320x240[0m
+[1;31mE (43426) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (43426) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (43426) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (43426) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (43436) main: Frame: 8526 bytes, 320x240[0m
+[1;31mE (48456) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (48456) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (48456) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (48456) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (48466) main: Frame: 8517 bytes, 320x240[0m
+[1;31mE (53486) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (53486) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (53486) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (53486) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (53496) main: Frame: 8499 bytes, 320x240[0m
+[1;31mE (58516) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (58516) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (58516) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (58516) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (58526) main: Frame: 8534 bytes, 320x240[0m
+[1;31mE (63546) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (63546) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (63546) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (63546) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (63556) main: Frame: 8495 bytes, 320x240[0m
+[1;31mE (68576) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (68576) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (68576) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (68576) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (68586) main: Frame: 8525 bytes, 320x240[0m
+[1;31mE (73606) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (73606) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (73606) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (73606) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (73616) main: Frame: 8500 bytes, 320x240[0m
+[1;31mE (78636) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (78636) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (78636) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (78636) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (78646) main: Frame: 8506 bytes, 320x240[0m
+[1;31mE (83666) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (83666) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (83666) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (83666) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (83676) main: Frame: 3558 bytes, 320x240[0m
+[1;31mE (88696) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (88696) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (88696) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (88696) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (88706) main: Frame: 8783 bytes, 320x240[0m
+[1;31mE (93726) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (93726) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (93726) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (93726) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (93736) main: Frame: 10192 bytes, 320x240[0m
+[1;31mE (98756) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (98756) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (98756) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (98756) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (98766) main: Frame: 10375 bytes, 320x240[0m
+[0;32mI (103306) http_sender: HTTP POST status: 400[0m
+[0;32mI (103306) main: Frame: 10315 bytes, 320x240[0m
+[1;31mE (103866) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (103866) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (103866) main: Frame: 10311 bytes, 320x240[0m
+[0;32mI (104456) wifi:<ba-add>idx:0 (ifx:0, e6:c7:67:fd:4a:5d), tid:0, ssn:22, winSize:64[0m
+[1;31mE (104496) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (104496) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (104496) main: Frame: 10528 bytes, 320x240[0m
+[0;32mI (104986) http_sender: HTTP POST status: 400[0m
+[0;32mI (104986) main: Frame: 10495 bytes, 320x240[0m
+[1;31mE (105406) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (105406) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (105406) main: Frame: 10267 bytes, 320x240[0m
+[1;31mE (105676) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (105676) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (105676) main: Frame: 10261 bytes, 320x240[0m
+[0;32mI (106446) http_sender: HTTP POST status: 400[0m
+[0;32mI (106446) main: Frame: 10253 bytes, 320x240[0m
+[1;31mE (106866) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (106866) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (106866) main: Frame: 10238 bytes, 320x240[0m
+[1;31mE (107116) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (107116) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (107126) main: Frame: 10299 bytes, 320x240[0m
+[1;31mE (107536) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (107536) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (107546) main: Frame: 10219 bytes, 320x240[0m
+[0;32mI (108656) http_sender: HTTP POST status: 400[0m
+[0;32mI (108656) main: Frame: 10252 bytes, 320x240[0m
+[1;31mE (108996) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (108996) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (109006) main: Frame: 10281 bytes, 320x240[0m
+[1;31mE (109336) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (109346) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (109346) main: Frame: 10267 bytes, 320x240[0m
+[0;32mI (112086) http_sender: HTTP POST status: 400[0m
+[0;32mI (112086) main: Frame: 10276 bytes, 320x240[0m
+[1;31mE (112416) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (112416) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (112426) main: Frame: 10248 bytes, 320x240[0m
+[1;31mE (112546) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (112556) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (112556) main: Frame: 10342 bytes, 320x240[0m
+[1;31mE (112696) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (112696) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (112696) main: Frame: 10256 bytes, 320x240[0m
+[1;31mE (112946) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (112946) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (112946) main: Frame: 10236 bytes, 320x240[0m
+[1;31mE (113046) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (113046) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (113056) main: Frame: 10261 bytes, 320x240[0m
+[1;31mE (113306) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (113306) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (113306) main: Frame: 10263 bytes, 320x240[0m
+[1;31mE (113696) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (113696) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (113696) main: Frame: 10246 bytes, 320x240[0m
+[1;31mE (113846) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (113846) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (113846) main: Frame: 10286 bytes, 320x240[0m
+[1;31mE (113936) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (113936) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (113936) main: Frame: 10269 bytes, 320x240[0m
+[1;31mE (114316) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (114316) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (114316) main: Frame: 10280 bytes, 320x240[0m
+[1;31mE (114446) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (114446) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (114446) main: Frame: 10304 bytes, 320x240[0m
+[1;31mE (114646) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (114646) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (114646) main: Frame: 10280 bytes, 320x240[0m
+[1;31mE (114756) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (114756) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (114756) main: Frame: 10323 bytes, 320x240[0m
+[1;31mE (114916) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (114916) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (114916) main: Frame: 10348 bytes, 320x240[0m
+[1;31mE (115136) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (115136) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (115136) main: Frame: 10297 bytes, 320x240[0m
+[1;31mE (115356) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (115356) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (115356) main: Frame: 10367 bytes, 320x240[0m
+[1;31mE (115606) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (115616) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (115616) main: Frame: 10357 bytes, 320x240[0m
+[1;31mE (115956) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (115956) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (115956) main: Frame: 10332 bytes, 320x240[0m
+[1;31mE (116066) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (116066) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (116066) main: Frame: 10352 bytes, 320x240[0m
+[1;31mE (116396) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (116396) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (116396) main: Frame: 10345 bytes, 320x240[0m
+[1;31mE (116636) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (116646) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (116646) main: Frame: 10402 bytes, 320x240[0m
+[1;31mE (116916) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (116916) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (116916) main: Frame: 10388 bytes, 320x240[0m
+[1;31mE (117456) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (117456) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (117466) main: Frame: 10396 bytes, 320x240[0m
+[1;31mE (117616) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (117626) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (117626) main: Frame: 10410 bytes, 320x240[0m
+[1;31mE (117936) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (117936) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (117936) main: Frame: 10386 bytes, 320x240[0m
+[1;31mE (118396) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (118396) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (118396) main: Frame: 10426 bytes, 320x240[0m
+[1;31mE (118566) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (118566) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (118566) main: Frame: 10412 bytes, 320x240[0m
+[1;31mE (118846) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (118846) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (118846) main: Frame: 10391 bytes, 320x240[0m
+[1;31mE (119046) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (119046) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (119046) main: Frame: 10389 bytes, 320x240[0m
+[1;31mE (119526) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (119526) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (119526) main: Frame: 10414 bytes, 320x240[0m
+[1;31mE (119816) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (119816) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (119816) main: Frame: 10395 bytes, 320x240[0m
+[0;32mI (120716) http_sender: HTTP POST status: 400[0m
+[0;32mI (120716) main: Frame: 10404 bytes, 320x240[0m
+[1;31mE (121146) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (121146) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (121156) main: Frame: 10192 bytes, 320x240[0m
+[1;31mE (121556) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (121556) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (121556) main: Frame: 10186 bytes, 320x240[0m
+[1;31mE (121686) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (121686) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (121686) main: Frame: 10209 bytes, 320x240[0m
+[1;31mE (122026) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (122026) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (122026) main: Frame: 10175 bytes, 320x240[0m
+[1;31mE (122356) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (122356) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (122356) main: Frame: 10114 bytes, 320x240[0m
+[1;31mE (122696) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (122696) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (122696) main: Frame: 10043 bytes, 320x240[0m
+[1;31mE (122986) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (122986) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (122986) main: Frame: 10130 bytes, 320x240[0m
+[0;32mI (123436) http_sender: HTTP POST status: 400[0m
+[0;32mI (123446) main: Frame: 10136 bytes, 320x240[0m
+[1;31mE (123706) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (123716) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (123716) main: Frame: 10165 bytes, 320x240[0m
+[1;31mE (123866) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (123866) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (123866) main: Frame: 10125 bytes, 320x240[0m
+[1;31mE (124096) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (124096) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (124096) main: Frame: 10099 bytes, 320x240[0m
+[1;31mE (124206) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (124216) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (124216) main: Frame: 10138 bytes, 320x240[0m
+[1;31mE (124416) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (124416) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (124416) main: Frame: 10115 bytes, 320x240[0m
+[1;31mE (125096) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (125096) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (125096) main: Frame: 10132 bytes, 320x240[0m
+[1;31mE (125236) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (125236) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (125236) main: Frame: 10067 bytes, 320x240[0m
+[1;31mE (125406) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (125406) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (125416) main: Frame: 10062 bytes, 320x240[0m
+[1;31mE (125576) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (125576) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (125576) main: Frame: 10091 bytes, 320x240[0m
+[1;31mE (125766) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (125766) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (125776) main: Frame: 10070 bytes, 320x240[0m
+[1;31mE (125996) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (125996) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (125996) main: Frame: 10010 bytes, 320x240[0m
+[1;31mE (126166) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (126166) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (126176) main: Frame: 10057 bytes, 320x240[0m
+[1;31mE (126326) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (126326) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (126326) main: Frame: 10022 bytes, 320x240[0m
+[1;31mE (126466) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (126466) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (126466) main: Frame: 10014 bytes, 320x240[0m
+[1;31mE (126626) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (126626) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (126636) main: Frame: 10046 bytes, 320x240[0m
+[1;31mE (126856) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (126856) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (126866) main: Frame: 10030 bytes, 320x240[0m
+[1;31mE (126996) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (126996) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (126996) main: Frame: 10002 bytes, 320x240[0m
+[1;31mE (127136) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (127136) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (127136) main: Frame: 10004 bytes, 320x240[0m
+[1;31mE (127286) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (127286) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (127286) main: Frame: 10032 bytes, 320x240[0m
+[1;31mE (127416) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (127416) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (127416) main: Frame: 10016 bytes, 320x240[0m
+[1;31mE (127556) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (127556) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (127556) main: Frame: 10004 bytes, 320x240[0m
+[1;31mE (127696) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (127696) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (127706) main: Frame: 10021 bytes, 320x240[0m
+[1;31mE (127866) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (127866) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (127866) main: Frame: 10029 bytes, 320x240[0m
+[1;31mE (128006) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (128006) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (128006) main: Frame: 9949 bytes, 320x240[0m
+[1;31mE (128246) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (128246) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (128246) main: Frame: 10018 bytes, 320x240[0m
+[1;31mE (128356) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (128356) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (128356) main: Frame: 10002 bytes, 320x240[0m
+[1;31mE (128546) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (128546) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (128546) main: Frame: 10035 bytes, 320x240[0m
+[1;31mE (128746) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (128746) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (128746) main: Frame: 10031 bytes, 320x240[0m
+[1;31mE (128886) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (128886) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (128886) main: Frame: 9996 bytes, 320x240[0m
+[1;31mE (129026) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (129026) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (129036) main: Frame: 9952 bytes, 320x240[0m
+[1;31mE (129166) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (129166) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (129166) main: Frame: 9919 bytes, 320x240[0m
+[1;31mE (129326) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (129326) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (129336) main: Frame: 10015 bytes, 320x240[0m
+[1;31mE (129546) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (129546) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (129546) main: Frame: 9929 bytes, 320x240[0m
+[1;31mE (129656) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (129656) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (129666) main: Frame: 9990 bytes, 320x240[0m
+[1;31mE (129816) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (129816) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (129816) main: Frame: 9981 bytes, 320x240[0m
+[1;31mE (130006) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (130006) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (130006) main: Frame: 9993 bytes, 320x240[0m
+[1;31mE (130166) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (130166) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (130166) main: Frame: 10031 bytes, 320x240[0m
+[1;31mE (130316) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (130316) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (130316) main: Frame: 10050 bytes, 320x240[0m
+[1;31mE (130446) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (130446) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (130446) main: Frame: 10015 bytes, 320x240[0m
+[1;31mE (130596) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (130596) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (130606) main: Frame: 9975 bytes, 320x240[0m
+[1;31mE (130776) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (130776) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (130776) main: Frame: 9976 bytes, 320x240[0m
+[1;31mE (130876) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (130876) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (130876) main: Frame: 9979 bytes, 320x240[0m
+[1;31mE (131006) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (131006) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (131006) main: Frame: 9994 bytes, 320x240[0m
+[1;31mE (131156) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (131156) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (131156) main: Frame: 9980 bytes, 320x240[0m
+[0;32mI (131386) http_sender: HTTP POST status: 400[0m
+[0;32mI (131386) main: Frame: 9967 bytes, 320x240[0m
+[1;31mE (131616) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (131616) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (131626) main: Frame: 9978 bytes, 320x240[0m
+[1;31mE (131796) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (131796) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (131806) main: Frame: 9930 bytes, 320x240[0m
+[1;31mE (131946) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (131946) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (131946) main: Frame: 10006 bytes, 320x240[0m
+[1;31mE (132096) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (132096) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (132106) main: Frame: 10034 bytes, 320x240[0m
+[1;31mE (132266) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (132266) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (132266) main: Frame: 10069 bytes, 320x240[0m
+[1;31mE (132496) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (132496) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (132496) main: Frame: 10047 bytes, 320x240[0m
+[1;31mE (132586) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (132586) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (132596) main: Frame: 10011 bytes, 320x240[0m
+[1;31mE (132746) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (132746) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (132746) main: Frame: 9959 bytes, 320x240[0m
+[1;31mE (132886) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (132886) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (132886) main: Frame: 10001 bytes, 320x240[0m
+[1;31mE (133016) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (133016) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (133016) main: Frame: 10019 bytes, 320x240[0m
+[1;31mE (133206) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (133206) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (133206) main: Frame: 10014 bytes, 320x240[0m
+[1;31mE (133316) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (133316) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (133316) main: Frame: 9993 bytes, 320x240[0m
+[1;31mE (133476) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (133486) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (133486) main: Frame: 10126 bytes, 320x240[0m
+[1;31mE (133636) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (133636) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (133636) main: Frame: 10292 bytes, 320x240[0m
+[1;31mE (133806) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (133806) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (133816) main: Frame: 10339 bytes, 320x240[0m
+[0;32mI (134066) http_sender: HTTP POST status: 400[0m
+[0;32mI (134066) main: Frame: 10316 bytes, 320x240[0m
+[1;31mE (134236) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (134236) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (134236) main: Frame: 10315 bytes, 320x240[0m
+[1;31mE (134436) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (134436) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (134436) main: Frame: 10334 bytes, 320x240[0m
+[1;31mE (134586) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (134586) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (134586) main: Frame: 10302 bytes, 320x240[0m
+[1;31mE (134756) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (134756) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (134766) main: Frame: 10310 bytes, 320x240[0m
+[1;31mE (134866) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (134866) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (134866) main: Frame: 10315 bytes, 320x240[0m
+[1;31mE (135046) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (135046) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (135046) main: Frame: 10347 bytes, 320x240[0m
+[1;31mE (135256) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (135256) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (135256) main: Frame: 10303 bytes, 320x240[0m
+[1;31mE (135346) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (135346) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (135346) main: Frame: 10295 bytes, 320x240[0m
+[1;31mE (135506) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (135506) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (135506) main: Frame: 10352 bytes, 320x240[0m
+[1;31mE (135686) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (135686) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (135696) main: Frame: 10340 bytes, 320x240[0m
+[1;31mE (135906) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (135906) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (135906) main: Frame: 10366 bytes, 320x240[0m
+[1;31mE (136126) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (136126) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (136126) main: Frame: 10330 bytes, 320x240[0m
+[1;31mE (136256) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (136256) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (136256) main: Frame: 10328 bytes, 320x240[0m
+[1;31mE (136456) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (136456) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (136456) main: Frame: 10328 bytes, 320x240[0m
+[1;31mE (136596) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (136596) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (136596) main: Frame: 10359 bytes, 320x240[0m
+[1;31mE (136766) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (136766) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (136766) main: Frame: 10317 bytes, 320x240[0m
+[1;31mE (136956) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (136956) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (136966) main: Frame: 10339 bytes, 320x240[0m
+[1;31mE (137056) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (137056) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (137066) main: Frame: 10334 bytes, 320x240[0m
+[1;31mE (137266) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (137266) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (137266) main: Frame: 10295 bytes, 320x240[0m
+[1;31mE (137406) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (137406) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (137416) main: Frame: 10278 bytes, 320x240[0m
+[1;31mE (137566) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (137566) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (137566) main: Frame: 10331 bytes, 320x240[0m
+[1;31mE (137716) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (137716) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (137716) main: Frame: 10236 bytes, 320x240[0m
+[1;31mE (138346) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (138346) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (138346) main: Frame: 10309 bytes, 320x240[0m
+[1;31mE (138466) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (138466) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (138466) main: Frame: 10332 bytes, 320x240[0m
+[1;31mE (138616) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (138616) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (138616) main: Frame: 10327 bytes, 320x240[0m
+[1;31mE (138816) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (138816) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (138826) main: Frame: 10308 bytes, 320x240[0m
+[1;31mE (138946) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (138946) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (138946) main: Frame: 10323 bytes, 320x240[0m
+[1;31mE (139066) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (139066) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (139066) main: Frame: 10330 bytes, 320x240[0m
+[0;32mI (139336) http_sender: HTTP POST status: 400[0m
+[0;32mI (139346) main: Frame: 10336 bytes, 320x240[0m
+[1;31mE (139516) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (139516) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (139526) main: Frame: 10287 bytes, 320x240[0m
+[1;31mE (139646) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (139646) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (139646) main: Frame: 10325 bytes, 320x240[0m
+[1;31mE (139886) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (139886) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (139886) main: Frame: 10328 bytes, 320x240[0m
+[1;31mE (140036) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (140036) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (140036) main: Frame: 10316 bytes, 320x240[0m
+[1;31mE (140196) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (140196) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (140196) main: Frame: 10321 bytes, 320x240[0m
+[1;31mE (140336) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (140336) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (140336) main: Frame: 10342 bytes, 320x240[0m
+[1;31mE (140516) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (140516) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (140516) main: Frame: 10343 bytes, 320x240[0m
+[1;31mE (140676) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (140676) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (140676) main: Frame: 10365 bytes, 320x240[0m
+[1;31mE (140806) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (140816) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (140816) main: Frame: 10328 bytes, 320x240[0m
+[1;31mE (140956) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (140956) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (140966) main: Frame: 10323 bytes, 320x240[0m
+[1;31mE (141136) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (141136) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (141136) main: Frame: 10333 bytes, 320x240[0m
+[1;31mE (141316) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (141316) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (141316) main: Frame: 10340 bytes, 320x240[0m
+[1;31mE (141436) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (141436) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (141446) main: Frame: 10357 bytes, 320x240[0m
+[1;31mE (141596) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (141596) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (141596) main: Frame: 10373 bytes, 320x240[0m
+[1;31mE (141736) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (141736) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (141736) main: Frame: 10320 bytes, 320x240[0m
+[1;31mE (141916) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (141916) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (141916) main: Frame: 10299 bytes, 320x240[0m
+[1;31mE (142066) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (142066) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (142076) main: Frame: 10296 bytes, 320x240[0m
+[1;31mE (142186) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (142186) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (142196) main: Frame: 10355 bytes, 320x240[0m
+[1;31mE (142336) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (142336) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (142346) main: Frame: 10406 bytes, 320x240[0m
+[1;31mE (142506) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (142506) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (142506) main: Frame: 10330 bytes, 320x240[0m
+[1;31mE (142626) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (142626) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (142626) main: Frame: 10351 bytes, 320x240[0m
+[1;31mE (142806) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (142806) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (142816) main: Frame: 10321 bytes, 320x240[0m
+[0;32mI (143066) http_sender: HTTP POST status: 400[0m
+[0;32mI (143066) main: Frame: 10367 bytes, 320x240[0m
+[1;31mE (143366) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (143366) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (143366) main: Frame: 10320 bytes, 320x240[0m
+[1;31mE (143676) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (143676) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (143676) main: Frame: 10345 bytes, 320x240[0m
+[1;31mE (143796) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (143796) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (143796) main: Frame: 10327 bytes, 320x240[0m
+[0;32mI (144146) http_sender: HTTP POST status: 400[0m
+[0;32mI (144146) main: Frame: 10335 bytes, 320x240[0m
+[1;31mE (144396) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (144396) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (144396) main: Frame: 10334 bytes, 320x240[0m
+[1;31mE (144546) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (144546) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (144546) main: Frame: 10317 bytes, 320x240[0m
+[1;31mE (144686) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (144696) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (144696) main: Frame: 10333 bytes, 320x240[0m
+[1;31mE (144866) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (144866) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (144866) main: Frame: 10386 bytes, 320x240[0m
+[1;31mE (144956) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (144956) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (144956) main: Frame: 10356 bytes, 320x240[0m
+[1;31mE (145166) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (145166) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (145166) main: Frame: 10312 bytes, 320x240[0m
+[1;31mE (145356) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (145356) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (145356) main: Frame: 10331 bytes, 320x240[0m
+[1;31mE (145586) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (145586) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (145586) main: Frame: 10355 bytes, 320x240[0m
+[1;31mE (145676) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (145676) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (145676) main: Frame: 10338 bytes, 320x240[0m
+[1;31mE (145816) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (145816) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (145826) main: Frame: 10330 bytes, 320x240[0m
+[1;31mE (145976) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (145976) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (145976) main: Frame: 10329 bytes, 320x240[0m
+[1;31mE (146126) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (146126) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (146126) main: Frame: 10341 bytes, 320x240[0m
+[1;31mE (146386) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (146386) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (146386) main: Frame: 10384 bytes, 320x240[0m
+[0;32mI (146716) http_sender: HTTP POST status: 400[0m
+[0;32mI (146716) main: Frame: 10339 bytes, 320x240[0m
+[1;31mE (146916) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (146916) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (146916) main: Frame: 10349 bytes, 320x240[0m
+[1;31mE (147156) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (147156) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (147166) main: Frame: 10347 bytes, 320x240[0m
+[1;31mE (147336) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (147346) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (147346) main: Frame: 10330 bytes, 320x240[0m
+[1;31mE (147516) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (147516) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (147516) main: Frame: 10331 bytes, 320x240[0m
+[1;31mE (147676) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (147676) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (147676) main: Frame: 10375 bytes, 320x240[0m
+[1;31mE (147796) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (147796) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (147806) main: Frame: 10345 bytes, 320x240[0m
+[1;31mE (147956) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (147956) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (147966) main: Frame: 10356 bytes, 320x240[0m
+[1;31mE (148106) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (148106) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (148106) main: Frame: 10371 bytes, 320x240[0m
+[1;31mE (148236) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (148236) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (148236) main: Frame: 10321 bytes, 320x240[0m
+[1;31mE (148426) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (148426) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (148426) main: Frame: 10331 bytes, 320x240[0m
+[1;31mE (148596) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (148596) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (148596) main: Frame: 10359 bytes, 320x240[0m
+[1;31mE (148776) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (148776) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (148786) main: Frame: 10327 bytes, 320x240[0m
+[1;31mE (148986) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (148986) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (148996) main: Frame: 10342 bytes, 320x240[0m
+[1;31mE (149136) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (149136) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (149136) main: Frame: 10361 bytes, 320x240[0m
+[1;31mE (149306) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (149306) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (149306) main: Frame: 10348 bytes, 320x240[0m
+[1;31mE (149426) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (149426) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (149426) main: Frame: 10286 bytes, 320x240[0m
+[1;31mE (149586) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (149586) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (149586) main: Frame: 10361 bytes, 320x240[0m
+[1;31mE (149746) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (149746) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (149746) main: Frame: 10360 bytes, 320x240[0m
+[1;31mE (149946) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (149946) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (149956) main: Frame: 10347 bytes, 320x240[0m
+[1;31mE (150186) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (150186) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (150186) main: Frame: 10324 bytes, 320x240[0m
+[1;31mE (150386) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (150386) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (150386) main: Frame: 10331 bytes, 320x240[0m
+[1;31mE (150526) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (150526) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (150526) main: Frame: 10335 bytes, 320x240[0m
+[1;31mE (150666) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (150666) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (150666) main: Frame: 10287 bytes, 320x240[0m
+[1;31mE (150816) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (150816) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (150816) main: Frame: 10325 bytes, 320x240[0m
+[1;31mE (150966) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (150966) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (150966) main: Frame: 10341 bytes, 320x240[0m
+[1;31mE (151146) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (151146) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (151156) main: Frame: 10316 bytes, 320x240[0m
+[1;31mE (151246) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (151256) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (151256) main: Frame: 10360 bytes, 320x240[0m
+[1;31mE (151406) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (151406) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (151406) main: Frame: 10344 bytes, 320x240[0m
+[1;31mE (151556) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (151556) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (151556) main: Frame: 10327 bytes, 320x240[0m
+[1;31mE (151706) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (151706) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (151706) main: Frame: 10330 bytes, 320x240[0m
+[1;31mE (151876) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (151876) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (151876) main: Frame: 10344 bytes, 320x240[0m
+[1;31mE (152046) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (152046) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (152046) main: Frame: 10323 bytes, 320x240[0m
+[1;31mE (152216) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (152216) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (152216) main: Frame: 10375 bytes, 320x240[0m
+[1;31mE (152416) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (152416) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (152426) main: Frame: 10330 bytes, 320x240[0m
+[1;31mE (152566) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (152566) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (152566) main: Frame: 10319 bytes, 320x240[0m
+[1;31mE (152706) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (152706) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (152706) main: Frame: 10296 bytes, 320x240[0m
+[1;31mE (152856) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (152856) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (152856) main: Frame: 10345 bytes, 320x240[0m
+[1;31mE (153036) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (153036) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (153036) main: Frame: 10388 bytes, 320x240[0m
+[1;31mE (153166) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (153176) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (153176) main: Frame: 10365 bytes, 320x240[0m
+[1;31mE (153406) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (153406) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (153406) main: Frame: 10313 bytes, 320x240[0m
+[1;31mE (153566) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (153566) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (153566) main: Frame: 10348 bytes, 320x240[0m
+[1;31mE (153836) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (153836) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (153846) main: Frame: 10345 bytes, 320x240[0m
+[1;31mE (154016) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (154016) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (154016) main: Frame: 10323 bytes, 320x240[0m
+[1;31mE (154226) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (154226) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (154236) main: Frame: 10356 bytes, 320x240[0m
+[1;31mE (154426) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (154426) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (154426) main: Frame: 10305 bytes, 320x240[0m
+[1;31mE (154616) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (154616) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (154616) main: Frame: 10305 bytes, 320x240[0m
+[1;31mE (154746) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (154746) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (154746) main: Frame: 10345 bytes, 320x240[0m
+[1;31mE (154936) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (154936) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (154936) main: Frame: 10359 bytes, 320x240[0m
+[1;31mE (155086) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (155086) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (155096) main: Frame: 10322 bytes, 320x240[0m
+[1;31mE (155376) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (155376) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (155376) main: Frame: 10326 bytes, 320x240[0m
+[1;31mE (155546) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (155546) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (155546) main: Frame: 10333 bytes, 320x240[0m
+[1;31mE (155706) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (155706) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (155716) main: Frame: 10157 bytes, 320x240[0m
+[1;31mE (155876) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (155876) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (155876) main: Frame: 10196 bytes, 320x240[0m
+[1;31mE (156106) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (156106) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (156116) main: Frame: 10262 bytes, 320x240[0m
+[1;31mE (156326) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (156326) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (156336) main: Frame: 10316 bytes, 320x240[0m
+[1;31mE (156476) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (156476) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (156486) main: Frame: 10320 bytes, 320x240[0m
+[1;31mE (156626) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (156626) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (156626) main: Frame: 10370 bytes, 320x240[0m
+[1;31mE (156766) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (156766) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (156776) main: Frame: 10378 bytes, 320x240[0m
+[1;31mE (156976) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (156976) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (156976) main: Frame: 10331 bytes, 320x240[0m
+[1;31mE (157086) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (157086) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (157086) main: Frame: 10359 bytes, 320x240[0m
+[1;31mE (157256) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (157256) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (157256) main: Frame: 10328 bytes, 320x240[0m
+[1;31mE (157416) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (157416) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (157416) main: Frame: 10334 bytes, 320x240[0m
+[1;31mE (157576) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (157576) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (157576) main: Frame: 10326 bytes, 320x240[0m
+[1;31mE (157736) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (157736) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (157736) main: Frame: 10354 bytes, 320x240[0m
+[1;31mE (157926) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (157926) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (157926) main: Frame: 10326 bytes, 320x240[0m
+[1;31mE (158076) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (158076) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (158076) main: Frame: 10331 bytes, 320x240[0m
+[1;31mE (158216) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (158216) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (158216) main: Frame: 10337 bytes, 320x240[0m
+[1;31mE (158376) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (158376) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (158376) main: Frame: 10368 bytes, 320x240[0m
+[1;31mE (158586) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (158586) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (158586) main: Frame: 10328 bytes, 320x240[0m
+[1;31mE (158666) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (158666) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (158666) main: Frame: 10333 bytes, 320x240[0m
+[1;31mE (158816) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (158816) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (158826) main: Frame: 10350 bytes, 320x240[0m
+[1;31mE (158956) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (158956) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (158956) main: Frame: 10348 bytes, 320x240[0m
+[1;31mE (159106) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (159106) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (159106) main: Frame: 10321 bytes, 320x240[0m
+[1;31mE (159256) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (159256) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (159256) main: Frame: 10347 bytes, 320x240[0m
+[1;31mE (159406) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (159406) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (159406) main: Frame: 10356 bytes, 320x240[0m
+[1;31mE (159586) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (159586) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (159586) main: Frame: 10293 bytes, 320x240[0m
+[1;31mE (159756) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (159766) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (159766) main: Frame: 10318 bytes, 320x240[0m
+[1;31mE (159896) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (159896) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (159906) main: Frame: 10308 bytes, 320x240[0m
+[1;31mE (160046) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (160046) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (160046) main: Frame: 10344 bytes, 320x240[0m
+[1;31mE (160206) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (160206) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (160206) main: Frame: 10349 bytes, 320x240[0m
+[1;31mE (160406) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (160406) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (160406) main: Frame: 10332 bytes, 320x240[0m
+[1;31mE (160576) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (160576) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (160576) main: Frame: 10379 bytes, 320x240[0m
+[1;31mE (160786) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (160786) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (160786) main: Frame: 10330 bytes, 320x240[0m
+[1;31mE (160926) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (160926) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (160936) main: Frame: 10353 bytes, 320x240[0m
+[1;31mE (161086) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (161096) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (161096) main: Frame: 10352 bytes, 320x240[0m
+[1;31mE (161246) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (161246) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (161246) main: Frame: 10339 bytes, 320x240[0m
+[1;31mE (161426) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (161426) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (161426) main: Frame: 10349 bytes, 320x240[0m
+[1;31mE (161566) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (161566) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (161566) main: Frame: 10345 bytes, 320x240[0m
+[1;31mE (161716) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (161716) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (161716) main: Frame: 10356 bytes, 320x240[0m
+[1;31mE (161856) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (161856) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (161856) main: Frame: 10392 bytes, 320x240[0m
+[1;31mE (162006) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (162006) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (162006) main: Frame: 10369 bytes, 320x240[0m
+[1;31mE (162236) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (162236) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (162246) main: Frame: 10345 bytes, 320x240[0m
+[1;31mE (162386) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (162386) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (162396) main: Frame: 10359 bytes, 320x240[0m
+[1;31mE (162546) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (162546) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (162546) main: Frame: 10349 bytes, 320x240[0m
+[1;31mE (162676) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (162676) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (162676) main: Frame: 10343 bytes, 320x240[0m
+[1;31mE (162836) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (162836) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (162836) main: Frame: 10375 bytes, 320x240[0m
+[1;31mE (163016) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (163016) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (163026) main: Frame: 10315 bytes, 320x240[0m
+[1;31mE (163176) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (163176) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (163176) main: Frame: 10313 bytes, 320x240[0m
+[1;31mE (163346) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (163346) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (163346) main: Frame: 10353 bytes, 320x240[0m
+[1;31mE (163546) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (163546) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (163556) main: Frame: 10330 bytes, 320x240[0m
+[1;31mE (163696) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (163696) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (163696) main: Frame: 10313 bytes, 320x240[0m
+[1;31mE (163836) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (163836) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (163846) main: Frame: 10352 bytes, 320x240[0m
+[1;31mE (164006) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (164006) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (164016) main: Frame: 10337 bytes, 320x240[0m
+[1;31mE (164166) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (164166) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (164166) main: Frame: 10379 bytes, 320x240[0m
+[1;31mE (164276) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (164286) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (164286) main: Frame: 10388 bytes, 320x240[0m
+[1;31mE (164426) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (164426) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (164426) main: Frame: 10383 bytes, 320x240[0m
+[1;31mE (164606) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (164616) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (164616) main: Frame: 10359 bytes, 320x240[0m
+[1;31mE (164726) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (164726) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (164726) main: Frame: 10372 bytes, 320x240[0m
+[1;31mE (164936) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (164946) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (164946) main: Frame: 10341 bytes, 320x240[0m
+[1;31mE (165136) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (165136) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (165136) main: Frame: 10360 bytes, 320x240[0m
+[1;31mE (165276) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (165276) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (165276) main: Frame: 10342 bytes, 320x240[0m
+[1;31mE (165426) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (165426) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (165426) main: Frame: 10341 bytes, 320x240[0m
+[1;31mE (165606) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (165606) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (165606) main: Frame: 10371 bytes, 320x240[0m
+[1;31mE (165786) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (165786) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (165786) main: Frame: 10370 bytes, 320x240[0m
+[1;31mE (165916) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (165916) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (165926) main: Frame: 10333 bytes, 320x240[0m
+[1;31mE (166076) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (166076) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (166086) main: Frame: 10349 bytes, 320x240[0m
+[1;31mE (166216) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (166216) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (166216) main: Frame: 9440 bytes, 320x240[0m
+[1;31mE (166386) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (166396) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (166396) main: Frame: 9743 bytes, 320x240[0m
+[1;31mE (166556) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (166556) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (166556) main: Frame: 10066 bytes, 320x240[0m
+[1;31mE (166726) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (166726) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (166736) main: Frame: 10191 bytes, 320x240[0m
+[1;31mE (166926) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (166926) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (166926) main: Frame: 10246 bytes, 320x240[0m
+[1;31mE (167076) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (167076) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (167076) main: Frame: 10342 bytes, 320x240[0m
+[1;31mE (167246) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (167246) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (167256) main: Frame: 10384 bytes, 320x240[0m
+[1;31mE (167456) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (167456) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (167466) main: Frame: 10371 bytes, 320x240[0m
+[1;31mE (167626) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (167626) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (167626) main: Frame: 10344 bytes, 320x240[0m
+[1;31mE (167806) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (167806) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (167806) main: Frame: 10353 bytes, 320x240[0m
+[1;31mE (167966) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (167966) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (167966) main: Frame: 10071 bytes, 320x240[0m
+[1;31mE (168106) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (168106) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (168106) main: Frame: 10127 bytes, 320x240[0m
+[1;31mE (168286) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (168286) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (168296) main: Frame: 10272 bytes, 320x240[0m
+[1;31mE (168466) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (168466) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (168476) main: Frame: 10434 bytes, 320x240[0m
+[1;31mE (168636) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (168636) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (168646) main: Frame: 10366 bytes, 320x240[0m
+cam_hal: NO-SOI - JPEG start marker missing
+cam_hal: NO-SOI - JPEG start marker missing
+[1;31mE (168806) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (168806) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (168806) main: Frame: 10358 bytes, 320x240[0m
+[1;31mE (168946) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (168946) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (168956) main: Frame: 10429 bytes, 320x240[0m
+[1;31mE (169076) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (169076) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (169076) main: Frame: 10419 bytes, 320x240[0m
+[1;31mE (169236) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (169236) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (169236) main: Frame: 10381 bytes, 320x240[0m
+[1;31mE (169336) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (169336) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (169336) main: Frame: 10341 bytes, 320x240[0m
+[1;31mE (169496) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (169496) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (169506) main: Frame: 10347 bytes, 320x240[0m
+[1;31mE (169656) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (169656) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (169656) main: Frame: 10292 bytes, 320x240[0m
+[1;31mE (169796) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (169796) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (169806) main: Frame: 10201 bytes, 320x240[0m
+[1;31mE (169946) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (169946) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (169946) main: Frame: 9779 bytes, 320x240[0m
+[1;31mE (170076) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (170076) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (170076) main: Frame: 10094 bytes, 320x240[0m
+[1;31mE (170166) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (170166) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (170166) main: Frame: 10055 bytes, 320x240[0m
+[1;31mE (175186) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (175186) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (175186) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (175186) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (175196) main: Frame: 10094 bytes, 320x240[0m
+[1;31mE (180216) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (180216) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (180216) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (180216) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (180226) main: Frame: 10202 bytes, 320x240[0m
+[1;31mE (185246) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (185246) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (185246) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (185246) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (185256) main: Frame: 10569 bytes, 320x240[0m
+[0;32mI (186796) http_sender: HTTP POST status: 200[0m
+[0;32mI (186806) main: Frame: 10548 bytes, 320x240[0m
+[0;32mI (187176) http_sender: HTTP POST status: 200[0m
+[0;32mI (187186) main: Frame: 10525 bytes, 320x240[0m
+[0;32mI (187546) http_sender: HTTP POST status: 200[0m
+[0;32mI (187546) main: Frame: 10525 bytes, 320x240[0m
+[0;32mI (187966) http_sender: HTTP POST status: 200[0m
+[0;32mI (187966) main: Frame: 10543 bytes, 320x240[0m
+[0;32mI (188316) http_sender: HTTP POST status: 200[0m
+[0;32mI (188316) main: Frame: 10542 bytes, 320x240[0m
+[0;32mI (188696) http_sender: HTTP POST status: 200[0m
+[0;32mI (188696) main: Frame: 10545 bytes, 320x240[0m
+[0;32mI (189066) http_sender: HTTP POST status: 200[0m
+[0;32mI (189066) main: Frame: 10542 bytes, 320x240[0m
+[0;32mI (189426) http_sender: HTTP POST status: 200[0m
+[0;32mI (189426) main: Frame: 10541 bytes, 320x240[0m
+[0;32mI (189836) http_sender: HTTP POST status: 200[0m
+[0;32mI (189836) main: Frame: 10551 bytes, 320x240[0m
+[0;32mI (190216) http_sender: HTTP POST status: 200[0m
+[0;32mI (190226) main: Frame: 10599 bytes, 320x240[0m
+[0;32mI (190846) http_sender: HTTP POST status: 200[0m
+[0;32mI (190846) main: Frame: 10601 bytes, 320x240[0m
+[0;32mI (191236) http_sender: HTTP POST status: 200[0m
+[0;32mI (191236) main: Frame: 10508 bytes, 320x240[0m
+[0;32mI (191686) http_sender: HTTP POST status: 200[0m
+[0;32mI (191686) main: Frame: 10532 bytes, 320x240[0m
+[0;32mI (192236) http_sender: HTTP POST status: 200[0m
+[0;32mI (192236) main: Frame: 10525 bytes, 320x240[0m
+[0;32mI (192596) http_sender: HTTP POST status: 200[0m
+[0;32mI (192596) main: Frame: 10567 bytes, 320x240[0m
+[0;32mI (193046) http_sender: HTTP POST status: 200[0m
+[0;32mI (193046) main: Frame: 10388 bytes, 320x240[0m
+[0;32mI (193486) http_sender: HTTP POST status: 200[0m
+[0;32mI (193486) main: Frame: 10196 bytes, 320x240[0m
+[0;32mI (193866) http_sender: HTTP POST status: 200[0m
+[0;32mI (193866) main: Frame: 10372 bytes, 320x240[0m
+[0;32mI (194226) http_sender: HTTP POST status: 200[0m
+[0;32mI (194236) main: Frame: 10303 bytes, 320x240[0m
+[0;32mI (194636) http_sender: HTTP POST status: 200[0m
+[0;32mI (194636) main: Frame: 10306 bytes, 320x240[0m
+[0;32mI (195136) http_sender: HTTP POST status: 200[0m
+[0;32mI (195146) main: Frame: 10293 bytes, 320x240[0m
+[0;32mI (195586) http_sender: HTTP POST status: 200[0m
+[0;32mI (195586) main: Frame: 10328 bytes, 320x240[0m
+[0;32mI (196076) http_sender: HTTP POST status: 200[0m
+[0;32mI (196076) main: Frame: 10444 bytes, 320x240[0m
+[0;32mI (196446) http_sender: HTTP POST status: 200[0m
+[0;32mI (196456) main: Frame: 10487 bytes, 320x240[0m
+[0;32mI (196816) http_sender: HTTP POST status: 200[0m
+[0;32mI (196816) main: Frame: 10308 bytes, 320x240[0m
+[0;32mI (197196) http_sender: HTTP POST status: 200[0m
+[0;32mI (197196) main: Frame: 10337 bytes, 320x240[0m
+[0;32mI (197626) http_sender: HTTP POST status: 200[0m
+[0;32mI (197626) main: Frame: 10295 bytes, 320x240[0m
+[0;32mI (197956) http_sender: HTTP POST status: 200[0m
+[0;32mI (197966) main: Frame: 10485 bytes, 320x240[0m
+[0;32mI (198306) http_sender: HTTP POST status: 200[0m
+[0;32mI (198306) main: Frame: 10495 bytes, 320x240[0m
+[0;32mI (198756) http_sender: HTTP POST status: 200[0m
+[0;32mI (198756) main: Frame: 10299 bytes, 320x240[0m
+[0;32mI (199106) http_sender: HTTP POST status: 200[0m
+[0;32mI (199106) main: Frame: 10334 bytes, 320x240[0m
+[0;32mI (199496) http_sender: HTTP POST status: 200[0m
+[0;32mI (199496) main: Frame: 10250 bytes, 320x240[0m
+[0;32mI (199836) http_sender: HTTP POST status: 200[0m
+[0;32mI (199846) main: Frame: 10374 bytes, 320x240[0m
+[0;32mI (200196) http_sender: HTTP POST status: 200[0m
+[0;32mI (200196) main: Frame: 10316 bytes, 320x240[0m
+[0;32mI (200566) http_sender: HTTP POST status: 200[0m
+[0;32mI (200566) main: Frame: 10335 bytes, 320x240[0m
+[0;32mI (200956) http_sender: HTTP POST status: 200[0m
+[0;32mI (200956) main: Frame: 10415 bytes, 320x240[0m
+[0;32mI (201546) http_sender: HTTP POST status: 200[0m
+[0;32mI (201546) main: Frame: 10455 bytes, 320x240[0m
+[0;32mI (201926) http_sender: HTTP POST status: 200[0m
+[0;32mI (201926) main: Frame: 10479 bytes, 320x240[0m
+[0;32mI (202286) http_sender: HTTP POST status: 200[0m
+[0;32mI (202286) main: Frame: 7446 bytes, 320x240[0m
+[0;32mI (202546) http_sender: HTTP POST status: 200[0m
+[0;32mI (202546) main: Frame: 7694 bytes, 320x240[0m
+[0;32mI (202856) http_sender: HTTP POST status: 200[0m
+[0;32mI (202856) main: Frame: 7805 bytes, 320x240[0m
+[0;32mI (203166) http_sender: HTTP POST status: 200[0m
+[0;32mI (203166) main: Frame: 8577 bytes, 320x240[0m
+[0;32mI (203586) http_sender: HTTP POST status: 200[0m
+[0;32mI (203586) main: Frame: 8915 bytes, 320x240[0m
+[0;32mI (204346) http_sender: HTTP POST status: 200[0m
+[0;32mI (204346) main: Frame: 8901 bytes, 320x240[0m
+[0;32mI (204976) http_sender: HTTP POST status: 200[0m
+[0;32mI (204976) main: Frame: 7295 bytes, 320x240[0m
+[0;32mI (205306) http_sender: HTTP POST status: 200[0m
+[0;32mI (205306) main: Frame: 7295 bytes, 320x240[0m
+[0;32mI (205606) http_sender: HTTP POST status: 200[0m
+[0;32mI (205606) main: Frame: 8968 bytes, 320x240[0m
+[0;32mI (206446) http_sender: HTTP POST status: 200[0m
+[0;32mI (206446) main: Frame: 10213 bytes, 320x240[0m
+[0;32mI (206806) http_sender: HTTP POST status: 200[0m
+[0;32mI (206806) main: Frame: 9235 bytes, 320x240[0m
+[0;32mI (207186) http_sender: HTTP POST status: 200[0m
+[0;32mI (207186) main: Frame: 8660 bytes, 320x240[0m
+[0;32mI (207596) http_sender: HTTP POST status: 200[0m
+[0;32mI (207596) main: Frame: 9353 bytes, 320x240[0m
+[0;32mI (207986) http_sender: HTTP POST status: 200[0m
+[0;32mI (207986) main: Frame: 8185 bytes, 320x240[0m
+[0;32mI (208596) http_sender: HTTP POST status: 200[0m
+[0;32mI (208596) main: Frame: 8628 bytes, 320x240[0m
+[0;32mI (208936) http_sender: HTTP POST status: 200[0m
+[0;32mI (208936) main: Frame: 9854 bytes, 320x240[0m
+[0;32mI (209356) http_sender: HTTP POST status: 200[0m
+[0;32mI (209356) main: Frame: 9853 bytes, 320x240[0m
+[0;32mI (209816) http_sender: HTTP POST status: 200[0m
+[0;32mI (209816) main: Frame: 10005 bytes, 320x240[0m
+[0;32mI (210326) http_sender: HTTP POST status: 200[0m
+[0;32mI (210326) main: Frame: 9231 bytes, 320x240[0m
+[0;32mI (210816) http_sender: HTTP POST status: 200[0m
+[0;32mI (210826) main: Frame: 10087 bytes, 320x240[0m
+[0;32mI (211426) http_sender: HTTP POST status: 200[0m
+[0;32mI (211426) main: Frame: 9863 bytes, 320x240[0m
+[0;32mI (211806) http_sender: HTTP POST status: 200[0m
+[0;32mI (211806) main: Frame: 9964 bytes, 320x240[0m
+[0;32mI (212406) http_sender: HTTP POST status: 200[0m
+[0;32mI (212416) main: Frame: 9855 bytes, 320x240[0m
+[0;32mI (212846) http_sender: HTTP POST status: 200[0m
+[0;32mI (212846) main: Frame: 9849 bytes, 320x240[0m
+[0;32mI (213246) http_sender: HTTP POST status: 200[0m
+[0;32mI (213246) main: Frame: 9861 bytes, 320x240[0m
+[0;32mI (213666) http_sender: HTTP POST status: 200[0m
+[0;32mI (213666) main: Frame: 9811 bytes, 320x240[0m
+[0;32mI (214036) http_sender: HTTP POST status: 200[0m
+[0;32mI (214036) main: Frame: 9998 bytes, 320x240[0m
+[0;32mI (214446) http_sender: HTTP POST status: 200[0m
+[0;32mI (214446) main: Frame: 10322 bytes, 320x240[0m
+[0;32mI (214906) http_sender: HTTP POST status: 200[0m
+[0;32mI (214906) main: Frame: 10249 bytes, 320x240[0m
+[0;32mI (215316) http_sender: HTTP POST status: 200[0m
+[0;32mI (215316) main: Frame: 10270 bytes, 320x240[0m
+[0;32mI (216046) http_sender: HTTP POST status: 200[0m
+[0;32mI (216046) main: Frame: 10282 bytes, 320x240[0m
+[0;32mI (216646) http_sender: HTTP POST status: 200[0m
+[0;32mI (216646) main: Frame: 10402 bytes, 320x240[0m
+[0;32mI (217106) http_sender: HTTP POST status: 200[0m
+[0;32mI (217106) main: Frame: 10472 bytes, 320x240[0m
+[0;32mI (217496) http_sender: HTTP POST status: 200[0m
+[0;32mI (217506) main: Frame: 10639 bytes, 320x240[0m
+[0;32mI (217936) http_sender: HTTP POST status: 200[0m
+[0;32mI (217936) main: Frame: 10839 bytes, 320x240[0m
+[0;32mI (218406) http_sender: HTTP POST status: 200[0m
+[0;32mI (218406) main: Frame: 10666 bytes, 320x240[0m
+[0;32mI (218856) http_sender: HTTP POST status: 200[0m
+[0;32mI (218856) main: Frame: 9302 bytes, 320x240[0m
+[0;32mI (219256) http_sender: HTTP POST status: 200[0m
+[0;32mI (219256) main: Frame: 9270 bytes, 320x240[0m
+[0;32mI (219616) http_sender: HTTP POST status: 200[0m
+[0;32mI (219616) main: Frame: 10530 bytes, 320x240[0m
+[0;32mI (220056) http_sender: HTTP POST status: 200[0m
+[0;32mI (220056) main: Frame: 9939 bytes, 320x240[0m
+[0;32mI (220396) http_sender: HTTP POST status: 200[0m
+[0;32mI (220396) main: Frame: 9443 bytes, 320x240[0m
+[0;32mI (220786) http_sender: HTTP POST status: 200[0m
+[0;32mI (220786) main: Frame: 10305 bytes, 320x240[0m
+[0;32mI (221146) http_sender: HTTP POST status: 200[0m
+[0;32mI (221146) main: Frame: 10987 bytes, 320x240[0m
+[0;32mI (221536) http_sender: HTTP POST status: 200[0m
+[0;32mI (221536) main: Frame: 9543 bytes, 320x240[0m
+[0;32mI (221906) http_sender: HTTP POST status: 200[0m
+[0;32mI (221906) main: Frame: 11112 bytes, 320x240[0m
+[0;32mI (222296) http_sender: HTTP POST status: 200[0m
+[0;32mI (222296) main: Frame: 11154 bytes, 320x240[0m
+[0;32mI (222666) http_sender: HTTP POST status: 200[0m
+[0;32mI (222666) main: Frame: 11312 bytes, 320x240[0m
+[0;32mI (223136) http_sender: HTTP POST status: 200[0m
+[0;32mI (223136) main: Frame: 11154 bytes, 320x240[0m
+[0;32mI (223486) http_sender: HTTP POST status: 200[0m
+[0;32mI (223496) main: Frame: 11248 bytes, 320x240[0m
+[0;32mI (223896) http_sender: HTTP POST status: 200[0m
+[0;32mI (223896) main: Frame: 11510 bytes, 320x240[0m
+[0;32mI (224656) http_sender: HTTP POST status: 200[0m
+[0;32mI (224656) main: Frame: 11551 bytes, 320x240[0m
+[0;32mI (225066) http_sender: HTTP POST status: 200[0m
+[0;32mI (225066) main: Frame: 9940 bytes, 320x240[0m
+[0;32mI (225456) http_sender: HTTP POST status: 200[0m
+[0;32mI (225466) main: Frame: 10320 bytes, 320x240[0m
+[0;32mI (225846) http_sender: HTTP POST status: 200[0m
+[0;32mI (225846) main: Frame: 10348 bytes, 320x240[0m
+[0;32mI (226276) http_sender: HTTP POST status: 200[0m
+[0;32mI (226276) main: Frame: 10103 bytes, 320x240[0m
+[0;32mI (226636) http_sender: HTTP POST status: 200[0m
+[0;32mI (226636) main: Frame: 10144 bytes, 320x240[0m
+[0;32mI (226986) http_sender: HTTP POST status: 200[0m
+[0;32mI (226986) main: Frame: 10152 bytes, 320x240[0m
+[0;32mI (227316) http_sender: HTTP POST status: 200[0m
+[0;32mI (227316) main: Frame: 10079 bytes, 320x240[0m
+[0;32mI (227736) http_sender: HTTP POST status: 200[0m
+[0;32mI (227736) main: Frame: 10168 bytes, 320x240[0m
+[0;32mI (228036) http_sender: HTTP POST status: 200[0m
+[0;32mI (228036) main: Frame: 10005 bytes, 320x240[0m
+[0;32mI (228406) http_sender: HTTP POST status: 200[0m
+[0;32mI (228406) main: Frame: 9986 bytes, 320x240[0m
+[0;32mI (228936) http_sender: HTTP POST status: 200[0m
+[0;32mI (228936) main: Frame: 10051 bytes, 320x240[0m
+[0;32mI (229326) http_sender: HTTP POST status: 200[0m
+[0;32mI (229326) main: Frame: 10068 bytes, 320x240[0m
+[0;32mI (229716) http_sender: HTTP POST status: 200[0m
+[0;32mI (229716) main: Frame: 10055 bytes, 320x240[0m
+[0;32mI (230126) http_sender: HTTP POST status: 200[0m
+[0;32mI (230126) main: Frame: 10100 bytes, 320x240[0m
+[0;32mI (230456) http_sender: HTTP POST status: 200[0m
+[0;32mI (230456) main: Frame: 9961 bytes, 320x240[0m
+[0;32mI (231086) http_sender: HTTP POST status: 200[0m
+[0;32mI (231086) main: Frame: 9964 bytes, 320x240[0m
+[0;32mI (231546) http_sender: HTTP POST status: 200[0m
+[0;32mI (231546) main: Frame: 9680 bytes, 320x240[0m
+[0;32mI (232016) http_sender: HTTP POST status: 200[0m
+[0;32mI (232016) main: Frame: 10325 bytes, 320x240[0m
+[0;32mI (232516) http_sender: HTTP POST status: 200[0m
+[0;32mI (232516) main: Frame: 10406 bytes, 320x240[0m
+[0;32mI (233036) http_sender: HTTP POST status: 200[0m
+[0;32mI (233036) main: Frame: 10315 bytes, 320x240[0m
+[0;32mI (233416) http_sender: HTTP POST status: 200[0m
+[0;32mI (233426) main: Frame: 10503 bytes, 320x240[0m
+[0;32mI (233746) http_sender: HTTP POST status: 200[0m
+[0;32mI (233756) main: Frame: 10427 bytes, 320x240[0m
+[0;32mI (234116) http_sender: HTTP POST status: 200[0m
+[0;32mI (234116) main: Frame: 10403 bytes, 320x240[0m
+[0;32mI (234486) http_sender: HTTP POST status: 200[0m
+[0;32mI (234486) main: Frame: 10460 bytes, 320x240[0m
+[0;32mI (234816) http_sender: HTTP POST status: 200[0m
+[0;32mI (234816) main: Frame: 10455 bytes, 320x240[0m
+[0;32mI (235176) http_sender: HTTP POST status: 200[0m
+[0;32mI (235176) main: Frame: 10311 bytes, 320x240[0m
+[0;32mI (235536) http_sender: HTTP POST status: 200[0m
+[0;32mI (235536) main: Frame: 10387 bytes, 320x240[0m
+[0;32mI (235886) http_sender: HTTP POST status: 200[0m
+[0;32mI (235886) main: Frame: 10650 bytes, 320x240[0m
+[0;32mI (236206) http_sender: HTTP POST status: 200[0m
+[0;32mI (236206) main: Frame: 10579 bytes, 320x240[0m
+[0;32mI (236546) http_sender: HTTP POST status: 200[0m
+[0;32mI (236546) main: Frame: 10574 bytes, 320x240[0m
+[0;32mI (236896) http_sender: HTTP POST status: 200[0m
+[0;32mI (236896) main: Frame: 10560 bytes, 320x240[0m
+[0;32mI (237246) http_sender: HTTP POST status: 200[0m
+[0;32mI (237246) main: Frame: 10620 bytes, 320x240[0m
+[0;32mI (237596) http_sender: HTTP POST status: 200[0m
+[0;32mI (237596) main: Frame: 10587 bytes, 320x240[0m
+[0;32mI (237926) http_sender: HTTP POST status: 200[0m
+[0;32mI (237926) main: Frame: 10601 bytes, 320x240[0m
+[0;32mI (238266) http_sender: HTTP POST status: 200[0m
+[0;32mI (238266) main: Frame: 10490 bytes, 320x240[0m
+[0;32mI (238716) http_sender: HTTP POST status: 200[0m
+[0;32mI (238716) main: Frame: 10060 bytes, 320x240[0m
+[0;32mI (239096) http_sender: HTTP POST status: 200[0m
+[0;32mI (239096) main: Frame: 8495 bytes, 320x240[0m
+[0;32mI (239476) http_sender: HTTP POST status: 200[0m
+[0;32mI (239476) main: Frame: 9191 bytes, 320x240[0m
+[0;32mI (239946) http_sender: HTTP POST status: 200[0m
+[0;32mI (239946) main: Frame: 9304 bytes, 320x240[0m
+[0;32mI (240326) http_sender: HTTP POST status: 200[0m
+[0;32mI (240326) main: Frame: 9172 bytes, 320x240[0m
+[0;32mI (240686) http_sender: HTTP POST status: 200[0m
+[0;32mI (240686) main: Frame: 9185 bytes, 320x240[0m
+[0;32mI (241156) http_sender: HTTP POST status: 200[0m
+[0;32mI (241156) main: Frame: 9147 bytes, 320x240[0m
+[0;32mI (241826) http_sender: HTTP POST status: 200[0m
+[0;32mI (241826) main: Frame: 9091 bytes, 320x240[0m
+[0;32mI (242486) http_sender: HTTP POST status: 200[0m
+[0;32mI (242486) main: Frame: 9151 bytes, 320x240[0m
+[0;32mI (242926) http_sender: HTTP POST status: 200[0m
+[0;32mI (242926) main: Frame: 9180 bytes, 320x240[0m
+[0;32mI (243266) http_sender: HTTP POST status: 200[0m
+[0;32mI (243266) main: Frame: 9203 bytes, 320x240[0m
+[0;32mI (243796) http_sender: HTTP POST status: 200[0m
+[0;32mI (243796) main: Frame: 9239 bytes, 320x240[0m
+[0;32mI (244276) http_sender: HTTP POST status: 200[0m
+[0;32mI (244276) main: Frame: 9134 bytes, 320x240[0m
+[0;32mI (244656) http_sender: HTTP POST status: 200[0m
+[0;32mI (244666) main: Frame: 8434 bytes, 320x240[0m
+[0;32mI (245016) http_sender: HTTP POST status: 200[0m
+[0;32mI (245016) main: Frame: 8840 bytes, 320x240[0m
+[0;32mI (245526) http_sender: HTTP POST status: 200[0m
+[0;32mI (245526) main: Frame: 8796 bytes, 320x240[0m
+[0;32mI (246106) http_sender: HTTP POST status: 200[0m
+[0;32mI (246106) main: Frame: 8637 bytes, 320x240[0m
+[0;32mI (246546) http_sender: HTTP POST status: 200[0m
+[0;32mI (246556) main: Frame: 8773 bytes, 320x240[0m
+[0;32mI (247076) http_sender: HTTP POST status: 200[0m
+[0;32mI (247086) main: Frame: 8771 bytes, 320x240[0m
+[0;32mI (248226) http_sender: HTTP POST status: 200[0m
+[0;32mI (248226) main: Frame: 8392 bytes, 320x240[0m
+[0;32mI (248936) http_sender: HTTP POST status: 200[0m
+[0;32mI (248936) main: Frame: 8473 bytes, 320x240[0m
+[0;32mI (249246) http_sender: HTTP POST status: 200[0m
+[0;32mI (249246) main: Frame: 8462 bytes, 320x240[0m
+[0;32mI (249566) http_sender: HTTP POST status: 200[0m
+[0;32mI (249566) main: Frame: 8429 bytes, 320x240[0m
+[0;32mI (249966) http_sender: HTTP POST status: 200[0m
+[0;32mI (249966) main: Frame: 8464 bytes, 320x240[0m
+[0;32mI (250256) http_sender: HTTP POST status: 200[0m
+[0;32mI (250266) main: Frame: 8494 bytes, 320x240[0m
+[0;32mI (250636) http_sender: HTTP POST status: 200[0m
+[0;32mI (250636) main: Frame: 8474 bytes, 320x240[0m
+[0;32mI (251066) http_sender: HTTP POST status: 200[0m
+[0;32mI (251076) main: Frame: 8529 bytes, 320x240[0m
+[0;32mI (251376) http_sender: HTTP POST status: 200[0m
+[0;32mI (251386) main: Frame: 8259 bytes, 320x240[0m
+[0;32mI (251746) http_sender: HTTP POST status: 200[0m
+[0;32mI (251746) main: Frame: 8975 bytes, 320x240[0m
+[0;32mI (252266) http_sender: HTTP POST status: 200[0m
+[0;32mI (252266) main: Frame: 9847 bytes, 320x240[0m
+[0;32mI (252626) http_sender: HTTP POST status: 200[0m
+[0;32mI (252626) main: Frame: 8783 bytes, 320x240[0m
+[0;32mI (253006) http_sender: HTTP POST status: 200[0m
+[0;32mI (253006) main: Frame: 8922 bytes, 320x240[0m
+[0;32mI (253426) http_sender: HTTP POST status: 200[0m
+[0;32mI (253426) main: Frame: 8813 bytes, 320x240[0m
+[0;32mI (253786) http_sender: HTTP POST status: 200[0m
+[0;32mI (253786) main: Frame: 9007 bytes, 320x240[0m
+[0;32mI (254436) http_sender: HTTP POST status: 200[0m
+[0;32mI (254436) main: Frame: 9523 bytes, 320x240[0m
+[0;32mI (254816) http_sender: HTTP POST status: 200[0m
+[0;32mI (254816) main: Frame: 9646 bytes, 320x240[0m
+[0;32mI (255256) http_sender: HTTP POST status: 200[0m
+[0;32mI (255256) main: Frame: 9648 bytes, 320x240[0m
+[0;32mI (255596) http_sender: HTTP POST status: 200[0m
+[0;32mI (255606) main: Frame: 9602 bytes, 320x240[0m
+[0;32mI (256016) http_sender: HTTP POST status: 200[0m
+[0;32mI (256016) main: Frame: 9667 bytes, 320x240[0m
+[0;32mI (256416) http_sender: HTTP POST status: 200[0m
+[0;32mI (256416) main: Frame: 9603 bytes, 320x240[0m
+[0;32mI (256926) http_sender: HTTP POST status: 200[0m
+[0;32mI (256926) main: Frame: 9614 bytes, 320x240[0m
+[0;32mI (258976) http_sender: HTTP POST status: 200[0m
+[0;32mI (258976) main: Frame: 9639 bytes, 320x240[0m
+[0;32mI (259376) http_sender: HTTP POST status: 200[0m
+[0;32mI (259376) main: Frame: 9652 bytes, 320x240[0m
+[0;32mI (259896) http_sender: HTTP POST status: 200[0m
+[0;32mI (259896) main: Frame: 9614 bytes, 320x240[0m
+[0;32mI (260306) http_sender: HTTP POST status: 200[0m
+[0;32mI (260306) main: Frame: 9753 bytes, 320x240[0m
+[0;32mI (260746) http_sender: HTTP POST status: 200[0m
+[0;32mI (260746) main: Frame: 9744 bytes, 320x240[0m
+[0;32mI (261196) http_sender: HTTP POST status: 200[0m
+[0;32mI (261196) main: Frame: 9648 bytes, 320x240[0m
+[0;32mI (261586) http_sender: HTTP POST status: 200[0m
+[0;32mI (261586) main: Frame: 9557 bytes, 320x240[0m
+[0;32mI (261926) http_sender: HTTP POST status: 200[0m
+[0;32mI (261936) main: Frame: 9459 bytes, 320x240[0m
+[0;32mI (262296) http_sender: HTTP POST status: 200[0m
+[0;32mI (262296) main: Frame: 9542 bytes, 320x240[0m
+[0;32mI (262676) http_sender: HTTP POST status: 200[0m
+[0;32mI (262676) main: Frame: 9668 bytes, 320x240[0m
+[0;32mI (263006) http_sender: HTTP POST status: 200[0m
+[0;32mI (263006) main: Frame: 9615 bytes, 320x240[0m
+[0;32mI (263456) http_sender: HTTP POST status: 200[0m
+[0;32mI (263456) main: Frame: 9661 bytes, 320x240[0m
+[0;32mI (263876) http_sender: HTTP POST status: 200[0m
+[0;32mI (263876) main: Frame: 9474 bytes, 320x240[0m
+[0;32mI (264316) http_sender: HTTP POST status: 200[0m
+[0;32mI (264316) main: Frame: 9508 bytes, 320x240[0m
+[0;32mI (264716) http_sender: HTTP POST status: 200[0m
+[0;32mI (264716) main: Frame: 9526 bytes, 320x240[0m
+[0;32mI (265126) http_sender: HTTP POST status: 200[0m
+[0;32mI (265126) main: Frame: 9509 bytes, 320x240[0m
+[0;32mI (265476) http_sender: HTTP POST status: 200[0m
+[0;32mI (265486) main: Frame: 9484 bytes, 320x240[0m
+[0;32mI (265886) http_sender: HTTP POST status: 200[0m
+[0;32mI (265886) main: Frame: 9485 bytes, 320x240[0m
+[0;32mI (266416) http_sender: HTTP POST status: 200[0m
+[0;32mI (266416) main: Frame: 9489 bytes, 320x240[0m
+[0;32mI (267276) http_sender: HTTP POST status: 200[0m
+[0;32mI (267276) main: Frame: 9489 bytes, 320x240[0m
+[0;32mI (267956) http_sender: HTTP POST status: 200[0m
+[0;32mI (267956) main: Frame: 9506 bytes, 320x240[0m
+[0;32mI (268556) http_sender: HTTP POST status: 200[0m
+[0;32mI (268556) main: Frame: 9469 bytes, 320x240[0m
+[0;32mI (269196) http_sender: HTTP POST status: 200[0m
+[0;32mI (269196) main: Frame: 9472 bytes, 320x240[0m
+[0;32mI (269586) http_sender: HTTP POST status: 200[0m
+[0;32mI (269586) main: Frame: 9514 bytes, 320x240[0m
+[0;32mI (270016) http_sender: HTTP POST status: 200[0m
+[0;32mI (270016) main: Frame: 9461 bytes, 320x240[0m
+[0;32mI (270386) http_sender: HTTP POST status: 200[0m
+[0;32mI (270386) main: Frame: 9399 bytes, 320x240[0m
+[0;32mI (270786) http_sender: HTTP POST status: 200[0m
+[0;32mI (270796) main: Frame: 9409 bytes, 320x240[0m
+[0;32mI (271186) http_sender: HTTP POST status: 200[0m
+[0;32mI (271186) main: Frame: 9444 bytes, 320x240[0m
+[0;32mI (271586) http_sender: HTTP POST status: 200[0m
+[0;32mI (271586) main: Frame: 9484 bytes, 320x240[0m
+[0;32mI (271966) http_sender: HTTP POST status: 200[0m
+[0;32mI (271966) main: Frame: 9511 bytes, 320x240[0m
+[0;32mI (272396) http_sender: HTTP POST status: 200[0m
+[0;32mI (272396) main: Frame: 9562 bytes, 320x240[0m
+[0;32mI (272936) http_sender: HTTP POST status: 200[0m
+[0;32mI (272936) main: Frame: 9518 bytes, 320x240[0m
+[0;32mI (273426) http_sender: HTTP POST status: 200[0m
+[0;32mI (273426) main: Frame: 9504 bytes, 320x240[0m
+[0;32mI (273796) http_sender: HTTP POST status: 200[0m
+[0;32mI (273806) main: Frame: 9581 bytes, 320x240[0m
+[0;32mI (274206) http_sender: HTTP POST status: 200[0m
+[0;32mI (274206) main: Frame: 9563 bytes, 320x240[0m
+[0;32mI (274616) http_sender: HTTP POST status: 200[0m
+[0;32mI (274616) main: Frame: 9581 bytes, 320x240[0m
+[0;32mI (275006) http_sender: HTTP POST status: 200[0m
+[0;32mI (275006) main: Frame: 9554 bytes, 320x240[0m
+[0;32mI (275386) http_sender: HTTP POST status: 200[0m
+[0;32mI (275386) main: Frame: 9516 bytes, 320x240[0m
+[0;32mI (275746) http_sender: HTTP POST status: 200[0m
+[0;32mI (275756) main: Frame: 9444 bytes, 320x240[0m
+[0;32mI (276126) http_sender: HTTP POST status: 200[0m
+[0;32mI (276126) main: Frame: 9470 bytes, 320x240[0m
+[0;32mI (276536) http_sender: HTTP POST status: 200[0m
+[0;32mI (276536) main: Frame: 9504 bytes, 320x240[0m
+[0;32mI (277116) http_sender: HTTP POST status: 200[0m
+[0;32mI (277116) main: Frame: 9472 bytes, 320x240[0m
+[0;32mI (277796) http_sender: HTTP POST status: 200[0m
+[0;32mI (277796) main: Frame: 9433 bytes, 320x240[0m
+[0;32mI (278186) http_sender: HTTP POST status: 200[0m
+[0;32mI (278186) main: Frame: 9450 bytes, 320x240[0m
+[0;32mI (278706) http_sender: HTTP POST status: 200[0m
+[0;32mI (278706) main: Frame: 9489 bytes, 320x240[0m
+[0;32mI (279106) http_sender: HTTP POST status: 200[0m
+[0;32mI (279106) main: Frame: 9493 bytes, 320x240[0m
+[0;32mI (279496) http_sender: HTTP POST status: 200[0m
+[0;32mI (279506) main: Frame: 9455 bytes, 320x240[0m
+[0;32mI (279936) http_sender: HTTP POST status: 200[0m
+[0;32mI (279946) main: Frame: 9431 bytes, 320x240[0m
+[0;32mI (280356) http_sender: HTTP POST status: 200[0m
+[0;32mI (280356) main: Frame: 9427 bytes, 320x240[0m
+[0;32mI (280746) http_sender: HTTP POST status: 200[0m
+[0;32mI (280756) main: Frame: 9514 bytes, 320x240[0m
+[0;32mI (281166) http_sender: HTTP POST status: 200[0m
+[0;32mI (281166) main: Frame: 9490 bytes, 320x240[0m
+[0;32mI (281526) http_sender: HTTP POST status: 200[0m
+[0;32mI (281526) main: Frame: 9501 bytes, 320x240[0m
+[0;32mI (281906) http_sender: HTTP POST status: 200[0m
+[0;32mI (281906) main: Frame: 9509 bytes, 320x240[0m
+[0;32mI (282286) http_sender: HTTP POST status: 200[0m
+[0;32mI (282286) main: Frame: 9496 bytes, 320x240[0m
+[0;32mI (282676) http_sender: HTTP POST status: 200[0m
+[0;32mI (282686) main: Frame: 9498 bytes, 320x240[0m
+[0;32mI (283006) http_sender: HTTP POST status: 200[0m
+[0;32mI (283016) main: Frame: 9510 bytes, 320x240[0m
+[0;32mI (283406) http_sender: HTTP POST status: 200[0m
+[0;32mI (283406) main: Frame: 9361 bytes, 320x240[0m
+[0;32mI (283786) http_sender: HTTP POST status: 200[0m
+[0;32mI (283786) main: Frame: 8687 bytes, 320x240[0m
+[0;32mI (284116) http_sender: HTTP POST status: 200[0m
+[0;32mI (284116) main: Frame: 8111 bytes, 320x240[0m
+[0;32mI (284416) http_sender: HTTP POST status: 200[0m
+[0;32mI (284416) main: Frame: 8111 bytes, 320x240[0m
+[0;32mI (284706) http_sender: HTTP POST status: 200[0m
+[0;32mI (284706) main: Frame: 9241 bytes, 320x240[0m
+[0;32mI (285136) http_sender: HTTP POST status: 200[0m
+[0;32mI (285136) main: Frame: 8626 bytes, 320x240[0m
+[0;32mI (285436) http_sender: HTTP POST status: 200[0m
+[0;32mI (285436) main: Frame: 9322 bytes, 320x240[0m
+[0;32mI (286086) http_sender: HTTP POST status: 200[0m
+[0;32mI (286096) main: Frame: 9450 bytes, 320x240[0m
+[0;32mI (286466) http_sender: HTTP POST status: 200[0m
+[0;32mI (286466) main: Frame: 9726 bytes, 320x240[0m
+[0;32mI (286836) http_sender: HTTP POST status: 200[0m
+[0;32mI (286836) main: Frame: 9790 bytes, 320x240[0m
+[0;32mI (287306) http_sender: HTTP POST status: 200[0m
+[0;32mI (287306) main: Frame: 9783 bytes, 320x240[0m
+[0;32mI (287736) http_sender: HTTP POST status: 200[0m
+[0;32mI (287736) main: Frame: 9753 bytes, 320x240[0m
+[0;32mI (288116) http_sender: HTTP POST status: 200[0m
+[0;32mI (288116) main: Frame: 9722 bytes, 320x240[0m
+[0;32mI (288496) http_sender: HTTP POST status: 200[0m
+[0;32mI (288506) main: Frame: 9722 bytes, 320x240[0m
+[0;32mI (288886) http_sender: HTTP POST status: 200[0m
+[0;32mI (288886) main: Frame: 9497 bytes, 320x240[0m
+[0;32mI (289456) http_sender: HTTP POST status: 200[0m
+[0;32mI (289456) main: Frame: 9458 bytes, 320x240[0m
+[0;32mI (289796) http_sender: HTTP POST status: 200[0m
+[0;32mI (289796) main: Frame: 9626 bytes, 320x240[0m
+[0;32mI (290156) http_sender: HTTP POST status: 200[0m
+[0;32mI (290166) main: Frame: 8193 bytes, 320x240[0m
+[0;32mI (290466) http_sender: HTTP POST status: 200[0m
+[0;32mI (290466) main: Frame: 9798 bytes, 320x240[0m
+[0;32mI (290996) http_sender: HTTP POST status: 200[0m
+[0;32mI (290996) main: Frame: 9916 bytes, 320x240[0m
+[0;32mI (291636) http_sender: HTTP POST status: 200[0m
+[0;32mI (291636) main: Frame: 9830 bytes, 320x240[0m
+[0;32mI (292016) http_sender: HTTP POST status: 200[0m
+[0;32mI (292016) main: Frame: 9901 bytes, 320x240[0m
+[0;32mI (292366) http_sender: HTTP POST status: 200[0m
+[0;32mI (292366) main: Frame: 9913 bytes, 320x240[0m
+[0;32mI (292736) http_sender: HTTP POST status: 200[0m
+[0;32mI (292746) main: Frame: 9801 bytes, 320x240[0m
+[0;32mI (293696) http_sender: HTTP POST status: 200[0m
+[0;32mI (293696) main: Frame: 9964 bytes, 320x240[0m
+[0;32mI (294076) http_sender: HTTP POST status: 200[0m
+[0;32mI (294076) main: Frame: 9954 bytes, 320x240[0m
+[0;32mI (294466) http_sender: HTTP POST status: 200[0m
+[0;32mI (294466) main: Frame: 9841 bytes, 320x240[0m
+[0;32mI (294886) http_sender: HTTP POST status: 200[0m
+[0;32mI (294886) main: Frame: 9934 bytes, 320x240[0m
+[0;32mI (295256) http_sender: HTTP POST status: 200[0m
+[0;32mI (295266) main: Frame: 10094 bytes, 320x240[0m
+[0;32mI (295636) http_sender: HTTP POST status: 200[0m
+[0;32mI (295646) main: Frame: 10210 bytes, 320x240[0m
+[0;32mI (296016) http_sender: HTTP POST status: 200[0m
+[0;32mI (296016) main: Frame: 10159 bytes, 320x240[0m
+[0;32mI (296366) http_sender: HTTP POST status: 200[0m
+[0;32mI (296366) main: Frame: 10100 bytes, 320x240[0m
+[0;32mI (296706) http_sender: HTTP POST status: 200[0m
+[0;32mI (296716) main: Frame: 10007 bytes, 320x240[0m
+[0;32mI (297126) http_sender: HTTP POST status: 200[0m
+[0;32mI (297136) main: Frame: 9931 bytes, 320x240[0m
+[0;32mI (297506) http_sender: HTTP POST status: 200[0m
+[0;32mI (297516) main: Frame: 9922 bytes, 320x240[0m
+[0;32mI (297886) http_sender: HTTP POST status: 200[0m
+[0;32mI (297886) main: Frame: 9871 bytes, 320x240[0m
+[0;32mI (298326) http_sender: HTTP POST status: 200[0m
+[0;32mI (298326) main: Frame: 9272 bytes, 320x240[0m
+[0;32mI (298736) http_sender: HTTP POST status: 200[0m
+[0;32mI (298736) main: Frame: 9868 bytes, 320x240[0m
+[0;32mI (299096) http_sender: HTTP POST status: 200[0m
+[0;32mI (299096) main: Frame: 9487 bytes, 320x240[0m
+[0;32mI (300066) http_sender: HTTP POST status: 200[0m
+[0;32mI (300076) main: Frame: 9472 bytes, 320x240[0m
+[0;32mI (300476) http_sender: HTTP POST status: 200[0m
+[0;32mI (300476) main: Frame: 9682 bytes, 320x240[0m
+[0;32mI (300936) http_sender: HTTP POST status: 200[0m
+[0;32mI (300936) main: Frame: 7390 bytes, 320x240[0m
+[0;32mI (301236) http_sender: HTTP POST status: 200[0m
+[0;32mI (301236) main: Frame: 10045 bytes, 320x240[0m
+[0;32mI (301686) http_sender: HTTP POST status: 200[0m
+[0;32mI (301686) main: Frame: 10062 bytes, 320x240[0m
+[0;32mI (302136) http_sender: HTTP POST status: 200[0m
+[0;32mI (302136) main: Frame: 10100 bytes, 320x240[0m
+[0;32mI (302596) http_sender: HTTP POST status: 200[0m
+[0;32mI (302596) main: Frame: 10363 bytes, 320x240[0m
+[0;32mI (302956) http_sender: HTTP POST status: 200[0m
+[0;32mI (302966) main: Frame: 10392 bytes, 320x240[0m
+[0;32mI (303296) http_sender: HTTP POST status: 200[0m
+[0;32mI (303296) main: Frame: 10198 bytes, 320x240[0m
+[0;32mI (303706) http_sender: HTTP POST status: 200[0m
+[0;32mI (303706) main: Frame: 10141 bytes, 320x240[0m
+[0;32mI (304036) http_sender: HTTP POST status: 200[0m
+[0;32mI (304046) main: Frame: 10182 bytes, 320x240[0m
+[0;32mI (304386) http_sender: HTTP POST status: 200[0m
+[0;32mI (304386) main: Frame: 10115 bytes, 320x240[0m
+[0;32mI (304776) http_sender: HTTP POST status: 200[0m
+[0;32mI (304776) main: Frame: 10253 bytes, 320x240[0m
+[0;32mI (305206) http_sender: HTTP POST status: 200[0m
+[0;32mI (305206) main: Frame: 10085 bytes, 320x240[0m
+[0;32mI (305626) http_sender: HTTP POST status: 200[0m
+[0;32mI (305626) main: Frame: 9999 bytes, 320x240[0m
+[0;32mI (306076) http_sender: HTTP POST status: 200[0m
+[0;32mI (306086) main: Frame: 9797 bytes, 320x240[0m
+[0;32mI (306506) http_sender: HTTP POST status: 200[0m
+[0;32mI (306506) main: Frame: 10013 bytes, 320x240[0m
+[0;32mI (306906) http_sender: HTTP POST status: 200[0m
+[0;32mI (306906) main: Frame: 10191 bytes, 320x240[0m
+[0;32mI (307276) http_sender: HTTP POST status: 200[0m
+[0;32mI (307286) main: Frame: 10034 bytes, 320x240[0m
+[0;32mI (307666) http_sender: HTTP POST status: 200[0m
+[0;32mI (307676) main: Frame: 9852 bytes, 320x240[0m
+[0;32mI (308076) http_sender: HTTP POST status: 200[0m
+[0;32mI (308076) main: Frame: 10266 bytes, 320x240[0m
+[0;32mI (308496) http_sender: HTTP POST status: 200[0m
+[0;32mI (308496) main: Frame: 10471 bytes, 320x240[0m
+[0;32mI (308856) http_sender: HTTP POST status: 200[0m
+[0;32mI (308856) main: Frame: 10433 bytes, 320x240[0m
+[0;32mI (309256) http_sender: HTTP POST status: 200[0m
+[0;32mI (309256) main: Frame: 10465 bytes, 320x240[0m
+[0;32mI (309666) http_sender: HTTP POST status: 200[0m
+[0;32mI (309666) main: Frame: 10430 bytes, 320x240[0m
+[0;32mI (310126) http_sender: HTTP POST status: 200[0m
+[0;32mI (310126) main: Frame: 10290 bytes, 320x240[0m
+[0;32mI (310516) http_sender: HTTP POST status: 200[0m
+[0;32mI (310526) main: Frame: 10146 bytes, 320x240[0m
+[0;32mI (310876) http_sender: HTTP POST status: 200[0m
+[0;32mI (310876) main: Frame: 9964 bytes, 320x240[0m
+[0;32mI (311616) http_sender: HTTP POST status: 200[0m
+[0;32mI (311616) main: Frame: 10124 bytes, 320x240[0m
+[0;32mI (311966) http_sender: HTTP POST status: 200[0m
+[0;32mI (311966) main: Frame: 10385 bytes, 320x240[0m
+[0;32mI (312396) http_sender: HTTP POST status: 200[0m
+[0;32mI (312396) main: Frame: 10304 bytes, 320x240[0m
+[0;32mI (312776) http_sender: HTTP POST status: 200[0m
+[0;32mI (312776) main: Frame: 10346 bytes, 320x240[0m
+[0;32mI (313126) http_sender: HTTP POST status: 200[0m
+[0;32mI (313126) main: Frame: 9599 bytes, 320x240[0m
+[0;32mI (313536) http_sender: HTTP POST status: 200[0m
+[0;32mI (313536) main: Frame: 9947 bytes, 320x240[0m
+[0;32mI (314046) http_sender: HTTP POST status: 200[0m
+[0;32mI (314056) main: Frame: 8927 bytes, 320x240[0m
+[0;32mI (314426) http_sender: HTTP POST status: 200[0m
+[0;32mI (314426) main: Frame: 9834 bytes, 320x240[0m
+[0;32mI (314806) http_sender: HTTP POST status: 200[0m
+[0;32mI (314806) main: Frame: 9789 bytes, 320x240[0m
+[0;32mI (315196) http_sender: HTTP POST status: 200[0m
+[0;32mI (315196) main: Frame: 9969 bytes, 320x240[0m
+[0;32mI (315586) http_sender: HTTP POST status: 200[0m
+[0;32mI (315586) main: Frame: 9681 bytes, 320x240[0m
+[0;32mI (316186) http_sender: HTTP POST status: 200[0m
+[0;32mI (316186) main: Frame: 9434 bytes, 320x240[0m
+[0;32mI (316586) http_sender: HTTP POST status: 200[0m
+[0;32mI (316586) main: Frame: 9409 bytes, 320x240[0m
+[0;32mI (316976) http_sender: HTTP POST status: 200[0m
+[0;32mI (316976) main: Frame: 9604 bytes, 320x240[0m
+[0;32mI (317336) http_sender: HTTP POST status: 200[0m
+[0;32mI (317336) main: Frame: 9653 bytes, 320x240[0m
+[0;32mI (318036) http_sender: HTTP POST status: 200[0m
+[0;32mI (318036) main: Frame: 9642 bytes, 320x240[0m
+[0;32mI (318426) http_sender: HTTP POST status: 200[0m
+[0;32mI (318426) main: Frame: 9780 bytes, 320x240[0m
+[0;32mI (318826) http_sender: HTTP POST status: 200[0m
+[0;32mI (318826) main: Frame: 9866 bytes, 320x240[0m
+[0;32mI (319246) http_sender: HTTP POST status: 200[0m
+[0;32mI (319246) main: Frame: 10002 bytes, 320x240[0m
+[0;32mI (319866) http_sender: HTTP POST status: 200[0m
+[0;32mI (319866) main: Frame: 9923 bytes, 320x240[0m
+[0;32mI (320276) http_sender: HTTP POST status: 200[0m
+[0;32mI (320276) main: Frame: 8122 bytes, 320x240[0m
+[0;32mI (320666) http_sender: HTTP POST status: 200[0m
+[0;32mI (320666) main: Frame: 9555 bytes, 320x240[0m
+[0;32mI (321046) http_sender: HTTP POST status: 200[0m
+[0;32mI (321046) main: Frame: 9685 bytes, 320x240[0m
+[0;32mI (321396) http_sender: HTTP POST status: 200[0m
+[0;32mI (321406) main: Frame: 9722 bytes, 320x240[0m
+[0;32mI (321876) http_sender: HTTP POST status: 200[0m
+[0;32mI (321876) main: Frame: 9924 bytes, 320x240[0m
+[0;32mI (322336) http_sender: HTTP POST status: 200[0m
+[0;32mI (322336) main: Frame: 10003 bytes, 320x240[0m
+[0;32mI (322706) http_sender: HTTP POST status: 200[0m
+[0;32mI (322706) main: Frame: 9954 bytes, 320x240[0m
+[0;32mI (323266) http_sender: HTTP POST status: 200[0m
+[0;32mI (323266) main: Frame: 9890 bytes, 320x240[0m
+[0;32mI (323646) http_sender: HTTP POST status: 200[0m
+[0;32mI (323646) main: Frame: 9840 bytes, 320x240[0m
+[0;32mI (324066) http_sender: HTTP POST status: 200[0m
+[0;32mI (324066) main: Frame: 9876 bytes, 320x240[0m
+[0;32mI (324476) http_sender: HTTP POST status: 200[0m
+[0;32mI (324476) main: Frame: 10042 bytes, 320x240[0m
+[0;32mI (324846) http_sender: HTTP POST status: 200[0m
+[0;32mI (324846) main: Frame: 9991 bytes, 320x240[0m
+[0;32mI (325236) http_sender: HTTP POST status: 200[0m
+[0;32mI (325236) main: Frame: 9937 bytes, 320x240[0m
+[0;32mI (325606) http_sender: HTTP POST status: 200[0m
+[0;32mI (325606) main: Frame: 9749 bytes, 320x240[0m
+[0;32mI (325986) http_sender: HTTP POST status: 200[0m
+[0;32mI (325986) main: Frame: 9800 bytes, 320x240[0m
+[0;32mI (326356) http_sender: HTTP POST status: 200[0m
+[0;32mI (326356) main: Frame: 9961 bytes, 320x240[0m
+[0;32mI (326756) http_sender: HTTP POST status: 200[0m
+[0;32mI (326756) main: Frame: 10044 bytes, 320x240[0m
+[0;32mI (327136) http_sender: HTTP POST status: 200[0m
+[0;32mI (327136) main: Frame: 9982 bytes, 320x240[0m
+[0;32mI (327506) http_sender: HTTP POST status: 200[0m
+[0;32mI (327506) main: Frame: 9946 bytes, 320x240[0m
+[0;32mI (327846) http_sender: HTTP POST status: 200[0m
+[0;32mI (327846) main: Frame: 10044 bytes, 320x240[0m
+[0;32mI (328226) http_sender: HTTP POST status: 200[0m
+[0;32mI (328226) main: Frame: 10114 bytes, 320x240[0m
+[0;32mI (328766) http_sender: HTTP POST status: 200[0m
+[0;32mI (328766) main: Frame: 10107 bytes, 320x240[0m
+[0;32mI (329166) http_sender: HTTP POST status: 200[0m
+[0;32mI (329176) main: Frame: 10222 bytes, 320x240[0m
+[0;32mI (329526) http_sender: HTTP POST status: 200[0m
+[0;32mI (329526) main: Frame: 10252 bytes, 320x240[0m
+[0;32mI (329866) http_sender: HTTP POST status: 200[0m
+[0;32mI (329866) main: Frame: 10114 bytes, 320x240[0m
+[0;32mI (330296) http_sender: HTTP POST status: 200[0m
+[0;32mI (330296) main: Frame: 10071 bytes, 320x240[0m
+[0;32mI (330686) http_sender: HTTP POST status: 200[0m
+[0;32mI (330686) main: Frame: 10178 bytes, 320x240[0m
+[0;32mI (331006) http_sender: HTTP POST status: 200[0m
+[0;32mI (331006) main: Frame: 10078 bytes, 320x240[0m
+[0;32mI (331396) http_sender: HTTP POST status: 200[0m
+[0;32mI (331396) main: Frame: 10469 bytes, 320x240[0m
+[0;32mI (331746) http_sender: HTTP POST status: 200[0m
+[0;32mI (331746) main: Frame: 10489 bytes, 320x240[0m
+[0;32mI (332116) http_sender: HTTP POST status: 200[0m
+[0;32mI (332116) main: Frame: 10497 bytes, 320x240[0m
+[0;32mI (332476) http_sender: HTTP POST status: 200[0m
+[0;32mI (332476) main: Frame: 10582 bytes, 320x240[0m
+[0;32mI (332846) http_sender: HTTP POST status: 200[0m
+[0;32mI (332846) main: Frame: 10508 bytes, 320x240[0m
+[0;32mI (333186) http_sender: HTTP POST status: 200[0m
+[0;32mI (333186) main: Frame: 10570 bytes, 320x240[0m
+[0;32mI (333546) http_sender: HTTP POST status: 200[0m
+[0;32mI (333546) main: Frame: 10511 bytes, 320x240[0m
+[0;32mI (333906) http_sender: HTTP POST status: 200[0m
+[0;32mI (333906) main: Frame: 10573 bytes, 320x240[0m
+[0;32mI (334256) http_sender: HTTP POST status: 200[0m
+[0;32mI (334256) main: Frame: 10479 bytes, 320x240[0m
+[0;32mI (334606) http_sender: HTTP POST status: 200[0m
+[0;32mI (334606) main: Frame: 10416 bytes, 320x240[0m
+[0;32mI (334956) http_sender: HTTP POST status: 200[0m
+[0;32mI (334956) main: Frame: 10485 bytes, 320x240[0m
+[0;32mI (335296) http_sender: HTTP POST status: 200[0m
+[0;32mI (335306) main: Frame: 10300 bytes, 320x240[0m
+[0;32mI (335636) http_sender: HTTP POST status: 200[0m
+[0;32mI (335636) main: Frame: 10244 bytes, 320x240[0m
+[0;32mI (335996) http_sender: HTTP POST status: 200[0m
+[0;32mI (335996) main: Frame: 10237 bytes, 320x240[0m
+[0;32mI (336346) http_sender: HTTP POST status: 200[0m
+[0;32mI (336346) main: Frame: 10361 bytes, 320x240[0m
+[0;32mI (336696) http_sender: HTTP POST status: 200[0m
+[0;32mI (336696) main: Frame: 10455 bytes, 320x240[0m
+[0;32mI (337106) http_sender: HTTP POST status: 200[0m
+[0;32mI (337106) main: Frame: 10434 bytes, 320x240[0m
+[0;32mI (337456) http_sender: HTTP POST status: 200[0m
+[0;32mI (337456) main: Frame: 10287 bytes, 320x240[0m
+[0;32mI (337896) http_sender: HTTP POST status: 200[0m
+[0;32mI (337896) main: Frame: 10267 bytes, 320x240[0m
+[0;32mI (338326) http_sender: HTTP POST status: 200[0m
+[0;32mI (338326) main: Frame: 10206 bytes, 320x240[0m
+[0;32mI (338696) http_sender: HTTP POST status: 200[0m
+[0;32mI (338696) main: Frame: 10210 bytes, 320x240[0m
+[0;32mI (339056) http_sender: HTTP POST status: 200[0m
+[0;32mI (339056) main: Frame: 10226 bytes, 320x240[0m
+[0;32mI (339496) http_sender: HTTP POST status: 200[0m
+[0;32mI (339496) main: Frame: 10467 bytes, 320x240[0m
+[0;32mI (339926) http_sender: HTTP POST status: 200[0m
+[0;32mI (339926) main: Frame: 10561 bytes, 320x240[0m
+[0;32mI (340346) http_sender: HTTP POST status: 200[0m
+[0;32mI (340356) main: Frame: 10511 bytes, 320x240[0m
+[0;32mI (340706) http_sender: HTTP POST status: 200[0m
+[0;32mI (340706) main: Frame: 10392 bytes, 320x240[0m
+[0;32mI (341056) http_sender: HTTP POST status: 200[0m
+[0;32mI (341056) main: Frame: 10377 bytes, 320x240[0m
+[0;32mI (341446) http_sender: HTTP POST status: 200[0m
+[0;32mI (341446) main: Frame: 10337 bytes, 320x240[0m
+[0;32mI (341806) http_sender: HTTP POST status: 200[0m
+[0;32mI (341806) main: Frame: 10421 bytes, 320x240[0m
+[0;32mI (342186) http_sender: HTTP POST status: 200[0m
+[0;32mI (342186) main: Frame: 10502 bytes, 320x240[0m
+[0;32mI (342556) http_sender: HTTP POST status: 200[0m
+[0;32mI (342556) main: Frame: 10660 bytes, 320x240[0m
+[0;32mI (342956) http_sender: HTTP POST status: 200[0m
+[0;32mI (342956) main: Frame: 10625 bytes, 320x240[0m
+[0;32mI (343336) http_sender: HTTP POST status: 200[0m
+[0;32mI (343346) main: Frame: 10605 bytes, 320x240[0m
+[0;32mI (343706) http_sender: HTTP POST status: 200[0m
+[0;32mI (343706) main: Frame: 10556 bytes, 320x240[0m
+[0;32mI (344426) http_sender: HTTP POST status: 200[0m
+[0;32mI (344426) main: Frame: 10415 bytes, 320x240[0m
+[0;32mI (344806) http_sender: HTTP POST status: 200[0m
+[0;32mI (344806) main: Frame: 10211 bytes, 320x240[0m
+[0;32mI (345156) http_sender: HTTP POST status: 200[0m
+[0;32mI (345166) main: Frame: 10511 bytes, 320x240[0m
+[0;32mI (345506) http_sender: HTTP POST status: 200[0m
+[0;32mI (345506) main: Frame: 10494 bytes, 320x240[0m
+[0;32mI (345856) http_sender: HTTP POST status: 200[0m
+[0;32mI (345866) main: Frame: 10476 bytes, 320x240[0m
+[0;32mI (346316) http_sender: HTTP POST status: 200[0m
+[0;32mI (346316) main: Frame: 10202 bytes, 320x240[0m
+[0;32mI (346686) http_sender: HTTP POST status: 200[0m
+[0;32mI (346686) main: Frame: 10089 bytes, 320x240[0m
+[0;32mI (347096) http_sender: HTTP POST status: 200[0m
+[0;32mI (347096) main: Frame: 10036 bytes, 320x240[0m
+[0;32mI (347486) http_sender: HTTP POST status: 200[0m
+[0;32mI (347486) main: Frame: 10086 bytes, 320x240[0m
+[0;32mI (347836) http_sender: HTTP POST status: 200[0m
+[0;32mI (347836) main: Frame: 10189 bytes, 320x240[0m
+[0;32mI (348156) http_sender: HTTP POST status: 200[0m
+[0;32mI (348156) main: Frame: 10169 bytes, 320x240[0m
+[0;32mI (348506) http_sender: HTTP POST status: 200[0m
+[0;32mI (348506) main: Frame: 10189 bytes, 320x240[0m
+[0;32mI (348876) http_sender: HTTP POST status: 200[0m
+[0;32mI (348876) main: Frame: 10174 bytes, 320x240[0m
+[0;32mI (349306) http_sender: HTTP POST status: 200[0m
+[0;32mI (349306) main: Frame: 10248 bytes, 320x240[0m
+[0;32mI (349666) http_sender: HTTP POST status: 200[0m
+[0;32mI (349666) main: Frame: 10286 bytes, 320x240[0m
+[0;32mI (350076) http_sender: HTTP POST status: 200[0m
+[0;32mI (350076) main: Frame: 10291 bytes, 320x240[0m
+[0;32mI (350546) http_sender: HTTP POST status: 200[0m
+[0;32mI (350546) main: Frame: 10267 bytes, 320x240[0m
+[0;32mI (350926) http_sender: HTTP POST status: 200[0m
+[0;32mI (350926) main: Frame: 10313 bytes, 320x240[0m
+[0;32mI (351286) http_sender: HTTP POST status: 200[0m
+[0;32mI (351286) main: Frame: 10243 bytes, 320x240[0m
+[0;32mI (351616) http_sender: HTTP POST status: 200[0m
+[0;32mI (351616) main: Frame: 10283 bytes, 320x240[0m
+[0;32mI (351956) http_sender: HTTP POST status: 200[0m
+[0;32mI (351956) main: Frame: 10387 bytes, 320x240[0m
+[0;32mI (352406) http_sender: HTTP POST status: 200[0m
+[0;32mI (352406) main: Frame: 10406 bytes, 320x240[0m
+[0;32mI (352776) http_sender: HTTP POST status: 200[0m
+[0;32mI (352776) main: Frame: 10265 bytes, 320x240[0m
+[0;32mI (353146) http_sender: HTTP POST status: 200[0m
+[0;32mI (353146) main: Frame: 10245 bytes, 320x240[0m
+[0;32mI (353906) http_sender: HTTP POST status: 200[0m
+[0;32mI (353906) main: Frame: 10308 bytes, 320x240[0m
+[0;32mI (354516) http_sender: HTTP POST status: 200[0m
+[0;32mI (354516) main: Frame: 10530 bytes, 320x240[0m
+[0;32mI (354916) http_sender: HTTP POST status: 200[0m
+[0;32mI (354916) main: Frame: 10542 bytes, 320x240[0m
+[0;32mI (355356) http_sender: HTTP POST status: 200[0m
+[0;32mI (355356) main: Frame: 10571 bytes, 320x240[0m
+[0;32mI (355836) http_sender: HTTP POST status: 200[0m
+[0;32mI (355836) main: Frame: 10228 bytes, 320x240[0m
+[0;32mI (356296) http_sender: HTTP POST status: 200[0m
+[0;32mI (356296) main: Frame: 10279 bytes, 320x240[0m
+[0;32mI (356976) http_sender: HTTP POST status: 200[0m
+[0;32mI (356976) main: Frame: 10412 bytes, 320x240[0m
+[0;32mI (357426) http_sender: HTTP POST status: 200[0m
+[0;32mI (357436) main: Frame: 10426 bytes, 320x240[0m
+[0;32mI (357786) http_sender: HTTP POST status: 200[0m
+[0;32mI (357786) main: Frame: 10464 bytes, 320x240[0m
+[0;32mI (358126) http_sender: HTTP POST status: 200[0m
+[0;32mI (358126) main: Frame: 10234 bytes, 320x240[0m
+[0;32mI (358586) http_sender: HTTP POST status: 200[0m
+[0;32mI (358586) main: Frame: 10582 bytes, 320x240[0m
+[0;32mI (359006) http_sender: HTTP POST status: 200[0m
+[0;32mI (359006) main: Frame: 10655 bytes, 320x240[0m
+[0;32mI (359356) http_sender: HTTP POST status: 200[0m
+[0;32mI (359356) main: Frame: 10625 bytes, 320x240[0m
+[0;32mI (359866) http_sender: HTTP POST status: 200[0m
+[0;32mI (359866) main: Frame: 10636 bytes, 320x240[0m
+[0;32mI (360286) http_sender: HTTP POST status: 200[0m
+[0;32mI (360286) main: Frame: 10588 bytes, 320x240[0m
+[0;32mI (360706) http_sender: HTTP POST status: 200[0m
+[0;32mI (360706) main: Frame: 10671 bytes, 320x240[0m
+[0;32mI (361096) http_sender: HTTP POST status: 200[0m
+[0;32mI (361096) main: Frame: 10717 bytes, 320x240[0m
+[0;32mI (361476) http_sender: HTTP POST status: 200[0m
+[0;32mI (361476) main: Frame: 10628 bytes, 320x240[0m
+[0;32mI (361906) http_sender: HTTP POST status: 200[0m
+[0;32mI (361906) main: Frame: 10684 bytes, 320x240[0m
+[0;32mI (362556) http_sender: HTTP POST status: 200[0m
+[0;32mI (362556) main: Frame: 10736 bytes, 320x240[0m
+[0;32mI (363196) http_sender: HTTP POST status: 200[0m
+[0;32mI (363196) main: Frame: 10564 bytes, 320x240[0m
+[0;32mI (363606) http_sender: HTTP POST status: 200[0m
+[0;32mI (363606) main: Frame: 10624 bytes, 320x240[0m
+[0;32mI (364106) http_sender: HTTP POST status: 200[0m
+[0;32mI (364106) main: Frame: 10610 bytes, 320x240[0m
+[0;32mI (364496) http_sender: HTTP POST status: 200[0m
+[0;32mI (364496) main: Frame: 10604 bytes, 320x240[0m
+[0;32mI (364906) http_sender: HTTP POST status: 200[0m
+[0;32mI (364906) main: Frame: 10656 bytes, 320x240[0m
+[0;32mI (365366) http_sender: HTTP POST status: 200[0m
+[0;32mI (365376) main: Frame: 10608 bytes, 320x240[0m
+[0;32mI (365886) http_sender: HTTP POST status: 200[0m
+[0;32mI (365886) main: Frame: 10691 bytes, 320x240[0m
+[0;32mI (366316) http_sender: HTTP POST status: 200[0m
+[0;32mI (366316) main: Frame: 10646 bytes, 320x240[0m
+[0;32mI (366686) http_sender: HTTP POST status: 200[0m
+[0;32mI (366696) main: Frame: 10290 bytes, 320x240[0m
+[0;32mI (367026) http_sender: HTTP POST status: 200[0m
+[0;32mI (367026) main: Frame: 10219 bytes, 320x240[0m
+[0;32mI (367386) http_sender: HTTP POST status: 200[0m
+[0;32mI (367386) main: Frame: 10290 bytes, 320x240[0m
+[0;32mI (367746) http_sender: HTTP POST status: 200[0m
+[0;32mI (367746) main: Frame: 10234 bytes, 320x240[0m
+[0;32mI (368096) http_sender: HTTP POST status: 200[0m
+[0;32mI (368096) main: Frame: 10232 bytes, 320x240[0m
+[0;32mI (368436) http_sender: HTTP POST status: 200[0m
+[0;32mI (368436) main: Frame: 10032 bytes, 320x240[0m
+[0;32mI (368826) http_sender: HTTP POST status: 200[0m
+[0;32mI (368826) main: Frame: 9900 bytes, 320x240[0m
+[0;32mI (369336) http_sender: HTTP POST status: 200[0m
+[0;32mI (369336) main: Frame: 10148 bytes, 320x240[0m
+[0;32mI (369686) http_sender: HTTP POST status: 200[0m
+[0;32mI (369686) main: Frame: 10429 bytes, 320x240[0m
+[0;32mI (370076) http_sender: HTTP POST status: 200[0m
+[0;32mI (370076) main: Frame: 10462 bytes, 320x240[0m
+[0;32mI (370536) http_sender: HTTP POST status: 200[0m
+[0;32mI (370536) main: Frame: 10484 bytes, 320x240[0m
+[0;32mI (370926) http_sender: HTTP POST status: 200[0m
+[0;32mI (370926) main: Frame: 10355 bytes, 320x240[0m
+[0;32mI (371276) http_sender: HTTP POST status: 200[0m
+[0;32mI (371286) main: Frame: 10422 bytes, 320x240[0m
+[0;32mI (371656) http_sender: HTTP POST status: 200[0m
+[0;32mI (371666) main: Frame: 10493 bytes, 320x240[0m
+[0;32mI (372176) http_sender: HTTP POST status: 200[0m
+[0;32mI (372176) main: Frame: 10436 bytes, 320x240[0m
+[0;32mI (372576) http_sender: HTTP POST status: 200[0m
+[0;32mI (372576) main: Frame: 10475 bytes, 320x240[0m
+[0;32mI (372926) http_sender: HTTP POST status: 200[0m
+[0;32mI (372926) main: Frame: 10361 bytes, 320x240[0m
+[0;32mI (373256) http_sender: HTTP POST status: 200[0m
+[0;32mI (373256) main: Frame: 10330 bytes, 320x240[0m
+[0;32mI (373676) http_sender: HTTP POST status: 200[0m
+[0;32mI (373676) main: Frame: 10352 bytes, 320x240[0m
+[0;32mI (374126) http_sender: HTTP POST status: 200[0m
+[0;32mI (374126) main: Frame: 10390 bytes, 320x240[0m
+[0;32mI (374506) http_sender: HTTP POST status: 200[0m
+[0;32mI (374506) main: Frame: 10392 bytes, 320x240[0m
+[0;32mI (374936) http_sender: HTTP POST status: 200[0m
+[0;32mI (374936) main: Frame: 10434 bytes, 320x240[0m
+[0;32mI (375296) http_sender: HTTP POST status: 200[0m
+[0;32mI (375296) main: Frame: 10547 bytes, 320x240[0m
+[0;32mI (375716) http_sender: HTTP POST status: 200[0m
+[0;32mI (375716) main: Frame: 10544 bytes, 320x240[0m
+[0;32mI (376106) http_sender: HTTP POST status: 200[0m
+[0;32mI (376106) main: Frame: 10533 bytes, 320x240[0m
+[0;32mI (376556) http_sender: HTTP POST status: 200[0m
+[0;32mI (376566) main: Frame: 10404 bytes, 320x240[0m
+[0;32mI (376946) http_sender: HTTP POST status: 200[0m
+[0;32mI (376946) main: Frame: 10452 bytes, 320x240[0m
+[0;32mI (377476) http_sender: HTTP POST status: 200[0m
+[0;32mI (377476) main: Frame: 10445 bytes, 320x240[0m
+[0;32mI (377836) http_sender: HTTP POST status: 200[0m
+[0;32mI (377836) main: Frame: 10426 bytes, 320x240[0m
+[0;32mI (378236) http_sender: HTTP POST status: 200[0m
+[0;32mI (378246) main: Frame: 10292 bytes, 320x240[0m
+[0;32mI (378716) http_sender: HTTP POST status: 200[0m
+[0;32mI (378716) main: Frame: 10206 bytes, 320x240[0m
+[0;32mI (379076) http_sender: HTTP POST status: 200[0m
+[0;32mI (379076) main: Frame: 10214 bytes, 320x240[0m
+[0;32mI (380036) http_sender: HTTP POST status: 200[0m
+[0;32mI (380036) main: Frame: 10308 bytes, 320x240[0m
+[0;32mI (380766) http_sender: HTTP POST status: 200[0m
+[0;32mI (380766) main: Frame: 10355 bytes, 320x240[0m
+[0;32mI (381296) http_sender: HTTP POST status: 200[0m
+[0;32mI (381296) main: Frame: 10249 bytes, 320x240[0m
+[0;32mI (381786) http_sender: HTTP POST status: 200[0m
+[0;32mI (381786) main: Frame: 10316 bytes, 320x240[0m
+[0;32mI (382146) http_sender: HTTP POST status: 200[0m
+[0;32mI (382146) main: Frame: 10339 bytes, 320x240[0m
+[0;32mI (382656) http_sender: HTTP POST status: 200[0m
+[0;32mI (382656) main: Frame: 10279 bytes, 320x240[0m
+[0;32mI (383146) http_sender: HTTP POST status: 200[0m
+[0;32mI (383146) main: Frame: 10303 bytes, 320x240[0m
+[0;32mI (383836) http_sender: HTTP POST status: 200[0m
+[0;32mI (383836) main: Frame: 10297 bytes, 320x240[0m
+[0;32mI (384186) http_sender: HTTP POST status: 200[0m
+[0;32mI (384186) main: Frame: 10303 bytes, 320x240[0m
+[0;32mI (384626) http_sender: HTTP POST status: 200[0m
+[0;32mI (384626) main: Frame: 10285 bytes, 320x240[0m
+[0;32mI (384966) http_sender: HTTP POST status: 200[0m
+[0;32mI (384966) main: Frame: 10309 bytes, 320x240[0m
+[0;32mI (385376) http_sender: HTTP POST status: 200[0m
+[0;32mI (385376) main: Frame: 10295 bytes, 320x240[0m
+[0;32mI (385756) http_sender: HTTP POST status: 200[0m
+[0;32mI (385756) main: Frame: 10352 bytes, 320x240[0m
+[0;32mI (386176) http_sender: HTTP POST status: 200[0m
+[0;32mI (386176) main: Frame: 10351 bytes, 320x240[0m
+[0;32mI (386616) http_sender: HTTP POST status: 200[0m
+[0;32mI (386616) main: Frame: 10334 bytes, 320x240[0m
+[0;32mI (386986) http_sender: HTTP POST status: 200[0m
+[0;32mI (386986) main: Frame: 10258 bytes, 320x240[0m
+[0;32mI (387306) http_sender: HTTP POST status: 200[0m
+[0;32mI (387306) main: Frame: 10242 bytes, 320x240[0m
+[0;32mI (387626) http_sender: HTTP POST status: 200[0m
+[0;32mI (387626) main: Frame: 10277 bytes, 320x240[0m
+[0;32mI (388006) http_sender: HTTP POST status: 200[0m
+[0;32mI (388006) main: Frame: 10232 bytes, 320x240[0m
+[0;32mI (388366) http_sender: HTTP POST status: 200[0m
+[0;32mI (388366) main: Frame: 10229 bytes, 320x240[0m
+[0;32mI (388926) http_sender: HTTP POST status: 200[0m
+[0;32mI (388926) main: Frame: 10242 bytes, 320x240[0m
+[0;32mI (389276) http_sender: HTTP POST status: 200[0m
+[0;32mI (389276) main: Frame: 10257 bytes, 320x240[0m
+[0;32mI (389626) http_sender: HTTP POST status: 200[0m
+[0;32mI (389626) main: Frame: 10254 bytes, 320x240[0m
+[0;32mI (390026) http_sender: HTTP POST status: 200[0m
+[0;32mI (390026) main: Frame: 10220 bytes, 320x240[0m
+[0;32mI (390396) http_sender: HTTP POST status: 200[0m
+[0;32mI (390396) main: Frame: 10269 bytes, 320x240[0m
+[0;32mI (390726) http_sender: HTTP POST status: 200[0m
+[0;32mI (390736) main: Frame: 9238 bytes, 320x240[0m
+[0;32mI (391376) http_sender: HTTP POST status: 200[0m
+[0;32mI (391376) main: Frame: 8398 bytes, 320x240[0m
+[0;32mI (391696) http_sender: HTTP POST status: 200[0m
+[0;32mI (391696) main: Frame: 9485 bytes, 320x240[0m
+[0;32mI (392396) http_sender: HTTP POST status: 200[0m
+[0;32mI (392396) main: Frame: 9464 bytes, 320x240[0m
+[0;32mI (392766) http_sender: HTTP POST status: 200[0m
+[0;32mI (392766) main: Frame: 9530 bytes, 320x240[0m
+[0;32mI (393276) http_sender: HTTP POST status: 200[0m
+[0;32mI (393276) main: Frame: 9524 bytes, 320x240[0m
+[0;32mI (393656) http_sender: HTTP POST status: 200[0m
+[0;32mI (393656) main: Frame: 9314 bytes, 320x240[0m
+[0;32mI (394006) http_sender: HTTP POST status: 200[0m
+[0;32mI (394006) main: Frame: 9113 bytes, 320x240[0m
+[0;32mI (394396) http_sender: HTTP POST status: 200[0m
+[0;32mI (394406) main: Frame: 9398 bytes, 320x240[0m
+[0;32mI (394766) http_sender: HTTP POST status: 200[0m
+[0;32mI (394766) main: Frame: 9382 bytes, 320x240[0m
+[0;32mI (395446) http_sender: HTTP POST status: 200[0m
+[0;32mI (395446) main: Frame: 9481 bytes, 320x240[0m
+[0;32mI (395866) http_sender: HTTP POST status: 200[0m
+[0;32mI (395866) main: Frame: 9492 bytes, 320x240[0m
+[0;32mI (396906) http_sender: HTTP POST status: 200[0m
+[0;32mI (396906) main: Frame: 9381 bytes, 320x240[0m
+[0;32mI (397596) http_sender: HTTP POST status: 200[0m
+[0;32mI (397596) main: Frame: 9374 bytes, 320x240[0m
+[0;32mI (397956) http_sender: HTTP POST status: 200[0m
+[0;32mI (397956) main: Frame: 9430 bytes, 320x240[0m
+[0;32mI (398386) http_sender: HTTP POST status: 200[0m
+[0;32mI (398386) main: Frame: 9447 bytes, 320x240[0m
+[0;32mI (398796) http_sender: HTTP POST status: 200[0m
+[0;32mI (398796) main: Frame: 9390 bytes, 320x240[0m
+[0;32mI (399156) http_sender: HTTP POST status: 200[0m
+[0;32mI (399156) main: Frame: 9455 bytes, 320x240[0m
+[0;32mI (399516) http_sender: HTTP POST status: 200[0m
+[0;32mI (399516) main: Frame: 9512 bytes, 320x240[0m
+[0;32mI (399886) http_sender: HTTP POST status: 200[0m
+[0;32mI (399886) main: Frame: 9483 bytes, 320x240[0m
+[0;32mI (400346) http_sender: HTTP POST status: 200[0m
+[0;32mI (400346) main: Frame: 9525 bytes, 320x240[0m
+[0;32mI (400906) http_sender: HTTP POST status: 200[0m
+[0;32mI (400906) main: Frame: 9521 bytes, 320x240[0m
+[0;32mI (401516) http_sender: HTTP POST status: 200[0m
+[0;32mI (401516) main: Frame: 9506 bytes, 320x240[0m
+[0;32mI (402136) http_sender: HTTP POST status: 200[0m
+[0;32mI (402136) main: Frame: 9576 bytes, 320x240[0m
+[0;32mI (402746) http_sender: HTTP POST status: 200[0m
+[0;32mI (402746) main: Frame: 9546 bytes, 320x240[0m
+[0;32mI (404386) http_sender: HTTP POST status: 200[0m
+[0;32mI (404386) main: Frame: 9392 bytes, 320x240[0m
+[0;32mI (404796) http_sender: HTTP POST status: 200[0m
+[0;32mI (404796) main: Frame: 9419 bytes, 320x240[0m
+[0;32mI (405206) http_sender: HTTP POST status: 200[0m
+[0;32mI (405206) main: Frame: 9468 bytes, 320x240[0m
+[0;32mI (405556) http_sender: HTTP POST status: 200[0m
+[0;32mI (405556) main: Frame: 9596 bytes, 320x240[0m
+[0;32mI (406196) http_sender: HTTP POST status: 200[0m
+[0;32mI (406206) main: Frame: 9287 bytes, 320x240[0m
+[0;32mI (406566) http_sender: HTTP POST status: 200[0m
+[0;32mI (406576) main: Frame: 9532 bytes, 320x240[0m
+[0;32mI (406936) http_sender: HTTP POST status: 200[0m
+[0;32mI (406936) main: Frame: 9323 bytes, 320x240[0m
+[0;32mI (407336) http_sender: HTTP POST status: 200[0m
+[0;32mI (407336) main: Frame: 9505 bytes, 320x240[0m
+[0;32mI (407756) http_sender: HTTP POST status: 200[0m
+[0;32mI (407756) main: Frame: 9523 bytes, 320x240[0m
+[0;32mI (408136) http_sender: HTTP POST status: 200[0m
+[0;32mI (408136) main: Frame: 9527 bytes, 320x240[0m
+[0;32mI (408526) http_sender: HTTP POST status: 200[0m
+[0;32mI (408526) main: Frame: 9415 bytes, 320x240[0m
+[0;32mI (408916) http_sender: HTTP POST status: 200[0m
+[0;32mI (408916) main: Frame: 9375 bytes, 320x240[0m
+[0;32mI (409266) http_sender: HTTP POST status: 200[0m
+[0;32mI (409266) main: Frame: 9503 bytes, 320x240[0m
+[0;32mI (409816) http_sender: HTTP POST status: 200[0m
+[0;32mI (409816) main: Frame: 9543 bytes, 320x240[0m
+[0;32mI (410736) http_sender: HTTP POST status: 200[0m
+[0;32mI (410736) main: Frame: 9418 bytes, 320x240[0m
+[0;32mI (411136) http_sender: HTTP POST status: 200[0m
+[0;32mI (411136) main: Frame: 9476 bytes, 320x240[0m
+[0;32mI (411526) http_sender: HTTP POST status: 200[0m
+[0;32mI (411526) main: Frame: 9450 bytes, 320x240[0m
+[0;32mI (411866) http_sender: HTTP POST status: 200[0m
+[0;32mI (411866) main: Frame: 9368 bytes, 320x240[0m
+[0;32mI (412246) http_sender: HTTP POST status: 200[0m
+[0;32mI (412246) main: Frame: 9443 bytes, 320x240[0m
+[0;32mI (412596) http_sender: HTTP POST status: 200[0m
+[0;32mI (412596) main: Frame: 9438 bytes, 320x240[0m
+[0;32mI (412956) http_sender: HTTP POST status: 200[0m
+[0;32mI (412966) main: Frame: 9272 bytes, 320x240[0m
+[0;32mI (413346) http_sender: HTTP POST status: 200[0m
+[0;32mI (413346) main: Frame: 9309 bytes, 320x240[0m
+[0;32mI (413876) http_sender: HTTP POST status: 200[0m
+[0;32mI (413876) main: Frame: 9187 bytes, 320x240[0m
+[0;32mI (414246) http_sender: HTTP POST status: 200[0m
+[0;32mI (414246) main: Frame: 9304 bytes, 320x240[0m
+[0;32mI (414606) http_sender: HTTP POST status: 200[0m
+[0;32mI (414606) main: Frame: 9479 bytes, 320x240[0m
+[0;32mI (415126) http_sender: HTTP POST status: 200[0m
+[0;32mI (415126) main: Frame: 9388 bytes, 320x240[0m
+[0;32mI (415506) http_sender: HTTP POST status: 200[0m
+[0;32mI (415506) main: Frame: 9498 bytes, 320x240[0m
+[0;32mI (415896) http_sender: HTTP POST status: 200[0m
+[0;32mI (415896) main: Frame: 9469 bytes, 320x240[0m
+[0;32mI (416236) http_sender: HTTP POST status: 200[0m
+[0;32mI (416236) main: Frame: 9433 bytes, 320x240[0m
+[0;32mI (416596) http_sender: HTTP POST status: 200[0m
+[0;32mI (416596) main: Frame: 9413 bytes, 320x240[0m
+[0;32mI (416996) http_sender: HTTP POST status: 200[0m
+[0;32mI (416996) main: Frame: 9513 bytes, 320x240[0m
+[0;32mI (417416) http_sender: HTTP POST status: 200[0m
+[0;32mI (417416) main: Frame: 9333 bytes, 320x240[0m
+[0;32mI (417826) http_sender: HTTP POST status: 200[0m
+[0;32mI (417826) main: Frame: 9147 bytes, 320x240[0m
+[0;32mI (418166) http_sender: HTTP POST status: 200[0m
+[0;32mI (418166) main: Frame: 9453 bytes, 320x240[0m
+[0;32mI (418546) http_sender: HTTP POST status: 200[0m
+[0;32mI (418546) main: Frame: 9447 bytes, 320x240[0m
+[0;32mI (419026) http_sender: HTTP POST status: 200[0m
+[0;32mI (419026) main: Frame: 9475 bytes, 320x240[0m
+[0;32mI (419406) http_sender: HTTP POST status: 200[0m
+[0;32mI (419406) main: Frame: 9420 bytes, 320x240[0m
+[0;32mI (419766) http_sender: HTTP POST status: 200[0m
+[0;32mI (419776) main: Frame: 9546 bytes, 320x240[0m
+[0;32mI (420156) http_sender: HTTP POST status: 200[0m
+[0;32mI (420166) main: Frame: 9430 bytes, 320x240[0m
+[0;32mI (420526) http_sender: HTTP POST status: 200[0m
+[0;32mI (420536) main: Frame: 9346 bytes, 320x240[0m
+[0;32mI (420906) http_sender: HTTP POST status: 200[0m
+[0;32mI (420906) main: Frame: 9313 bytes, 320x240[0m
+[0;32mI (421266) http_sender: HTTP POST status: 200[0m
+[0;32mI (421266) main: Frame: 9440 bytes, 320x240[0m
+[0;32mI (421626) http_sender: HTTP POST status: 200[0m
+[0;32mI (421626) main: Frame: 9415 bytes, 320x240[0m
+[0;32mI (422026) http_sender: HTTP POST status: 200[0m
+[0;32mI (422036) main: Frame: 9460 bytes, 320x240[0m
+[0;32mI (422506) http_sender: HTTP POST status: 200[0m
+[0;32mI (422506) main: Frame: 9187 bytes, 320x240[0m
+[0;32mI (423136) http_sender: HTTP POST status: 200[0m
+[0;32mI (423136) main: Frame: 9499 bytes, 320x240[0m
+[0;32mI (423506) http_sender: HTTP POST status: 200[0m
+[0;32mI (423506) main: Frame: 9492 bytes, 320x240[0m
+[0;32mI (423946) http_sender: HTTP POST status: 200[0m
+[0;32mI (423946) main: Frame: 9448 bytes, 320x240[0m
+[0;32mI (424556) http_sender: HTTP POST status: 200[0m
+[0;32mI (424556) main: Frame: 9456 bytes, 320x240[0m
+[0;32mI (425236) http_sender: HTTP POST status: 200[0m
+[0;32mI (425236) main: Frame: 9483 bytes, 320x240[0m
+[0;32mI (425876) http_sender: HTTP POST status: 200[0m
+[0;32mI (425876) main: Frame: 9264 bytes, 320x240[0m
+[0;32mI (426456) http_sender: HTTP POST status: 200[0m
+[0;32mI (426456) main: Frame: 9518 bytes, 320x240[0m
+[0;32mI (427076) http_sender: HTTP POST status: 200[0m
+[0;32mI (427076) main: Frame: 9318 bytes, 320x240[0m
+[0;32mI (427706) http_sender: HTTP POST status: 200[0m
+[0;32mI (427706) main: Frame: 9431 bytes, 320x240[0m
+[0;32mI (428216) http_sender: HTTP POST status: 200[0m
+[0;32mI (428216) main: Frame: 9784 bytes, 320x240[0m
+[0;32mI (428856) http_sender: HTTP POST status: 200[0m
+[0;32mI (428856) main: Frame: 9588 bytes, 320x240[0m
+[0;32mI (429306) http_sender: HTTP POST status: 200[0m
+[0;32mI (429306) main: Frame: 9251 bytes, 320x240[0m
+[0;32mI (429846) http_sender: HTTP POST status: 200[0m
+[0;32mI (429856) main: Frame: 9680 bytes, 320x240[0m
+[0;32mI (430466) http_sender: HTTP POST status: 200[0m
+[0;32mI (430466) main: Frame: 9949 bytes, 320x240[0m
+[0;32mI (431126) http_sender: HTTP POST status: 200[0m
+[0;32mI (431126) main: Frame: 10844 bytes, 320x240[0m
+[0;32mI (431936) http_sender: HTTP POST status: 200[0m
+[0;32mI (431936) main: Frame: 10221 bytes, 320x240[0m
+[0;32mI (432416) http_sender: HTTP POST status: 200[0m
+[0;32mI (432426) main: Frame: 10320 bytes, 320x240[0m
+[0;32mI (432786) http_sender: HTTP POST status: 200[0m
+[0;32mI (432786) main: Frame: 10296 bytes, 320x240[0m
+[0;32mI (433236) http_sender: HTTP POST status: 200[0m
+[0;32mI (433236) main: Frame: 10341 bytes, 320x240[0m
+[0;32mI (433616) http_sender: HTTP POST status: 200[0m
+[0;32mI (433616) main: Frame: 10239 bytes, 320x240[0m
+[0;32mI (434046) http_sender: HTTP POST status: 200[0m
+[0;32mI (434046) main: Frame: 10300 bytes, 320x240[0m
+[0;32mI (434436) http_sender: HTTP POST status: 200[0m
+[0;32mI (434446) main: Frame: 10301 bytes, 320x240[0m
+[0;32mI (434856) http_sender: HTTP POST status: 200[0m
+[0;32mI (434856) main: Frame: 10256 bytes, 320x240[0m
+[0;32mI (435256) http_sender: HTTP POST status: 200[0m
+[0;32mI (435256) main: Frame: 10232 bytes, 320x240[0m
+[0;32mI (435596) http_sender: HTTP POST status: 200[0m
+[0;32mI (435596) main: Frame: 10263 bytes, 320x240[0m
+[0;32mI (435926) http_sender: HTTP POST status: 200[0m
+[0;32mI (435926) main: Frame: 10160 bytes, 320x240[0m
+[0;32mI (436306) http_sender: HTTP POST status: 200[0m
+[0;32mI (436316) main: Frame: 10228 bytes, 320x240[0m
+[0;32mI (436756) http_sender: HTTP POST status: 200[0m
+[0;32mI (436756) main: Frame: 10217 bytes, 320x240[0m
+[0;32mI (437096) http_sender: HTTP POST status: 200[0m
+[0;32mI (437096) main: Frame: 10306 bytes, 320x240[0m
+[0;32mI (437466) http_sender: HTTP POST status: 200[0m
+[0;32mI (437466) main: Frame: 10270 bytes, 320x240[0m
+[0;32mI (437836) http_sender: HTTP POST status: 200[0m
+[0;32mI (437846) main: Frame: 10235 bytes, 320x240[0m
+[0;32mI (438236) http_sender: HTTP POST status: 200[0m
+[0;32mI (438236) main: Frame: 10246 bytes, 320x240[0m
+[0;32mI (438706) http_sender: HTTP POST status: 200[0m
+[0;32mI (438706) main: Frame: 10254 bytes, 320x240[0m
+[0;32mI (439126) http_sender: HTTP POST status: 200[0m
+[0;32mI (439126) main: Frame: 10272 bytes, 320x240[0m
+[0;32mI (439486) http_sender: HTTP POST status: 200[0m
+[0;32mI (439486) main: Frame: 10335 bytes, 320x240[0m
+[0;32mI (439856) http_sender: HTTP POST status: 200[0m
+[0;32mI (439856) main: Frame: 10234 bytes, 320x240[0m
+[0;32mI (440216) http_sender: HTTP POST status: 200[0m
+[0;32mI (440216) main: Frame: 10133 bytes, 320x240[0m
+[0;32mI (440616) http_sender: HTTP POST status: 200[0m
+[0;32mI (440626) main: Frame: 10207 bytes, 320x240[0m
+[0;32mI (441056) http_sender: HTTP POST status: 200[0m
+[0;32mI (441056) main: Frame: 10216 bytes, 320x240[0m
+[0;32mI (441506) http_sender: HTTP POST status: 200[0m
+[0;32mI (441506) main: Frame: 10116 bytes, 320x240[0m
+[0;32mI (441996) http_sender: HTTP POST status: 200[0m
+[0;32mI (441996) main: Frame: 10138 bytes, 320x240[0m
+[0;32mI (442686) http_sender: HTTP POST status: 200[0m
+[0;32mI (442686) main: Frame: 10168 bytes, 320x240[0m
+[0;32mI (443086) http_sender: HTTP POST status: 200[0m
+[0;32mI (443086) main: Frame: 10261 bytes, 320x240[0m
+[0;32mI (443576) http_sender: HTTP POST status: 200[0m
+[0;32mI (443576) main: Frame: 10274 bytes, 320x240[0m
+[0;32mI (443946) http_sender: HTTP POST status: 200[0m
+[0;32mI (443946) main: Frame: 10171 bytes, 320x240[0m
+[0;32mI (444316) http_sender: HTTP POST status: 200[0m
+[0;32mI (444316) main: Frame: 10172 bytes, 320x240[0m
+[0;32mI (444736) http_sender: HTTP POST status: 200[0m
+[0;32mI (444736) main: Frame: 10270 bytes, 320x240[0m
+[0;32mI (445106) http_sender: HTTP POST status: 200[0m
+[0;32mI (445106) main: Frame: 10282 bytes, 320x240[0m
+[0;32mI (445446) http_sender: HTTP POST status: 200[0m
+[0;32mI (445446) main: Frame: 10274 bytes, 320x240[0m
+[0;32mI (445876) http_sender: HTTP POST status: 200[0m
+[0;32mI (445876) main: Frame: 9495 bytes, 320x240[0m
+[0;32mI (446296) http_sender: HTTP POST status: 200[0m
+[0;32mI (446296) main: Frame: 8578 bytes, 320x240[0m
+[0;32mI (446606) http_sender: HTTP POST status: 200[0m
+[0;32mI (446606) main: Frame: 8665 bytes, 320x240[0m
+[0;32mI (446986) http_sender: HTTP POST status: 200[0m
+[0;32mI (446986) main: Frame: 8887 bytes, 320x240[0m
+[0;32mI (447346) http_sender: HTTP POST status: 200[0m
+[0;32mI (447346) main: Frame: 8740 bytes, 320x240[0m
+[0;32mI (447766) http_sender: HTTP POST status: 200[0m
+[0;32mI (447776) main: Frame: 8282 bytes, 320x240[0m
+[0;32mI (448066) http_sender: HTTP POST status: 200[0m
+[0;32mI (448066) main: Frame: 8688 bytes, 320x240[0m
+[0;32mI (448446) http_sender: HTTP POST status: 200[0m
+[0;32mI (448446) main: Frame: 8735 bytes, 320x240[0m
+[0;32mI (449206) http_sender: HTTP POST status: 200[0m
+[0;32mI (449206) main: Frame: 8958 bytes, 320x240[0m
+[0;32mI (449586) http_sender: HTTP POST status: 200[0m
+[0;32mI (449586) main: Frame: 9700 bytes, 320x240[0m
+[0;32mI (450066) http_sender: HTTP POST status: 200[0m
+[0;32mI (450066) main: Frame: 9734 bytes, 320x240[0m
+[0;32mI (450476) http_sender: HTTP POST status: 200[0m
+[0;32mI (450476) main: Frame: 9741 bytes, 320x240[0m
+[0;32mI (451066) http_sender: HTTP POST status: 200[0m
+[0;32mI (451066) main: Frame: 9854 bytes, 320x240[0m
+[0;32mI (451496) http_sender: HTTP POST status: 200[0m
+[0;32mI (451506) main: Frame: 9894 bytes, 320x240[0m
+[0;32mI (451896) http_sender: HTTP POST status: 200[0m
+[0;32mI (451896) main: Frame: 10061 bytes, 320x240[0m
+[0;32mI (452236) http_sender: HTTP POST status: 200[0m
+[0;32mI (452246) main: Frame: 10115 bytes, 320x240[0m
+[0;32mI (452586) http_sender: HTTP POST status: 200[0m
+[0;32mI (452586) main: Frame: 10125 bytes, 320x240[0m
+[0;32mI (452926) http_sender: HTTP POST status: 200[0m
+[0;32mI (452926) main: Frame: 10240 bytes, 320x240[0m
+[0;32mI (453316) http_sender: HTTP POST status: 200[0m
+[0;32mI (453316) main: Frame: 10285 bytes, 320x240[0m
+[0;32mI (453726) http_sender: HTTP POST status: 200[0m
+[0;32mI (453726) main: Frame: 10350 bytes, 320x240[0m
+[0;32mI (454406) http_sender: HTTP POST status: 200[0m
+[0;32mI (454406) main: Frame: 10407 bytes, 320x240[0m
+[0;32mI (454816) http_sender: HTTP POST status: 200[0m
+[0;32mI (454816) main: Frame: 10384 bytes, 320x240[0m
+[0;32mI (455196) http_sender: HTTP POST status: 200[0m
+[0;32mI (455196) main: Frame: 10518 bytes, 320x240[0m
+[0;32mI (455586) http_sender: HTTP POST status: 200[0m
+[0;32mI (455586) main: Frame: 10189 bytes, 320x240[0m
+[0;32mI (455976) http_sender: HTTP POST status: 200[0m
+[0;32mI (455976) main: Frame: 10668 bytes, 320x240[0m
+[0;32mI (456386) http_sender: HTTP POST status: 200[0m
+[0;32mI (456386) main: Frame: 10619 bytes, 320x240[0m
+[0;32mI (456756) http_sender: HTTP POST status: 200[0m
+[0;32mI (456756) main: Frame: 10570 bytes, 320x240[0m
+[0;32mI (457186) http_sender: HTTP POST status: 200[0m
+[0;32mI (457186) main: Frame: 10473 bytes, 320x240[0m
+[0;32mI (457646) http_sender: HTTP POST status: 200[0m
+[0;32mI (457646) main: Frame: 10486 bytes, 320x240[0m
+[0;32mI (458066) http_sender: HTTP POST status: 200[0m
+[0;32mI (458076) main: Frame: 10557 bytes, 320x240[0m
+[0;32mI (458446) http_sender: HTTP POST status: 200[0m
+[0;32mI (458446) main: Frame: 10497 bytes, 320x240[0m
+[0;32mI (458896) http_sender: HTTP POST status: 200[0m
+[0;32mI (458896) main: Frame: 10235 bytes, 320x240[0m
+[0;32mI (459646) http_sender: HTTP POST status: 200[0m
+[0;32mI (459646) main: Frame: 10137 bytes, 320x240[0m
+[0;32mI (460036) http_sender: HTTP POST status: 200[0m
+[0;32mI (460036) main: Frame: 10110 bytes, 320x240[0m
+[0;32mI (460406) http_sender: HTTP POST status: 200[0m
+[0;32mI (460416) main: Frame: 10211 bytes, 320x240[0m
+[0;32mI (460786) http_sender: HTTP POST status: 200[0m
+[0;32mI (460796) main: Frame: 10405 bytes, 320x240[0m
+[0;32mI (461186) http_sender: HTTP POST status: 200[0m
+[0;32mI (461186) main: Frame: 10347 bytes, 320x240[0m
+[0;32mI (461816) http_sender: HTTP POST status: 200[0m
+[0;32mI (461816) main: Frame: 9841 bytes, 320x240[0m
+[0;32mI (462276) http_sender: HTTP POST status: 200[0m
+[0;32mI (462276) main: Frame: 8458 bytes, 320x240[0m
+[0;32mI (462776) http_sender: HTTP POST status: 200[0m
+[0;32mI (462776) main: Frame: 8942 bytes, 320x240[0m
+[0;32mI (463126) http_sender: HTTP POST status: 200[0m
+[0;32mI (463126) main: Frame: 9192 bytes, 320x240[0m
+[0;32mI (463526) http_sender: HTTP POST status: 200[0m
+[0;32mI (463526) main: Frame: 9350 bytes, 320x240[0m
+[0;32mI (463936) http_sender: HTTP POST status: 200[0m
+[0;32mI (463936) main: Frame: 9420 bytes, 320x240[0m
+[0;32mI (464326) http_sender: HTTP POST status: 200[0m
+[0;32mI (464326) main: Frame: 9490 bytes, 320x240[0m
+[0;32mI (464746) http_sender: HTTP POST status: 200[0m
+[0;32mI (464746) main: Frame: 9505 bytes, 320x240[0m
+[0;32mI (465146) http_sender: HTTP POST status: 200[0m
+[0;32mI (465146) main: Frame: 9605 bytes, 320x240[0m
+[0;32mI (465516) http_sender: HTTP POST status: 200[0m
+[0;32mI (465526) main: Frame: 9516 bytes, 320x240[0m
+[0;32mI (466096) http_sender: HTTP POST status: 200[0m
+[0;32mI (466096) main: Frame: 9639 bytes, 320x240[0m
+[0;32mI (466716) http_sender: HTTP POST status: 200[0m
+[0;32mI (466716) main: Frame: 9598 bytes, 320x240[0m
+[0;32mI (467076) http_sender: HTTP POST status: 200[0m
+[0;32mI (467076) main: Frame: 9588 bytes, 320x240[0m
+[0;32mI (467476) http_sender: HTTP POST status: 200[0m
+[0;32mI (467476) main: Frame: 9616 bytes, 320x240[0m
+[0;32mI (467836) http_sender: HTTP POST status: 200[0m
+[0;32mI (467836) main: Frame: 9574 bytes, 320x240[0m
+[0;32mI (468196) http_sender: HTTP POST status: 200[0m
+[0;32mI (468196) main: Frame: 9572 bytes, 320x240[0m
+[0;32mI (468596) http_sender: HTTP POST status: 200[0m
+[0;32mI (468596) main: Frame: 9560 bytes, 320x240[0m
+[0;32mI (469016) http_sender: HTTP POST status: 200[0m
+[0;32mI (469016) main: Frame: 9760 bytes, 320x240[0m
+[0;32mI (469416) http_sender: HTTP POST status: 200[0m
+[0;32mI (469416) main: Frame: 9805 bytes, 320x240[0m
+[0;32mI (469866) http_sender: HTTP POST status: 200[0m
+[0;32mI (469866) main: Frame: 9847 bytes, 320x240[0m
+[0;32mI (470236) http_sender: HTTP POST status: 200[0m
+[0;32mI (470236) main: Frame: 9871 bytes, 320x240[0m
+[0;32mI (471066) http_sender: HTTP POST status: 200[0m
+[0;32mI (471066) main: Frame: 10005 bytes, 320x240[0m
+[0;32mI (471616) http_sender: HTTP POST status: 200[0m
+[0;32mI (471626) main: Frame: 9948 bytes, 320x240[0m
+[0;32mI (472046) http_sender: HTTP POST status: 200[0m
+[0;32mI (472046) main: Frame: 10066 bytes, 320x240[0m
+[0;32mI (472436) http_sender: HTTP POST status: 200[0m
+[0;32mI (472436) main: Frame: 10038 bytes, 320x240[0m
+[0;32mI (472816) http_sender: HTTP POST status: 200[0m
+[0;32mI (472816) main: Frame: 9789 bytes, 320x240[0m
+[0;32mI (473196) http_sender: HTTP POST status: 200[0m
+[0;32mI (473196) main: Frame: 9831 bytes, 320x240[0m
+[0;32mI (473796) http_sender: HTTP POST status: 200[0m
+[0;32mI (473796) main: Frame: 10011 bytes, 320x240[0m
+[0;32mI (474396) http_sender: HTTP POST status: 200[0m
+[0;32mI (474396) main: Frame: 10159 bytes, 320x240[0m
+[0;32mI (474746) http_sender: HTTP POST status: 200[0m
+[0;32mI (474746) main: Frame: 10072 bytes, 320x240[0m
+[0;32mI (475306) http_sender: HTTP POST status: 200[0m
+[0;32mI (475306) main: Frame: 10029 bytes, 320x240[0m
+[0;32mI (475736) http_sender: HTTP POST status: 200[0m
+[0;32mI (475736) main: Frame: 10063 bytes, 320x240[0m
+[0;32mI (476106) http_sender: HTTP POST status: 200[0m
+[0;32mI (476106) main: Frame: 9974 bytes, 320x240[0m
+[0;32mI (476546) http_sender: HTTP POST status: 200[0m
+[0;32mI (476546) main: Frame: 10336 bytes, 320x240[0m
+[0;32mI (476926) http_sender: HTTP POST status: 200[0m
+[0;32mI (476926) main: Frame: 10350 bytes, 320x240[0m
+[0;32mI (477406) http_sender: HTTP POST status: 200[0m
+[0;32mI (477406) main: Frame: 10361 bytes, 320x240[0m
+[0;32mI (477786) http_sender: HTTP POST status: 200[0m
+[0;32mI (477786) main: Frame: 10316 bytes, 320x240[0m
+[0;32mI (478216) http_sender: HTTP POST status: 200[0m
+[0;32mI (478216) main: Frame: 10281 bytes, 320x240[0m
+[0;32mI (478596) http_sender: HTTP POST status: 200[0m
+[0;32mI (478596) main: Frame: 10312 bytes, 320x240[0m
+[0;32mI (478986) http_sender: HTTP POST status: 200[0m
+[0;32mI (478986) main: Frame: 10290 bytes, 320x240[0m
+[0;32mI (479336) http_sender: HTTP POST status: 200[0m
+[0;32mI (479346) main: Frame: 10298 bytes, 320x240[0m
+[0;32mI (479696) http_sender: HTTP POST status: 200[0m
+[0;32mI (479696) main: Frame: 10404 bytes, 320x240[0m
+[0;32mI (480096) http_sender: HTTP POST status: 200[0m
+[0;32mI (480096) main: Frame: 10491 bytes, 320x240[0m
+[0;32mI (480486) http_sender: HTTP POST status: 200[0m
+[0;32mI (480496) main: Frame: 10243 bytes, 320x240[0m
+[0;32mI (480896) http_sender: HTTP POST status: 200[0m
+[0;32mI (480896) main: Frame: 9809 bytes, 320x240[0m
+[0;32mI (481386) http_sender: HTTP POST status: 200[0m
+[0;32mI (481386) main: Frame: 9854 bytes, 320x240[0m
+[0;32mI (481816) http_sender: HTTP POST status: 200[0m
+[0;32mI (481826) main: Frame: 9884 bytes, 320x240[0m
+[0;32mI (482206) http_sender: HTTP POST status: 200[0m
+[0;32mI (482206) main: Frame: 9995 bytes, 320x240[0m
+[0;32mI (482596) http_sender: HTTP POST status: 200[0m
+[0;32mI (482596) main: Frame: 10028 bytes, 320x240[0m
+[0;32mI (483306) http_sender: HTTP POST status: 200[0m
+[0;32mI (483306) main: Frame: 10020 bytes, 320x240[0m
+[0;32mI (483786) http_sender: HTTP POST status: 200[0m
+[0;32mI (483786) main: Frame: 9995 bytes, 320x240[0m
+[0;32mI (484166) http_sender: HTTP POST status: 200[0m
+[0;32mI (484166) main: Frame: 10085 bytes, 320x240[0m
+[0;32mI (484496) http_sender: HTTP POST status: 200[0m
+[0;32mI (484496) main: Frame: 10158 bytes, 320x240[0m
+[0;32mI (484826) http_sender: HTTP POST status: 200[0m
+[0;32mI (484826) main: Frame: 10038 bytes, 320x240[0m
+[0;32mI (485476) http_sender: HTTP POST status: 200[0m
+[0;32mI (485486) main: Frame: 10188 bytes, 320x240[0m
+[0;32mI (485846) http_sender: HTTP POST status: 200[0m
+[0;32mI (485846) main: Frame: 10020 bytes, 320x240[0m
+[0;32mI (486256) http_sender: HTTP POST status: 200[0m
+[0;32mI (486256) main: Frame: 10165 bytes, 320x240[0m
+[0;32mI (486686) http_sender: HTTP POST status: 200[0m
+[0;32mI (486686) main: Frame: 10141 bytes, 320x240[0m
+[0;32mI (487056) http_sender: HTTP POST status: 200[0m
+[0;32mI (487056) main: Frame: 10212 bytes, 320x240[0m
+[0;32mI (487406) http_sender: HTTP POST status: 200[0m
+[0;32mI (487406) main: Frame: 10348 bytes, 320x240[0m
+[0;32mI (487776) http_sender: HTTP POST status: 200[0m
+[0;32mI (487776) main: Frame: 9925 bytes, 320x240[0m
+[0;32mI (488226) http_sender: HTTP POST status: 200[0m
+[0;32mI (488226) main: Frame: 9245 bytes, 320x240[0m
+[0;32mI (488606) http_sender: HTTP POST status: 200[0m
+[0;32mI (488606) main: Frame: 9036 bytes, 320x240[0m
+[0;32mI (489006) http_sender: HTTP POST status: 200[0m
+[0;32mI (489006) main: Frame: 9428 bytes, 320x240[0m
+[0;32mI (489406) http_sender: HTTP POST status: 200[0m
+[0;32mI (489406) main: Frame: 8888 bytes, 320x240[0m
+[0;32mI (490056) http_sender: HTTP POST status: 200[0m
+[0;32mI (490056) main: Frame: 8708 bytes, 320x240[0m
+[0;32mI (490406) http_sender: HTTP POST status: 200[0m
+[0;32mI (490406) main: Frame: 8700 bytes, 320x240[0m
+[0;32mI (490776) http_sender: HTTP POST status: 200[0m
+[0;32mI (490776) main: Frame: 8169 bytes, 320x240[0m
+[0;32mI (491106) http_sender: HTTP POST status: 200[0m
+[0;32mI (491106) main: Frame: 8831 bytes, 320x240[0m
+[0;32mI (491496) http_sender: HTTP POST status: 200[0m
+[0;32mI (491496) main: Frame: 8987 bytes, 320x240[0m
+[0;32mI (491966) http_sender: HTTP POST status: 200[0m
+[0;32mI (491966) main: Frame: 9339 bytes, 320x240[0m
+[0;32mI (492506) http_sender: HTTP POST status: 200[0m
+[0;32mI (492506) main: Frame: 9689 bytes, 320x240[0m
+[0;32mI (492846) http_sender: HTTP POST status: 200[0m
+[0;32mI (492846) main: Frame: 9686 bytes, 320x240[0m
+[0;32mI (493206) http_sender: HTTP POST status: 200[0m
+[0;32mI (493216) main: Frame: 9731 bytes, 320x240[0m
+[0;32mI (493766) http_sender: HTTP POST status: 200[0m
+[0;32mI (493776) main: Frame: 9440 bytes, 320x240[0m
+[0;32mI (494186) http_sender: HTTP POST status: 200[0m
+[0;32mI (494186) main: Frame: 9701 bytes, 320x240[0m
+[0;32mI (494716) http_sender: HTTP POST status: 200[0m
+[0;32mI (494716) main: Frame: 9626 bytes, 320x240[0m
+[0;32mI (495096) http_sender: HTTP POST status: 200[0m
+[0;32mI (495106) main: Frame: 9808 bytes, 320x240[0m
+[0;32mI (495506) http_sender: HTTP POST status: 200[0m
+[0;32mI (495506) main: Frame: 9800 bytes, 320x240[0m
+[0;32mI (496216) http_sender: HTTP POST status: 200[0m
+[0;32mI (496216) main: Frame: 9809 bytes, 320x240[0m
+[0;32mI (496626) http_sender: HTTP POST status: 200[0m
+[0;32mI (496626) main: Frame: 9812 bytes, 320x240[0m
+[0;32mI (497006) http_sender: HTTP POST status: 200[0m
+[0;32mI (497006) main: Frame: 9666 bytes, 320x240[0m
+[0;32mI (497446) http_sender: HTTP POST status: 200[0m
+[0;32mI (497456) main: Frame: 9965 bytes, 320x240[0m
+[0;32mI (498286) http_sender: HTTP POST status: 200[0m
+[0;32mI (498286) main: Frame: 9860 bytes, 320x240[0m
+[0;32mI (498746) http_sender: HTTP POST status: 200[0m
+[0;32mI (498746) main: Frame: 9907 bytes, 320x240[0m
+[0;32mI (499506) http_sender: HTTP POST status: 200[0m
+[0;32mI (499506) main: Frame: 9856 bytes, 320x240[0m
+[0;32mI (499926) http_sender: HTTP POST status: 200[0m
+[0;32mI (499926) main: Frame: 9842 bytes, 320x240[0m
+[0;32mI (500436) http_sender: HTTP POST status: 200[0m
+[0;32mI (500436) main: Frame: 10005 bytes, 320x240[0m
+[0;32mI (501356) http_sender: HTTP POST status: 200[0m
+[0;32mI (501356) main: Frame: 9929 bytes, 320x240[0m
+[0;32mI (503506) http_sender: HTTP POST status: 200[0m
+[0;32mI (503506) main: Frame: 9916 bytes, 320x240[0m
+[0;32mI (503896) http_sender: HTTP POST status: 200[0m
+[0;32mI (503896) main: Frame: 9603 bytes, 320x240[0m
+[0;32mI (504286) http_sender: HTTP POST status: 200[0m
+[0;32mI (504286) main: Frame: 9365 bytes, 320x240[0m
+[0;32mI (504686) http_sender: HTTP POST status: 200[0m
+[0;32mI (504686) main: Frame: 9594 bytes, 320x240[0m
+[0;32mI (505356) http_sender: HTTP POST status: 200[0m
+[0;32mI (505356) main: Frame: 9476 bytes, 320x240[0m
+[0;32mI (505766) http_sender: HTTP POST status: 200[0m
+[0;32mI (505766) main: Frame: 9317 bytes, 320x240[0m
+[0;32mI (506236) http_sender: HTTP POST status: 200[0m
+[0;32mI (506236) main: Frame: 9198 bytes, 320x240[0m
+[0;32mI (506716) http_sender: HTTP POST status: 200[0m
+[0;32mI (506716) main: Frame: 9319 bytes, 320x240[0m
+[0;32mI (507306) http_sender: HTTP POST status: 200[0m
+[0;32mI (507306) main: Frame: 9502 bytes, 320x240[0m
+[0;32mI (507676) http_sender: HTTP POST status: 200[0m
+[0;32mI (507676) main: Frame: 9355 bytes, 320x240[0m
+[0;32mI (508076) http_sender: HTTP POST status: 200[0m
+[0;32mI (508086) main: Frame: 9480 bytes, 320x240[0m
+[0;32mI (508716) http_sender: HTTP POST status: 200[0m
+[0;32mI (508726) main: Frame: 9747 bytes, 320x240[0m
+[0;32mI (509156) http_sender: HTTP POST status: 200[0m
+[0;32mI (509156) main: Frame: 9402 bytes, 320x240[0m
+[0;32mI (509956) http_sender: HTTP POST status: 200[0m
+[0;32mI (509956) main: Frame: 9433 bytes, 320x240[0m
+[0;32mI (510876) http_sender: HTTP POST status: 200[0m
+[0;32mI (510876) main: Frame: 9425 bytes, 320x240[0m
+[0;32mI (511496) http_sender: HTTP POST status: 200[0m
+[0;32mI (511496) main: Frame: 9208 bytes, 320x240[0m
+[0;32mI (511886) http_sender: HTTP POST status: 200[0m
+[0;32mI (511886) main: Frame: 10052 bytes, 320x240[0m
+[0;32mI (512326) http_sender: HTTP POST status: 200[0m
+[0;32mI (512326) main: Frame: 10239 bytes, 320x240[0m
+[0;32mI (512736) http_sender: HTTP POST status: 200[0m
+[0;32mI (512746) main: Frame: 9970 bytes, 320x240[0m
+[0;32mI (513146) http_sender: HTTP POST status: 200[0m
+[0;32mI (513146) main: Frame: 9379 bytes, 320x240[0m
+[0;32mI (513516) http_sender: HTTP POST status: 200[0m
+[0;32mI (513516) main: Frame: 9329 bytes, 320x240[0m
+[0;32mI (513896) http_sender: HTTP POST status: 200[0m
+[0;32mI (513896) main: Frame: 9319 bytes, 320x240[0m
+[0;32mI (514336) http_sender: HTTP POST status: 200[0m
+[0;32mI (514336) main: Frame: 9314 bytes, 320x240[0m
+[0;32mI (514746) http_sender: HTTP POST status: 200[0m
+[0;32mI (514746) main: Frame: 9238 bytes, 320x240[0m
+[0;32mI (515146) http_sender: HTTP POST status: 200[0m
+[0;32mI (515146) main: Frame: 8199 bytes, 320x240[0m
+[0;32mI (515546) http_sender: HTTP POST status: 200[0m
+[0;32mI (515546) main: Frame: 9053 bytes, 320x240[0m
+[0;32mI (516106) http_sender: HTTP POST status: 200[0m
+[0;32mI (516106) main: Frame: 9336 bytes, 320x240[0m
+[0;32mI (516766) http_sender: HTTP POST status: 200[0m
+[0;32mI (516776) main: Frame: 9568 bytes, 320x240[0m
+[0;32mI (517436) http_sender: HTTP POST status: 200[0m
+[0;32mI (517446) main: Frame: 9326 bytes, 320x240[0m
+[0;32mI (517966) http_sender: HTTP POST status: 200[0m
+[0;32mI (517966) main: Frame: 9328 bytes, 320x240[0m
+[0;32mI (518306) http_sender: HTTP POST status: 200[0m
+[0;32mI (518306) main: Frame: 9352 bytes, 320x240[0m
+[0;32mI (518696) http_sender: HTTP POST status: 200[0m
+[0;32mI (518696) main: Frame: 9767 bytes, 320x240[0m
+[0;32mI (519176) http_sender: HTTP POST status: 200[0m
+[0;32mI (519176) main: Frame: 10066 bytes, 320x240[0m
+[0;32mI (519566) http_sender: HTTP POST status: 200[0m
+[0;32mI (519566) main: Frame: 10193 bytes, 320x240[0m
+[0;32mI (519916) http_sender: HTTP POST status: 200[0m
+[0;32mI (519916) main: Frame: 10005 bytes, 320x240[0m
+[0;32mI (520486) http_sender: HTTP POST status: 200[0m
+[0;32mI (520486) main: Frame: 9988 bytes, 320x240[0m
+[0;32mI (520866) http_sender: HTTP POST status: 200[0m
+[0;32mI (520876) main: Frame: 10119 bytes, 320x240[0m
+[0;32mI (521276) http_sender: HTTP POST status: 200[0m
+[0;32mI (521286) main: Frame: 10173 bytes, 320x240[0m
+[0;32mI (521696) http_sender: HTTP POST status: 200[0m
+[0;32mI (521696) main: Frame: 10170 bytes, 320x240[0m
+[0;32mI (522056) http_sender: HTTP POST status: 200[0m
+[0;32mI (522056) main: Frame: 10276 bytes, 320x240[0m
+[0;32mI (522556) http_sender: HTTP POST status: 200[0m
+[0;32mI (522556) main: Frame: 10260 bytes, 320x240[0m
