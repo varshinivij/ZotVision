@@ -1,0 +1,870 @@
+Command: C:\Espressif\tools\python\v6.0\venv\Scripts\python.exe C:\esp\v6.0\esp-idf\tools/idf_monitor.py -p COM10 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 C:\Users\kaush\Downloads\ZotVision\zot-vision\firmware\build\zot-vision.elf C:\Users\kaush\Downloads\ZotVision\zot-vision\firmware\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\tools\python\v6.0\venv\Scripts\python.exe' 'C:\esp\v6.0\esp-idf\tools\idf.py' '-p' 'COM10'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x12 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15848
+load:0x40080400,len:3920
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v6.0 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Apr  5 2026 15:00:38[0m
+[0;32mI (28) boot: Multicore bootloader[0m
+[0;32mI (29) boot: chip revision: v3.1[0m
+[0;32mI (31) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (35) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (39) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (42) boot: Enabling RNG early entropy source...[0m
+[0;32mI (47) boot: Partition Table:[0m
+[0;32mI (49) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (62) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (69) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (75) boot: End of partition table[0m
+[0;32mI (79) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=27bc8h (162760) map[0m
+[0;32mI (144) esp_image: segment 1: paddr=00037bf0 vaddr=3ffb0000 size=06cfch ( 27900) load[0m
+[0;32mI (155) esp_image: segment 2: paddr=0003e8f4 vaddr=40080000 size=01724h (  5924) load[0m
+[0;32mI (158) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=b78f4h (751860) map[0m
+[0;32mI (427) esp_image: segment 4: paddr=000f791c vaddr=40081724 size=17ce0h ( 97504) load[0m
+[0;32mI (467) esp_image: segment 5: paddr=0010f604 vaddr=50000000 size=00028h (    40) load[0m
+[0;32mI (480) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (480) boot: Disabling RNG early entropy source...[0m
+[0;32mI (491) quad_psram: This chip is ESP32-D0WD[0m
+[0;32mI (492) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (492) esp_psram: Speed: 40MHz[0m
+[0;32mI (492) esp_psram: PSRAM initialized, cache is in low/high (2-core) mode.[0m
+[0;33mW (498) esp_psram: Virtual address not enough for PSRAM, map as much as we can. 4MB is mapped[0m
+[0;32mI (506) cpu_start: Multicore app[0m
+[0;32mI (1414) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1422) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (1423) cpu_start: Pro cpu start user code[0m
+[0;32mI (1423) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (1425) app_init: Application information:[0m
+[0;32mI (1429) app_init: Project name:     zot-vision[0m
+[0;32mI (1433) app_init: App version:      6f07897[0m
+[0;32mI (1437) app_init: Compile time:     Apr  5 2026 14:59:10[0m
+[0;32mI (1442) app_init: ELF file SHA256:  7e545f123...[0m
+[0;32mI (1446) app_init: ESP-IDF:          v6.0[0m
+[0;32mI (1450) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (1454) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (1458) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (1462) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1469) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (1474) heap_init: At 3FFBBFE0 len 00024020 (144 KiB): DRAM[0m
+[0;32mI (1479) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (1484) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (1490) heap_init: At 40099404 len 00006BFC (26 KiB): IRAM[0m
+[0;32mI (1496) esp_psram: Adding pool of 4096K of PSRAM memory to heap allocator[0m
+[0;33mW (1503) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig[0m
+[0;32mI (1515) spi_flash: detected chip: generic[0m
+[0;32mI (1519) spi_flash: flash io: dio[0m
+[0;33mW (1522) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (1536) main_task: Started on CPU0[0m
+[0;32mI (1546) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1546) main_task: Calling app_main()[0m
+[0;32mI (1586) wifi:wifi driver task: 3ffc3ad4, prio:23, stack:6656, core=0[0m
+[0;32mI (1596) wifi:wifi firmware version: 44738b4[0m
+[0;32mI (1596) wifi:wifi certification version: v7.0[0m
+[0;32mI (1596) wifi:config NVS flash: enabled[0m
+[0;32mI (1596) wifi:config nano formatting: disabled[0m
+[0;32mI (1606) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1606) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1606) wifi:Init management short buffer num: 32[0m
+[0;32mI (1616) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1616) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1626) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1626) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1636) wifi_init: rx ba win: 6[0m
+[0;32mI (1636) wifi_init: accept mbox: 6[0m
+[0;32mI (1636) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1636) wifi_init: udp mbox: 6[0m
+[0;32mI (1646) wifi_init: tcp mbox: 6[0m
+[0;32mI (1646) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1646) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1656) wifi_init: tcp mss: 1440[0m
+[0;32mI (1656) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1656) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;33mW (1666) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (1676) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06[0m
+[0;32mI (1756) wifi:mode : sta (a4:f0:0f:73:f0:30)[0m
+[0;32mI (1756) wifi:enable tsf[0m
+[0;32mI (1776) wifi:new:<11,0>, old:<1,0>, ap:<255,255>, sta:<11,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (1776) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (1796) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (1806) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (1846) wifi:connected with KAUSHIK25, aid = 9, channel 11, BW20, bssid = e6:c7:67:fd:4a:5d[0m
+[0;32mI (1846) wifi:security: WPA2-PSK, phy: bgn, rssi: -35[0m
+[0;32mI (1856) wifi:pm start, type: 1[0m
+
+[0;32mI (1856) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (1866) wifi:AP's beacon interval = 102400 us, DTIM period = 3[0m
+[0;32mI (2936) esp_netif_handlers: sta ip: 192.168.137.26, mask: 255.255.255.0, gw: 192.168.137.1[0m
+[0;32mI (2936) wifi: WiFi connected[0m
+[0;32mI (2936) cam_hal: cam init ok[0m
+[0;32mI (2936) sccb-ng: pin_sda 26 pin_scl 27[0m
+[0;32mI (2936) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (2976) camera: Camera PID=0x26 VER=0x42 MIDL=0x7f MIDH=0xa2[0m
+[0;32mI (2976) camera: Detected OV2640 camera[0m
+[0;32mI (2976) camera: Detected camera at address=0x30[0m
+[0;32mI (3056) cam_hal: PSRAM DMA mode disabled[0m
+[0;32mI (3056) cam_hal: buffer_size: 32768, half_buffer_size: 4096, node_buffer_size: 2048, node_cnt: 16, total_cnt: 3[0m
+[0;32mI (3056) cam_hal: Allocating 15360 Byte frame buffer in PSRAM[0m
+[0;32mI (3066) cam_hal: Allocating 15360 Byte frame buffer in PSRAM[0m
+[0;32mI (3066) cam_hal: cam config ok[0m
+[0;32mI (3076) ov2640: Set PLL: clk_2x: 0, clk_div: 0, pclk_auto: 0, pclk_div: 8[0m
+[0;32mI (3156) main_task: Returned from app_main()[0m
+[0;32mI (3186) main: Frame: 10104 bytes, 320x240[0m
+[0;32mI (5626) http_sender: HTTP POST status: 500[0m
+[0;32mI (5626) main: Frame: 10206 bytes, 320x240[0m
+[0;32mI (6946) wifi:<ba-add>idx:0 (ifx:0, e6:c7:67:fd:4a:5d), tid:0, ssn:21, winSize:64[0m
+[0;32mI (12626) http_sender: HTTP POST status: 500[0m
+[0;32mI (12636) main: Frame: 9831 bytes, 320x240[0m
+[0;33mW (18116) HTTP_CLIENT: Connection timed out before data was ready![0m
+[1;31mE (18116) http_sender: HTTP POST failed: ESP_ERR_HTTP_EAGAIN[0m
+[0;32mI (18116) main: Frame: 9894 bytes, 320x240[0m
+[0;32mI (19176) http_sender: HTTP POST status: 500[0m
+[0;32mI (19176) main: Frame: 9802 bytes, 320x240[0m
+[0;32mI (21566) http_sender: HTTP POST status: 500[0m
+[0;32mI (21566) main: Frame: 9811 bytes, 320x240[0m
+[0;32mI (22486) http_sender: HTTP POST status: 500[0m
+[0;32mI (22486) main: Frame: 9869 bytes, 320x240[0m
+[0;32mI (30536) http_sender: HTTP POST status: 500[0m
+[0;32mI (30536) main: Frame: 9883 bytes, 320x240[0m
+[0;32mI (31516) http_sender: HTTP POST status: 500[0m
+[0;32mI (31516) main: Frame: 10043 bytes, 320x240[0m
+[0;32mI (31916) http_sender: HTTP POST status: 500[0m
+[0;32mI (31916) main: Frame: 9994 bytes, 320x240[0m
+[0;32mI (32366) http_sender: HTTP POST status: 500[0m
+[0;32mI (32366) main: Frame: 9979 bytes, 320x240[0m
+[0;32mI (32766) http_sender: HTTP POST status: 500[0m
+[0;32mI (32766) main: Frame: 9981 bytes, 320x240[0m
+[0;32mI (33286) http_sender: HTTP POST status: 500[0m
+[0;32mI (33286) main: Frame: 9878 bytes, 320x240[0m
+[0;32mI (33906) http_sender: HTTP POST status: 500[0m
+[0;32mI (33906) main: Frame: 9980 bytes, 320x240[0m
+[0;32mI (34336) http_sender: HTTP POST status: 500[0m
+[0;32mI (34336) main: Frame: 9988 bytes, 320x240[0m
+[0;32mI (34736) http_sender: HTTP POST status: 500[0m
+[0;32mI (34736) main: Frame: 9984 bytes, 320x240[0m
+[0;32mI (35436) http_sender: HTTP POST status: 500[0m
+[0;32mI (35436) main: Frame: 10037 bytes, 320x240[0m
+[0;32mI (35856) http_sender: HTTP POST status: 500[0m
+[0;32mI (35856) main: Frame: 10050 bytes, 320x240[0m
+[0;32mI (36306) http_sender: HTTP POST status: 500[0m
+[0;32mI (36306) main: Frame: 9998 bytes, 320x240[0m
+[0;32mI (36936) http_sender: HTTP POST status: 500[0m
+[0;32mI (36946) main: Frame: 9966 bytes, 320x240[0m
+[0;32mI (37926) http_sender: HTTP POST status: 500[0m
+[0;32mI (37926) main: Frame: 9891 bytes, 320x240[0m
+[0;32mI (38466) http_sender: HTTP POST status: 500[0m
+[0;32mI (38466) main: Frame: 9664 bytes, 320x240[0m
+[0;32mI (38986) http_sender: HTTP POST status: 500[0m
+[0;32mI (38986) main: Frame: 9797 bytes, 320x240[0m
+[0;32mI (39336) http_sender: HTTP POST status: 500[0m
+[0;32mI (39336) main: Frame: 9601 bytes, 320x240[0m
+[0;32mI (39726) http_sender: HTTP POST status: 500[0m
+[0;32mI (39726) main: Frame: 9492 bytes, 320x240[0m
+[0;32mI (40136) http_sender: HTTP POST status: 500[0m
+[0;32mI (40136) main: Frame: 9608 bytes, 320x240[0m
+[0;32mI (40596) http_sender: HTTP POST status: 500[0m
+[0;32mI (40596) main: Frame: 9659 bytes, 320x240[0m
+[0;32mI (40976) http_sender: HTTP POST status: 500[0m
+[0;32mI (40976) main: Frame: 9725 bytes, 320x240[0m
+[0;32mI (42146) http_sender: HTTP POST status: 500[0m
+[0;32mI (42146) main: Frame: 9752 bytes, 320x240[0m
+[0;32mI (43156) http_sender: HTTP POST status: 500[0m
+[0;32mI (43156) main: Frame: 9685 bytes, 320x240[0m
+[0;32mI (43606) http_sender: HTTP POST status: 500[0m
+[0;32mI (43606) main: Frame: 9891 bytes, 320x240[0m
+[0;32mI (44016) http_sender: HTTP POST status: 500[0m
+[0;32mI (44016) main: Frame: 9959 bytes, 320x240[0m
+[0;32mI (44466) http_sender: HTTP POST status: 500[0m
+[0;32mI (44466) main: Frame: 9927 bytes, 320x240[0m
+[0;32mI (44956) http_sender: HTTP POST status: 500[0m
+[0;32mI (44956) main: Frame: 9853 bytes, 320x240[0m
+[0;32mI (45316) http_sender: HTTP POST status: 500[0m
+[0;32mI (45326) main: Frame: 9819 bytes, 320x240[0m
+[0;32mI (45666) http_sender: HTTP POST status: 500[0m
+[0;32mI (45666) main: Frame: 9834 bytes, 320x240[0m
+[0;32mI (46016) http_sender: HTTP POST status: 500[0m
+[0;32mI (46016) main: Frame: 9912 bytes, 320x240[0m
+[0;32mI (46506) http_sender: HTTP POST status: 500[0m
+[0;32mI (46506) main: Frame: 9910 bytes, 320x240[0m
+[0;32mI (47346) http_sender: HTTP POST status: 500[0m
+[0;32mI (47346) main: Frame: 9891 bytes, 320x240[0m
+[0;32mI (47856) http_sender: HTTP POST status: 500[0m
+[0;32mI (47856) main: Frame: 9910 bytes, 320x240[0m
+[0;32mI (48236) http_sender: HTTP POST status: 500[0m
+[0;32mI (48236) main: Frame: 10012 bytes, 320x240[0m
+[0;32mI (48686) http_sender: HTTP POST status: 500[0m
+[0;32mI (48686) main: Frame: 9968 bytes, 320x240[0m
+[0;32mI (49166) http_sender: HTTP POST status: 500[0m
+[0;32mI (49166) main: Frame: 10032 bytes, 320x240[0m
+[0;32mI (49616) http_sender: HTTP POST status: 500[0m
+[0;32mI (49616) main: Frame: 10024 bytes, 320x240[0m
+[0;32mI (50016) http_sender: HTTP POST status: 500[0m
+[0;32mI (50016) main: Frame: 10005 bytes, 320x240[0m
+[0;32mI (50446) http_sender: HTTP POST status: 500[0m
+[0;32mI (50446) main: Frame: 9958 bytes, 320x240[0m
+[0;32mI (50846) http_sender: HTTP POST status: 500[0m
+[0;32mI (50846) main: Frame: 9525 bytes, 320x240[0m
+[0;32mI (51236) http_sender: HTTP POST status: 500[0m
+[0;32mI (51246) main: Frame: 9599 bytes, 320x240[0m
+[0;32mI (51626) http_sender: HTTP POST status: 500[0m
+[0;32mI (51626) main: Frame: 9732 bytes, 320x240[0m
+[0;32mI (52016) http_sender: HTTP POST status: 500[0m
+[0;32mI (52016) main: Frame: 9802 bytes, 320x240[0m
+[0;32mI (52376) http_sender: HTTP POST status: 500[0m
+[0;32mI (52376) main: Frame: 9860 bytes, 320x240[0m
+[0;32mI (52766) http_sender: HTTP POST status: 500[0m
+[0;32mI (52766) main: Frame: 9713 bytes, 320x240[0m
+[0;32mI (53146) http_sender: HTTP POST status: 500[0m
+[0;32mI (53146) main: Frame: 9629 bytes, 320x240[0m
+[0;32mI (53786) http_sender: HTTP POST status: 500[0m
+[0;32mI (53786) main: Frame: 9749 bytes, 320x240[0m
+[0;32mI (54406) http_sender: HTTP POST status: 500[0m
+[0;32mI (54406) main: Frame: 9844 bytes, 320x240[0m
+[0;32mI (55146) http_sender: HTTP POST status: 500[0m
+[0;32mI (55146) main: Frame: 9825 bytes, 320x240[0m
+[0;32mI (55716) http_sender: HTTP POST status: 500[0m
+[0;32mI (55716) main: Frame: 9802 bytes, 320x240[0m
+[0;32mI (56096) http_sender: HTTP POST status: 500[0m
+[0;32mI (56096) main: Frame: 9797 bytes, 320x240[0m
+[0;32mI (56506) http_sender: HTTP POST status: 500[0m
+[0;32mI (56506) main: Frame: 9794 bytes, 320x240[0m
+[0;32mI (56896) http_sender: HTTP POST status: 500[0m
+[0;32mI (56896) main: Frame: 9877 bytes, 320x240[0m
+[0;32mI (57256) http_sender: HTTP POST status: 500[0m
+[0;32mI (57256) main: Frame: 9763 bytes, 320x240[0m
+[0;32mI (57656) http_sender: HTTP POST status: 500[0m
+[0;32mI (57656) main: Frame: 9931 bytes, 320x240[0m
+[0;32mI (58036) http_sender: HTTP POST status: 500[0m
+[0;32mI (58036) main: Frame: 9914 bytes, 320x240[0m
+[0;32mI (58426) http_sender: HTTP POST status: 500[0m
+[0;32mI (58426) main: Frame: 9743 bytes, 320x240[0m
+[0;32mI (58816) http_sender: HTTP POST status: 500[0m
+[0;32mI (58816) main: Frame: 9721 bytes, 320x240[0m
+[0;32mI (59316) http_sender: HTTP POST status: 500[0m
+[0;32mI (59326) main: Frame: 9815 bytes, 320x240[0m
+[0;32mI (60266) http_sender: HTTP POST status: 500[0m
+[0;32mI (60266) main: Frame: 10053 bytes, 320x240[0m
+[0;32mI (60746) http_sender: HTTP POST status: 500[0m
+[0;32mI (60746) main: Frame: 9806 bytes, 320x240[0m
+[0;32mI (61186) http_sender: HTTP POST status: 500[0m
+[0;32mI (61186) main: Frame: 9863 bytes, 320x240[0m
+[0;32mI (61726) http_sender: HTTP POST status: 500[0m
+[0;32mI (61726) main: Frame: 9950 bytes, 320x240[0m
+[0;32mI (62406) http_sender: HTTP POST status: 500[0m
+[0;32mI (62406) main: Frame: 10194 bytes, 320x240[0m
+[0;32mI (63106) http_sender: HTTP POST status: 500[0m
+[0;32mI (63106) main: Frame: 10543 bytes, 320x240[0m
+[0;32mI (63476) http_sender: HTTP POST status: 500[0m
+[0;32mI (63476) main: Frame: 10216 bytes, 320x240[0m
+[0;32mI (63886) http_sender: HTTP POST status: 500[0m
+[0;32mI (63896) main: Frame: 10175 bytes, 320x240[0m
+[0;32mI (64916) http_sender: HTTP POST status: 500[0m
+[0;32mI (64916) main: Frame: 10385 bytes, 320x240[0m
+[0;32mI (65616) http_sender: HTTP POST status: 500[0m
+[0;32mI (65616) main: Frame: 9420 bytes, 320x240[0m
+[0;32mI (66796) http_sender: HTTP POST status: 500[0m
+[0;32mI (66796) main: Frame: 9924 bytes, 320x240[0m
+[0;32mI (67216) http_sender: HTTP POST status: 500[0m
+[0;32mI (67226) main: Frame: 10007 bytes, 320x240[0m
+[0;32mI (67806) http_sender: HTTP POST status: 500[0m
+[0;32mI (67806) main: Frame: 9997 bytes, 320x240[0m
+[0;32mI (68636) http_sender: HTTP POST status: 500[0m
+[0;32mI (68636) main: Frame: 9699 bytes, 320x240[0m
+[0;32mI (69076) http_sender: HTTP POST status: 500[0m
+[0;32mI (69076) main: Frame: 10000 bytes, 320x240[0m
+[0;32mI (69896) http_sender: HTTP POST status: 500[0m
+[0;32mI (69896) main: Frame: 9901 bytes, 320x240[0m
+[0;32mI (70486) http_sender: HTTP POST status: 500[0m
+[0;32mI (70486) main: Frame: 9895 bytes, 320x240[0m
+[0;32mI (71136) http_sender: HTTP POST status: 500[0m
+[0;32mI (71136) main: Frame: 9822 bytes, 320x240[0m
+[0;32mI (71736) http_sender: HTTP POST status: 500[0m
+[0;32mI (71736) main: Frame: 9863 bytes, 320x240[0m
+[0;32mI (72196) http_sender: HTTP POST status: 500[0m
+[0;32mI (72196) main: Frame: 9683 bytes, 320x240[0m
+[0;32mI (72916) http_sender: HTTP POST status: 500[0m
+[0;32mI (72926) main: Frame: 9475 bytes, 320x240[0m
+[0;32mI (73536) http_sender: HTTP POST status: 500[0m
+[0;32mI (73536) main: Frame: 9668 bytes, 320x240[0m
+[0;32mI (73936) http_sender: HTTP POST status: 500[0m
+[0;32mI (73936) main: Frame: 9683 bytes, 320x240[0m
+[0;32mI (74286) http_sender: HTTP POST status: 500[0m
+[0;32mI (74286) main: Frame: 9688 bytes, 320x240[0m
+[0;32mI (74866) http_sender: HTTP POST status: 500[0m
+[0;32mI (74866) main: Frame: 9752 bytes, 320x240[0m
+[0;32mI (75236) http_sender: HTTP POST status: 500[0m
+[0;32mI (75236) main: Frame: 9729 bytes, 320x240[0m
+[0;32mI (75656) http_sender: HTTP POST status: 500[0m
+[0;32mI (75656) main: Frame: 9704 bytes, 320x240[0m
+[0;32mI (76096) http_sender: HTTP POST status: 500[0m
+[0;32mI (76096) main: Frame: 9632 bytes, 320x240[0m
+[0;32mI (76646) http_sender: HTTP POST status: 500[0m
+[0;32mI (76646) main: Frame: 9738 bytes, 320x240[0m
+[0;32mI (76976) http_sender: HTTP POST status: 500[0m
+[0;32mI (76976) main: Frame: 9827 bytes, 320x240[0m
+[0;32mI (77386) http_sender: HTTP POST status: 500[0m
+[0;32mI (77386) main: Frame: 9786 bytes, 320x240[0m
+[0;32mI (77876) http_sender: HTTP POST status: 500[0m
+[0;32mI (77876) main: Frame: 9598 bytes, 320x240[0m
+[0;32mI (78676) http_sender: HTTP POST status: 500[0m
+[0;32mI (78676) main: Frame: 9656 bytes, 320x240[0m
+[0;32mI (79356) http_sender: HTTP POST status: 500[0m
+[0;32mI (79356) main: Frame: 9595 bytes, 320x240[0m
+[0;32mI (79906) http_sender: HTTP POST status: 500[0m
+[0;32mI (79906) main: Frame: 9563 bytes, 320x240[0m
+[0;32mI (80526) http_sender: HTTP POST status: 500[0m
+[0;32mI (80526) main: Frame: 9557 bytes, 320x240[0m
+[0;32mI (82476) http_sender: HTTP POST status: 500[0m
+[0;32mI (82476) main: Frame: 9355 bytes, 320x240[0m
+[0;32mI (83596) http_sender: HTTP POST status: 500[0m
+[0;32mI (83596) main: Frame: 9526 bytes, 320x240[0m
+[0;32mI (84446) http_sender: HTTP POST status: 500[0m
+[0;32mI (84446) main: Frame: 9603 bytes, 320x240[0m
+[0;32mI (85306) http_sender: HTTP POST status: 500[0m
+[0;32mI (85306) main: Frame: 9251 bytes, 320x240[0m
+[0;32mI (85776) http_sender: HTTP POST status: 500[0m
+[0;32mI (85776) main: Frame: 9243 bytes, 320x240[0m
+[0;32mI (86366) http_sender: HTTP POST status: 500[0m
+[0;32mI (86366) main: Frame: 9411 bytes, 320x240[0m
+[0;32mI (86986) http_sender: HTTP POST status: 500[0m
+[0;32mI (86986) main: Frame: 9723 bytes, 320x240[0m
+[0;32mI (87686) http_sender: HTTP POST status: 500[0m
+[0;32mI (87696) main: Frame: 9519 bytes, 320x240[0m
+[0;32mI (88086) http_sender: HTTP POST status: 500[0m
+[0;32mI (88086) main: Frame: 9620 bytes, 320x240[0m
+[0;32mI (88806) http_sender: HTTP POST status: 500[0m
+[0;32mI (88806) main: Frame: 9603 bytes, 320x240[0m
+[0;32mI (89206) http_sender: HTTP POST status: 500[0m
+[0;32mI (89206) main: Frame: 9898 bytes, 320x240[0m
+[0;32mI (89856) http_sender: HTTP POST status: 500[0m
+[0;32mI (89856) main: Frame: 9889 bytes, 320x240[0m
+[0;32mI (90656) http_sender: HTTP POST status: 500[0m
+[0;32mI (90656) main: Frame: 9752 bytes, 320x240[0m
+[0;32mI (91576) http_sender: HTTP POST status: 500[0m
+[0;32mI (91576) main: Frame: 9711 bytes, 320x240[0m
+[0;32mI (92356) http_sender: HTTP POST status: 500[0m
+[0;32mI (92356) main: Frame: 9815 bytes, 320x240[0m
+[0;32mI (93226) http_sender: HTTP POST status: 500[0m
+[0;32mI (93226) main: Frame: 9896 bytes, 320x240[0m
+[0;32mI (94036) http_sender: HTTP POST status: 500[0m
+[0;32mI (94036) main: Frame: 9818 bytes, 320x240[0m
+[0;32mI (94956) http_sender: HTTP POST status: 500[0m
+[0;32mI (94956) main: Frame: 9806 bytes, 320x240[0m
+[0;32mI (95576) http_sender: HTTP POST status: 500[0m
+[0;32mI (95576) main: Frame: 9538 bytes, 320x240[0m
+[0;32mI (96196) http_sender: HTTP POST status: 500[0m
+[0;32mI (96196) main: Frame: 9592 bytes, 320x240[0m
+[0;32mI (96626) http_sender: HTTP POST status: 500[0m
+[0;32mI (96626) main: Frame: 9548 bytes, 320x240[0m
+[0;32mI (97416) http_sender: HTTP POST status: 500[0m
+[0;32mI (97416) main: Frame: 9230 bytes, 320x240[0m
+[0;32mI (97836) http_sender: HTTP POST status: 500[0m
+[0;32mI (97836) main: Frame: 8990 bytes, 320x240[0m
+[0;32mI (98256) http_sender: HTTP POST status: 500[0m
+[0;32mI (98256) main: Frame: 8937 bytes, 320x240[0m
+[0;32mI (98616) http_sender: HTTP POST status: 500[0m
+[0;32mI (98616) main: Frame: 9158 bytes, 320x240[0m
+[0;32mI (99026) http_sender: HTTP POST status: 500[0m
+[0;32mI (99026) main: Frame: 9338 bytes, 320x240[0m
+[0;32mI (99456) http_sender: HTTP POST status: 500[0m
+[0;32mI (99456) main: Frame: 9274 bytes, 320x240[0m
+[0;32mI (99846) http_sender: HTTP POST status: 500[0m
+[0;32mI (99846) main: Frame: 9323 bytes, 320x240[0m
+[0;32mI (100216) http_sender: HTTP POST status: 500[0m
+[0;32mI (100216) main: Frame: 9395 bytes, 320x240[0m
+[0;32mI (100616) http_sender: HTTP POST status: 500[0m
+[0;32mI (100616) main: Frame: 9468 bytes, 320x240[0m
+[0;32mI (100996) http_sender: HTTP POST status: 500[0m
+[0;32mI (100996) main: Frame: 9538 bytes, 320x240[0m
+[0;32mI (101396) http_sender: HTTP POST status: 500[0m
+[0;32mI (101396) main: Frame: 9529 bytes, 320x240[0m
+[0;32mI (102026) http_sender: HTTP POST status: 500[0m
+[0;32mI (102026) main: Frame: 9576 bytes, 320x240[0m
+[1;31mE (102076) transport_base: tcp_write error, errno=Connection reset by peer[0m
+[1;31mE (102076) http_sender: HTTP POST failed: ESP_FAIL[0m
+[0;32mI (102076) main: Frame: 9744 bytes, 320x240[0m
+[1;31mE (107096) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (107096) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (107096) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (107096) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (107106) main: Frame: 9766 bytes, 320x240[0m
+[1;31mE (112126) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (112126) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (112126) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (112126) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (112136) main: Frame: 9082 bytes, 320x240[0m
+[1;31mE (117156) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (117156) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (117156) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (117156) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (117166) main: Frame: 9409 bytes, 320x240[0m
+[1;31mE (122186) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (122186) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (122186) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (122186) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (122196) main: Frame: 10002 bytes, 320x240[0m
+[1;31mE (127216) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (127216) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (127216) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (127216) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (127226) main: Frame: 9832 bytes, 320x240[0m
+[1;31mE (132246) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (132246) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (132246) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (132246) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (132256) main: Frame: 9898 bytes, 320x240[0m
+[1;31mE (137276) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (137276) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (137276) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (137276) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (137286) main: Frame: 9909 bytes, 320x240[0m
+[0;32mI (137676) http_sender: HTTP POST status: 200[0m
+[0;32mI (137686) main: Frame: 9754 bytes, 320x240[0m
+[0;32mI (138016) http_sender: HTTP POST status: 200[0m
+[0;32mI (138016) main: Frame: 9733 bytes, 320x240[0m
+[0;32mI (138416) http_sender: HTTP POST status: 200[0m
+[0;32mI (138426) main: Frame: 9814 bytes, 320x240[0m
+[0;32mI (138816) http_sender: HTTP POST status: 200[0m
+[0;32mI (138816) main: Frame: 9855 bytes, 320x240[0m
+[0;32mI (139166) http_sender: HTTP POST status: 200[0m
+[0;32mI (139166) main: Frame: 9890 bytes, 320x240[0m
+[0;32mI (139596) http_sender: HTTP POST status: 200[0m
+[0;32mI (139596) main: Frame: 9922 bytes, 320x240[0m
+[0;32mI (139996) http_sender: HTTP POST status: 200[0m
+[0;32mI (139996) main: Frame: 9913 bytes, 320x240[0m
+[0;32mI (140356) http_sender: HTTP POST status: 200[0m
+[0;32mI (140356) main: Frame: 9876 bytes, 320x240[0m
+[0;32mI (140706) http_sender: HTTP POST status: 200[0m
+[0;32mI (140706) main: Frame: 9922 bytes, 320x240[0m
+[0;32mI (141116) http_sender: HTTP POST status: 200[0m
+[0;32mI (141116) main: Frame: 9914 bytes, 320x240[0m
+[0;32mI (141546) http_sender: HTTP POST status: 200[0m
+[0;32mI (141546) main: Frame: 9971 bytes, 320x240[0m
+[0;32mI (141926) http_sender: HTTP POST status: 200[0m
+[0;32mI (141926) main: Frame: 9911 bytes, 320x240[0m
+[0;32mI (142306) http_sender: HTTP POST status: 200[0m
+[0;32mI (142306) main: Frame: 9913 bytes, 320x240[0m
+[0;32mI (142676) http_sender: HTTP POST status: 200[0m
+[0;32mI (142676) main: Frame: 9874 bytes, 320x240[0m
+[0;32mI (143186) http_sender: HTTP POST status: 200[0m
+[0;32mI (143196) main: Frame: 9916 bytes, 320x240[0m
+[0;32mI (143626) http_sender: HTTP POST status: 200[0m
+[0;32mI (143636) main: Frame: 9915 bytes, 320x240[0m
+[0;32mI (144326) http_sender: HTTP POST status: 200[0m
+[0;32mI (144326) main: Frame: 9918 bytes, 320x240[0m
+[0;32mI (144866) http_sender: HTTP POST status: 200[0m
+[0;32mI (144866) main: Frame: 9940 bytes, 320x240[0m
+[0;32mI (145316) http_sender: HTTP POST status: 200[0m
+[0;32mI (145316) main: Frame: 9905 bytes, 320x240[0m
+[0;32mI (145686) http_sender: HTTP POST status: 200[0m
+[0;32mI (145696) main: Frame: 9305 bytes, 320x240[0m
+[0;32mI (146086) http_sender: HTTP POST status: 200[0m
+[0;32mI (146086) main: Frame: 9219 bytes, 320x240[0m
+[0;32mI (146506) http_sender: HTTP POST status: 200[0m
+[0;32mI (146506) main: Frame: 9252 bytes, 320x240[0m
+[0;32mI (146866) http_sender: HTTP POST status: 200[0m
+[0;32mI (146876) main: Frame: 9349 bytes, 320x240[0m
+[0;32mI (147256) http_sender: HTTP POST status: 200[0m
+[0;32mI (147256) main: Frame: 9329 bytes, 320x240[0m
+[0;32mI (147656) http_sender: HTTP POST status: 200[0m
+[0;32mI (147656) main: Frame: 9317 bytes, 320x240[0m
+[0;32mI (148016) http_sender: HTTP POST status: 200[0m
+[0;32mI (148016) main: Frame: 9155 bytes, 320x240[0m
+[0;32mI (148376) http_sender: HTTP POST status: 200[0m
+[0;32mI (148376) main: Frame: 9471 bytes, 320x240[0m
+[0;32mI (148726) http_sender: HTTP POST status: 200[0m
+[0;32mI (148736) main: Frame: 9907 bytes, 320x240[0m
+[0;32mI (149096) http_sender: HTTP POST status: 200[0m
+[0;32mI (149096) main: Frame: 10135 bytes, 320x240[0m
+[0;32mI (149546) http_sender: HTTP POST status: 200[0m
+[0;32mI (149546) main: Frame: 10222 bytes, 320x240[0m
+[0;32mI (149976) http_sender: HTTP POST status: 200[0m
+[0;32mI (149976) main: Frame: 10240 bytes, 320x240[0m
+[0;32mI (150326) http_sender: HTTP POST status: 200[0m
+[0;32mI (150326) main: Frame: 10025 bytes, 320x240[0m
+[0;32mI (150746) http_sender: HTTP POST status: 200[0m
+[0;32mI (150746) main: Frame: 9931 bytes, 320x240[0m
+[0;32mI (151126) http_sender: HTTP POST status: 200[0m
+[0;32mI (151126) main: Frame: 9349 bytes, 320x240[0m
+[0;32mI (151546) http_sender: HTTP POST status: 200[0m
+[0;32mI (151556) main: Frame: 9290 bytes, 320x240[0m
+[0;32mI (151886) http_sender: HTTP POST status: 200[0m
+[0;32mI (151886) main: Frame: 9329 bytes, 320x240[0m
+[0;32mI (152476) http_sender: HTTP POST status: 200[0m
+[0;32mI (152476) main: Frame: 9387 bytes, 320x240[0m
+[0;32mI (152866) http_sender: HTTP POST status: 200[0m
+[0;32mI (152876) main: Frame: 9482 bytes, 320x240[0m
+[0;32mI (153216) http_sender: HTTP POST status: 200[0m
+[0;32mI (153216) main: Frame: 9554 bytes, 320x240[0m
+[0;32mI (153586) http_sender: HTTP POST status: 200[0m
+[0;32mI (153586) main: Frame: 9561 bytes, 320x240[0m
+[0;32mI (154016) http_sender: HTTP POST status: 200[0m
+[0;32mI (154026) main: Frame: 9721 bytes, 320x240[0m
+[0;32mI (154376) http_sender: HTTP POST status: 200[0m
+[0;32mI (154376) main: Frame: 9822 bytes, 320x240[0m
+[0;32mI (154926) http_sender: HTTP POST status: 200[0m
+[0;32mI (154926) main: Frame: 9891 bytes, 320x240[0m
+[0;32mI (155316) http_sender: HTTP POST status: 200[0m
+[0;32mI (155316) main: Frame: 9881 bytes, 320x240[0m
+[0;32mI (155856) http_sender: HTTP POST status: 200[0m
+[0;32mI (155856) main: Frame: 9596 bytes, 320x240[0m
+[0;32mI (156186) http_sender: HTTP POST status: 200[0m
+[0;32mI (156186) main: Frame: 9277 bytes, 320x240[0m
+[0;32mI (156536) http_sender: HTTP POST status: 200[0m
+[0;32mI (156536) main: Frame: 9246 bytes, 320x240[0m
+[0;32mI (156906) http_sender: HTTP POST status: 200[0m
+[0;32mI (156906) main: Frame: 9317 bytes, 320x240[0m
+[0;32mI (157386) http_sender: HTTP POST status: 200[0m
+[0;32mI (157396) main: Frame: 9616 bytes, 320x240[0m
+[0;32mI (157856) http_sender: HTTP POST status: 200[0m
+[0;32mI (157856) main: Frame: 9648 bytes, 320x240[0m
+[0;32mI (158216) http_sender: HTTP POST status: 200[0m
+[0;32mI (158216) main: Frame: 9807 bytes, 320x240[0m
+[0;32mI (158586) http_sender: HTTP POST status: 200[0m
+[0;32mI (158586) main: Frame: 9741 bytes, 320x240[0m
+[0;32mI (158986) http_sender: HTTP POST status: 200[0m
+[0;32mI (158986) main: Frame: 9727 bytes, 320x240[0m
+[0;32mI (159346) http_sender: HTTP POST status: 200[0m
+[0;32mI (159346) main: Frame: 9831 bytes, 320x240[0m
+[0;32mI (159866) http_sender: HTTP POST status: 200[0m
+[0;32mI (159866) main: Frame: 10060 bytes, 320x240[0m
+[0;32mI (160276) http_sender: HTTP POST status: 200[0m
+[0;32mI (160286) main: Frame: 9884 bytes, 320x240[0m
+[0;32mI (160676) http_sender: HTTP POST status: 200[0m
+[0;32mI (160686) main: Frame: 9790 bytes, 320x240[0m
+[0;32mI (161086) http_sender: HTTP POST status: 200[0m
+[0;32mI (161086) main: Frame: 9290 bytes, 320x240[0m
+[0;32mI (161486) http_sender: HTTP POST status: 200[0m
+[0;32mI (161486) main: Frame: 9271 bytes, 320x240[0m
+[0;32mI (161886) http_sender: HTTP POST status: 200[0m
+[0;32mI (161886) main: Frame: 9996 bytes, 320x240[0m
+[0;32mI (162286) http_sender: HTTP POST status: 200[0m
+[0;32mI (162286) main: Frame: 9793 bytes, 320x240[0m
+[0;32mI (162666) http_sender: HTTP POST status: 200[0m
+[0;32mI (162666) main: Frame: 9737 bytes, 320x240[0m
+[0;32mI (163046) http_sender: HTTP POST status: 200[0m
+[0;32mI (163046) main: Frame: 9853 bytes, 320x240[0m
+[0;32mI (163536) http_sender: HTTP POST status: 200[0m
+[0;32mI (163536) main: Frame: 9445 bytes, 320x240[0m
+[0;32mI (163906) http_sender: HTTP POST status: 200[0m
+[0;32mI (163916) main: Frame: 9608 bytes, 320x240[0m
+[0;32mI (164296) http_sender: HTTP POST status: 200[0m
+[0;32mI (164296) main: Frame: 9781 bytes, 320x240[0m
+[0;32mI (164636) http_sender: HTTP POST status: 200[0m
+[0;32mI (164636) main: Frame: 9508 bytes, 320x240[0m
+[0;32mI (165026) http_sender: HTTP POST status: 200[0m
+[0;32mI (165026) main: Frame: 9532 bytes, 320x240[0m
+[0;32mI (165426) http_sender: HTTP POST status: 200[0m
+[0;32mI (165426) main: Frame: 9598 bytes, 320x240[0m
+[0;32mI (165876) http_sender: HTTP POST status: 200[0m
+[0;32mI (165876) main: Frame: 9715 bytes, 320x240[0m
+[0;32mI (166296) http_sender: HTTP POST status: 200[0m
+[0;32mI (166296) main: Frame: 9953 bytes, 320x240[0m
+[0;32mI (166696) http_sender: HTTP POST status: 200[0m
+[0;32mI (166696) main: Frame: 9881 bytes, 320x240[0m
+[0;32mI (167026) http_sender: HTTP POST status: 200[0m
+[0;32mI (167026) main: Frame: 9931 bytes, 320x240[0m
+[0;32mI (167466) http_sender: HTTP POST status: 200[0m
+[0;32mI (167466) main: Frame: 9739 bytes, 320x240[0m
+[0;32mI (167836) http_sender: HTTP POST status: 200[0m
+[0;32mI (167836) main: Frame: 9656 bytes, 320x240[0m
+[0;32mI (168186) http_sender: HTTP POST status: 200[0m
+[0;32mI (168186) main: Frame: 9788 bytes, 320x240[0m
+[0;32mI (168656) http_sender: HTTP POST status: 200[0m
+[0;32mI (168656) main: Frame: 9762 bytes, 320x240[0m
+[0;32mI (169036) http_sender: HTTP POST status: 200[0m
+[0;32mI (169036) main: Frame: 9974 bytes, 320x240[0m
+[0;32mI (169686) http_sender: HTTP POST status: 200[0m
+[0;32mI (169696) main: Frame: 10236 bytes, 320x240[0m
+[0;32mI (170066) http_sender: HTTP POST status: 200[0m
+[0;32mI (170076) main: Frame: 10083 bytes, 320x240[0m
+[0;32mI (170436) http_sender: HTTP POST status: 200[0m
+[0;32mI (170436) main: Frame: 10037 bytes, 320x240[0m
+[0;32mI (170826) http_sender: HTTP POST status: 200[0m
+[0;32mI (170826) main: Frame: 10053 bytes, 320x240[0m
+[0;32mI (171216) http_sender: HTTP POST status: 200[0m
+[0;32mI (171216) main: Frame: 9923 bytes, 320x240[0m
+[0;32mI (171636) http_sender: HTTP POST status: 200[0m
+[0;32mI (171636) main: Frame: 10007 bytes, 320x240[0m
+[0;32mI (171976) http_sender: HTTP POST status: 200[0m
+[0;32mI (171976) main: Frame: 10029 bytes, 320x240[0m
+[0;32mI (172376) http_sender: HTTP POST status: 200[0m
+[0;32mI (172376) main: Frame: 9825 bytes, 320x240[0m
+[0;32mI (172766) http_sender: HTTP POST status: 200[0m
+[0;32mI (172766) main: Frame: 9886 bytes, 320x240[0m
+[0;32mI (173116) http_sender: HTTP POST status: 200[0m
+[0;32mI (173116) main: Frame: 9876 bytes, 320x240[0m
+[0;32mI (173526) http_sender: HTTP POST status: 200[0m
+[0;32mI (173526) main: Frame: 9713 bytes, 320x240[0m
+[0;32mI (173886) http_sender: HTTP POST status: 200[0m
+[0;32mI (173886) main: Frame: 9906 bytes, 320x240[0m
+[0;32mI (174286) http_sender: HTTP POST status: 200[0m
+[0;32mI (174286) main: Frame: 9827 bytes, 320x240[0m
+[0;32mI (174736) http_sender: HTTP POST status: 200[0m
+[0;32mI (174736) main: Frame: 9858 bytes, 320x240[0m
+[0;32mI (175126) http_sender: HTTP POST status: 200[0m
+[0;32mI (175126) main: Frame: 9773 bytes, 320x240[0m
+[0;32mI (175506) http_sender: HTTP POST status: 200[0m
+[0;32mI (175506) main: Frame: 9530 bytes, 320x240[0m
+[0;32mI (175916) http_sender: HTTP POST status: 200[0m
+[0;32mI (175916) main: Frame: 9363 bytes, 320x240[0m
+[0;32mI (176266) http_sender: HTTP POST status: 200[0m
+[0;32mI (176266) main: Frame: 9485 bytes, 320x240[0m
+[0;32mI (176616) http_sender: HTTP POST status: 200[0m
+[0;32mI (176616) main: Frame: 9462 bytes, 320x240[0m
+[0;32mI (177006) http_sender: HTTP POST status: 200[0m
+[0;32mI (177006) main: Frame: 9482 bytes, 320x240[0m
+[0;32mI (177356) http_sender: HTTP POST status: 200[0m
+[0;32mI (177366) main: Frame: 9440 bytes, 320x240[0m
+[0;32mI (177736) http_sender: HTTP POST status: 200[0m
+[0;32mI (177736) main: Frame: 9441 bytes, 320x240[0m
+[0;32mI (178516) http_sender: HTTP POST status: 200[0m
+[0;32mI (178526) main: Frame: 9561 bytes, 320x240[0m
+[0;32mI (178886) http_sender: HTTP POST status: 200[0m
+[0;32mI (178886) main: Frame: 9619 bytes, 320x240[0m
+[0;32mI (179296) http_sender: HTTP POST status: 200[0m
+[0;32mI (179296) main: Frame: 9621 bytes, 320x240[0m
+[0;32mI (179676) http_sender: HTTP POST status: 200[0m
+[0;32mI (179676) main: Frame: 9683 bytes, 320x240[0m
+[0;32mI (180036) http_sender: HTTP POST status: 200[0m
+[0;32mI (180036) main: Frame: 9738 bytes, 320x240[0m
+[0;32mI (180366) http_sender: HTTP POST status: 200[0m
+[0;32mI (180366) main: Frame: 9745 bytes, 320x240[0m
+[0;32mI (181046) http_sender: HTTP POST status: 200[0m
+[0;32mI (181046) main: Frame: 9781 bytes, 320x240[0m
+[0;32mI (181396) http_sender: HTTP POST status: 200[0m
+[0;32mI (181396) main: Frame: 9811 bytes, 320x240[0m
+[0;32mI (181746) http_sender: HTTP POST status: 200[0m
+[0;32mI (181746) main: Frame: 9738 bytes, 320x240[0m
+[0;32mI (182136) http_sender: HTTP POST status: 200[0m
+[0;32mI (182136) main: Frame: 9766 bytes, 320x240[0m
+[0;32mI (182466) http_sender: HTTP POST status: 200[0m
+[0;32mI (182466) main: Frame: 9686 bytes, 320x240[0m
+[0;32mI (182846) http_sender: HTTP POST status: 200[0m
+[0;32mI (182846) main: Frame: 9769 bytes, 320x240[0m
+[0;32mI (183196) http_sender: HTTP POST status: 200[0m
+[0;32mI (183196) main: Frame: 9770 bytes, 320x240[0m
+[0;32mI (183616) http_sender: HTTP POST status: 200[0m
+[0;32mI (183616) main: Frame: 9684 bytes, 320x240[0m
+[0;32mI (183996) http_sender: HTTP POST status: 200[0m
+[0;32mI (183996) main: Frame: 9558 bytes, 320x240[0m
+[0;32mI (184376) http_sender: HTTP POST status: 200[0m
+[0;32mI (184376) main: Frame: 9902 bytes, 320x240[0m
+[0;32mI (185026) http_sender: HTTP POST status: 200[0m
+[0;32mI (185026) main: Frame: 9965 bytes, 320x240[0m
+[0;32mI (185466) http_sender: HTTP POST status: 200[0m
+[0;32mI (185466) main: Frame: 10047 bytes, 320x240[0m
+[0;32mI (185866) http_sender: HTTP POST status: 200[0m
+[0;32mI (185866) main: Frame: 9858 bytes, 320x240[0m
+[0;32mI (186296) http_sender: HTTP POST status: 200[0m
+[0;32mI (186296) main: Frame: 9972 bytes, 320x240[0m
+[0;32mI (186686) http_sender: HTTP POST status: 200[0m
+[0;32mI (186686) main: Frame: 9912 bytes, 320x240[0m
+[0;32mI (187016) http_sender: HTTP POST status: 200[0m
+[0;32mI (187016) main: Frame: 9952 bytes, 320x240[0m
+[0;32mI (187416) http_sender: HTTP POST status: 200[0m
+[0;32mI (187416) main: Frame: 9961 bytes, 320x240[0m
+[0;32mI (187896) http_sender: HTTP POST status: 200[0m
+[0;32mI (187896) main: Frame: 9954 bytes, 320x240[0m
+[0;32mI (188336) http_sender: HTTP POST status: 200[0m
+[0;32mI (188346) main: Frame: 9983 bytes, 320x240[0m
+[0;32mI (188756) http_sender: HTTP POST status: 200[0m
+[0;32mI (188756) main: Frame: 10038 bytes, 320x240[0m
+[0;32mI (189136) http_sender: HTTP POST status: 200[0m
+[0;32mI (189136) main: Frame: 10115 bytes, 320x240[0m
+[0;32mI (189496) http_sender: HTTP POST status: 200[0m
+[0;32mI (189496) main: Frame: 10286 bytes, 320x240[0m
+[0;32mI (189936) http_sender: HTTP POST status: 200[0m
+[0;32mI (189936) main: Frame: 10002 bytes, 320x240[0m
+[0;32mI (190336) http_sender: HTTP POST status: 200[0m
+[0;32mI (190336) main: Frame: 9954 bytes, 320x240[0m
+[0;32mI (190696) http_sender: HTTP POST status: 200[0m
+[0;32mI (190696) main: Frame: 9963 bytes, 320x240[0m
+[0;32mI (191056) http_sender: HTTP POST status: 200[0m
+[0;32mI (191066) main: Frame: 10093 bytes, 320x240[0m
+[0;32mI (191416) http_sender: HTTP POST status: 200[0m
+[0;32mI (191416) main: Frame: 9907 bytes, 320x240[0m
+[0;32mI (191786) http_sender: HTTP POST status: 200[0m
+[0;32mI (191786) main: Frame: 9958 bytes, 320x240[0m
+[0;32mI (192446) http_sender: HTTP POST status: 200[0m
+[0;32mI (192446) main: Frame: 10140 bytes, 320x240[0m
+[0;32mI (193256) http_sender: HTTP POST status: 200[0m
+[0;32mI (193256) main: Frame: 10131 bytes, 320x240[0m
+[0;32mI (193876) http_sender: HTTP POST status: 200[0m
+[0;32mI (193876) main: Frame: 10191 bytes, 320x240[0m
+[0;32mI (194406) http_sender: HTTP POST status: 200[0m
+[0;32mI (194406) main: Frame: 10164 bytes, 320x240[0m
+[0;32mI (194836) http_sender: HTTP POST status: 200[0m
+[0;32mI (194836) main: Frame: 10105 bytes, 320x240[0m
+[0;32mI (195306) http_sender: HTTP POST status: 200[0m
+[0;32mI (195306) main: Frame: 10029 bytes, 320x240[0m
+[0;32mI (195736) http_sender: HTTP POST status: 200[0m
+[0;32mI (195746) main: Frame: 9653 bytes, 320x240[0m
+[0;32mI (196076) http_sender: HTTP POST status: 200[0m
+[0;32mI (196076) main: Frame: 9581 bytes, 320x240[0m
+[0;32mI (196786) http_sender: HTTP POST status: 200[0m
+[0;32mI (196786) main: Frame: 9547 bytes, 320x240[0m
+[0;32mI (197176) http_sender: HTTP POST status: 200[0m
+[0;32mI (197176) main: Frame: 9241 bytes, 320x240[0m
+[0;32mI (197566) http_sender: HTTP POST status: 200[0m
+[0;32mI (197566) main: Frame: 8723 bytes, 320x240[0m
+[0;32mI (197966) http_sender: HTTP POST status: 200[0m
+[0;32mI (197966) main: Frame: 7897 bytes, 320x240[0m
+[0;32mI (198316) http_sender: HTTP POST status: 200[0m
+[0;32mI (198316) main: Frame: 8438 bytes, 320x240[0m
+[0;32mI (198596) http_sender: HTTP POST status: 200[0m
+[0;32mI (198596) main: Frame: 9532 bytes, 320x240[0m
+[0;32mI (199016) http_sender: HTTP POST status: 200[0m
+[0;32mI (199016) main: Frame: 9926 bytes, 320x240[0m
+[0;32mI (199396) http_sender: HTTP POST status: 200[0m
+[0;32mI (199396) main: Frame: 10108 bytes, 320x240[0m
+[0;32mI (200016) http_sender: HTTP POST status: 200[0m
+[0;32mI (200016) main: Frame: 10437 bytes, 320x240[0m
+[0;32mI (200366) http_sender: HTTP POST status: 200[0m
+[0;32mI (200366) main: Frame: 10399 bytes, 320x240[0m
+[0;32mI (200746) http_sender: HTTP POST status: 200[0m
+[0;32mI (200746) main: Frame: 10422 bytes, 320x240[0m
+[0;32mI (201156) http_sender: HTTP POST status: 200[0m
+[0;32mI (201156) main: Frame: 10409 bytes, 320x240[0m
+[0;32mI (201516) http_sender: HTTP POST status: 200[0m
+[0;32mI (201516) main: Frame: 10441 bytes, 320x240[0m
+[0;32mI (201916) http_sender: HTTP POST status: 200[0m
+[0;32mI (201916) main: Frame: 10382 bytes, 320x240[0m
+[0;32mI (202586) http_sender: HTTP POST status: 200[0m
+[0;32mI (202586) main: Frame: 10313 bytes, 320x240[0m
+[0;32mI (203236) http_sender: HTTP POST status: 200[0m
+[0;32mI (203236) main: Frame: 10353 bytes, 320x240[0m
+[0;32mI (203896) http_sender: HTTP POST status: 200[0m
+[0;32mI (203896) main: Frame: 10338 bytes, 320x240[0m
+[0;32mI (204386) http_sender: HTTP POST status: 200[0m
+[0;32mI (204386) main: Frame: 10394 bytes, 320x240[0m
+[0;32mI (206776) http_sender: HTTP POST status: 200[0m
+[0;32mI (206776) main: Frame: 10382 bytes, 320x240[0m
+[0;32mI (207196) http_sender: HTTP POST status: 200[0m
+[0;32mI (207196) main: Frame: 9621 bytes, 320x240[0m
+[0;32mI (207626) http_sender: HTTP POST status: 200[0m
+[0;32mI (207626) main: Frame: 9923 bytes, 320x240[0m
+[0;32mI (209246) http_sender: HTTP POST status: 200[0m
+[0;32mI (209246) main: Frame: 9755 bytes, 320x240[0m
+[0;32mI (210786) http_sender: HTTP POST status: 200[0m
+[0;32mI (210786) main: Frame: 9738 bytes, 320x240[0m
+[0;32mI (211646) http_sender: HTTP POST status: 200[0m
+[0;32mI (211646) main: Frame: 10055 bytes, 320x240[0m
+[0;32mI (214576) http_sender: HTTP POST status: 200[0m
+[0;32mI (214576) main: Frame: 10169 bytes, 320x240[0m
+[0;32mI (215066) http_sender: HTTP POST status: 200[0m
+[0;32mI (215066) main: Frame: 10150 bytes, 320x240[0m
+[0;32mI (215706) http_sender: HTTP POST status: 200[0m
+[0;32mI (215706) main: Frame: 10142 bytes, 320x240[0m
+[0;32mI (216386) http_sender: HTTP POST status: 200[0m
+[0;32mI (216386) main: Frame: 10145 bytes, 320x240[0m
+[0;32mI (216796) http_sender: HTTP POST status: 200[0m
+[0;32mI (216796) main: Frame: 10117 bytes, 320x240[0m
+[0;32mI (219576) http_sender: HTTP POST status: 200[0m
+[0;32mI (219576) main: Frame: 10113 bytes, 320x240[0m
+[0;32mI (222066) http_sender: HTTP POST status: 200[0m
+[0;32mI (222066) main: Frame: 10101 bytes, 320x240[0m
+[0;32mI (222796) http_sender: HTTP POST status: 200[0m
+[0;32mI (222796) main: Frame: 10001 bytes, 320x240[0m
+[0;32mI (223226) http_sender: HTTP POST status: 200[0m
+[0;32mI (223226) main: Frame: 10009 bytes, 320x240[0m
+[0;32mI (223746) http_sender: HTTP POST status: 200[0m
+[0;32mI (223746) main: Frame: 10372 bytes, 320x240[0m
+[0;32mI (224366) http_sender: HTTP POST status: 200[0m
+[0;32mI (224366) main: Frame: 10313 bytes, 320x240[0m
+[0;32mI (225086) http_sender: HTTP POST status: 200[0m
+[0;32mI (225086) main: Frame: 10201 bytes, 320x240[0m
+[0;32mI (225776) http_sender: HTTP POST status: 200[0m
+[0;32mI (225776) main: Frame: 10231 bytes, 320x240[0m
+[0;32mI (226196) http_sender: HTTP POST status: 200[0m
+[0;32mI (226196) main: Frame: 9585 bytes, 320x240[0m
+[0;32mI (226846) http_sender: HTTP POST status: 200[0m
+[0;32mI (226846) main: Frame: 9816 bytes, 320x240[0m
+[0;32mI (227676) http_sender: HTTP POST status: 200[0m
+[0;32mI (227676) main: Frame: 9947 bytes, 320x240[0m
+[0;32mI (228276) http_sender: HTTP POST status: 200[0m
+[0;32mI (228276) main: Frame: 9977 bytes, 320x240[0m
+[0;32mI (229206) http_sender: HTTP POST status: 200[0m
+[0;32mI (229206) main: Frame: 9975 bytes, 320x240[0m
+[0;32mI (230126) http_sender: HTTP POST status: 200[0m
+[0;32mI (230126) main: Frame: 9962 bytes, 320x240[0m
+[0;32mI (231446) http_sender: HTTP POST status: 200[0m
+[0;32mI (231446) main: Frame: 9982 bytes, 320x240[0m
+[0;32mI (231926) http_sender: HTTP POST status: 200[0m
+[0;32mI (231926) main: Frame: 10030 bytes, 320x240[0m
+[0;32mI (232466) http_sender: HTTP POST status: 200[0m
+[0;32mI (232466) main: Frame: 10052 bytes, 320x240[0m
+[0;32mI (233056) http_sender: HTTP POST status: 200[0m
+[0;32mI (233056) main: Frame: 10030 bytes, 320x240[0m
+[0;32mI (233426) http_sender: HTTP POST status: 200[0m
+[0;32mI (233426) main: Frame: 9994 bytes, 320x240[0m
+[0;32mI (233966) http_sender: HTTP POST status: 200[0m
+[0;32mI (233966) main: Frame: 10039 bytes, 320x240[0m
+[0;32mI (234416) http_sender: HTTP POST status: 200[0m
+[0;32mI (234416) main: Frame: 9982 bytes, 320x240[0m
+[0;32mI (234816) http_sender: HTTP POST status: 200[0m
+[0;32mI (234816) main: Frame: 10038 bytes, 320x240[0m
+[0;32mI (235286) http_sender: HTTP POST status: 200[0m
+[0;32mI (235286) main: Frame: 10006 bytes, 320x240[0m
+[0;32mI (235686) http_sender: HTTP POST status: 200[0m
+[0;32mI (235686) main: Frame: 9988 bytes, 320x240[0m
+[0;32mI (236116) http_sender: HTTP POST status: 200[0m
+[0;32mI (236116) main: Frame: 10050 bytes, 320x240[0m
+[0;32mI (236686) http_sender: HTTP POST status: 200[0m
+[0;32mI (236696) main: Frame: 10030 bytes, 320x240[0m
+[0;32mI (237316) http_sender: HTTP POST status: 200[0m
+[0;32mI (237316) main: Frame: 10086 bytes, 320x240[0m
+[0;32mI (238106) http_sender: HTTP POST status: 200[0m
+[0;32mI (238106) main: Frame: 10053 bytes, 320x240[0m
+[0;32mI (239036) http_sender: HTTP POST status: 200[0m
+[0;32mI (239036) main: Frame: 10055 bytes, 320x240[0m
+[0;32mI (239396) http_sender: HTTP POST status: 200[0m
+[0;32mI (239406) main: Frame: 10009 bytes, 320x240[0m
+[0;32mI (239806) http_sender: HTTP POST status: 200[0m
+[0;32mI (239806) main: Frame: 10093 bytes, 320x240[0m
+[0;32mI (240146) http_sender: HTTP POST status: 200[0m
+[0;32mI (240146) main: Frame: 10052 bytes, 320x240[0m
+[0;32mI (240666) http_sender: HTTP POST status: 200[0m
+[0;32mI (240666) main: Frame: 10086 bytes, 320x240[0m
+[0;32mI (240996) http_sender: HTTP POST status: 200[0m
+[0;32mI (241006) main: Frame: 10051 bytes, 320x240[0m
+[0;32mI (241376) http_sender: HTTP POST status: 200[0m
+[0;32mI (241376) main: Frame: 10064 bytes, 320x240[0m
+[0;32mI (241896) http_sender: HTTP POST status: 200[0m
+[0;32mI (241896) main: Frame: 10035 bytes, 320x240[0m
+[0;32mI (242236) http_sender: HTTP POST status: 200[0m
+[0;32mI (242236) main: Frame: 10070 bytes, 320x240[0m
+[0;32mI (243026) http_sender: HTTP POST status: 200[0m
+[0;32mI (243026) main: Frame: 9877 bytes, 320x240[0m
+[0;32mI (243446) http_sender: HTTP POST status: 200[0m
+[0;32mI (243456) main: Frame: 9866 bytes, 320x240[0m
+[0;32mI (244256) http_sender: HTTP POST status: 200[0m
+[0;32mI (244256) main: Frame: 9922 bytes, 320x240[0m
+[0;32mI (244876) http_sender: HTTP POST status: 200[0m
+[0;32mI (244876) main: Frame: 9815 bytes, 320x240[0m
+[0;32mI (245496) http_sender: HTTP POST status: 200[0m
+[0;32mI (245506) main: Frame: 9808 bytes, 320x240[0m
+[0;32mI (245926) http_sender: HTTP POST status: 200[0m
+[0;32mI (245926) main: Frame: 9764 bytes, 320x240[0m
+[0;32mI (246336) http_sender: HTTP POST status: 200[0m
+[0;32mI (246336) main: Frame: 9736 bytes, 320x240[0m
+[0;32mI (247026) http_sender: HTTP POST status: 200[0m
+[0;32mI (247026) main: Frame: 9838 bytes, 320x240[0m
+[0;32mI (247426) http_sender: HTTP POST status: 200[0m
+[0;32mI (247426) main: Frame: 9787 bytes, 320x240[0m
+[0;32mI (247816) http_sender: HTTP POST status: 200[0m
+[0;32mI (247816) main: Frame: 9752 bytes, 320x240[0m
+[0;32mI (248256) http_sender: HTTP POST status: 200[0m
+[0;32mI (248256) main: Frame: 9797 bytes, 320x240[0m
+[0;32mI (248626) http_sender: HTTP POST status: 200[0m
+[0;32mI (248626) main: Frame: 9808 bytes, 320x240[0m
+[0;32mI (249166) http_sender: HTTP POST status: 200[0m
+[0;32mI (249176) main: Frame: 9845 bytes, 320x240[0m
+[0;32mI (249606) http_sender: HTTP POST status: 200[0m
+[0;32mI (249606) main: Frame: 9731 bytes, 320x240[0m

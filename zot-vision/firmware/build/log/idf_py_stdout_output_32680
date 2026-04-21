@@ -1,0 +1,552 @@
+Command: C:\Espressif\tools\python\v6.0\venv\Scripts\python.exe C:\esp\v6.0\esp-idf\tools/idf_monitor.py -p COM10 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 C:\Users\kaush\Downloads\ZotVision\zot-vision\firmware\build\zot-vision.elf C:\Users\kaush\Downloads\ZotVision\zot-vision\firmware\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\tools\python\v6.0\venv\Scripts\python.exe' 'C:\esp\v6.0\esp-idf\tools\idf.py'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15848
+load:0x40080400,len:3920
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v6.0 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Apr  5 2026 15:00:38[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (29) boot: chip revision: v3.1[0m
+[0;32mI (31) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (35) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (39) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (42) boot: Enabling RNG early entropy source...[0m
+[0;32mI (47) boot: Partition Table:[0m
+[0;32mI (49) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (62) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (69) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (75) boot: End of partition table[0m
+[0;32mI (79) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=27bc8h (162760) map[0m
+[0;32mI (144) esp_image: segment 1: paddr=00037bf0 vaddr=3ffb0000 size=06cfch ( 27900) load[0m
+[0;32mI (155) esp_image: segment 2: paddr=0003e8f4 vaddr=40080000 size=01724h (  5924) load[0m
+[0;32mI (158) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=b78f0h (751856) map[0m
+[0;32mI (427) esp_image: segment 4: paddr=000f7918 vaddr=40081724 size=17ce0h ( 97504) load[0m
+[0;32mI (467) esp_image: segment 5: paddr=0010f600 vaddr=50000000 size=00028h (    40) load[0m
+[0;32mI (480) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (480) boot: Disabling RNG early entropy source...[0m
+[0;32mI (491) quad_psram: This chip is ESP32-D0WD[0m
+[0;32mI (492) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (492) esp_psram: Speed: 40MHz[0m
+[0;32mI (492) esp_psram: PSRAM initialized, cache is in low/high (2-core) mode.[0m
+[0;33mW (498) esp_psram: Virtual address not enough for PSRAM, map as much as we can. 4MB is mapped[0m
+[0;32mI (506) cpu_start: Multicore app[0m
+[0;32mI (1414) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1422) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (1423) cpu_start: Pro cpu start user code[0m
+[0;32mI (1423) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (1425) app_init: Application information:[0m
+[0;32mI (1429) app_init: Project name:     zot-vision[0m
+[0;32mI (1433) app_init: App version:      6f07897[0m
+[0;32mI (1437) app_init: Compile time:     Apr  5 2026 14:59:10[0m
+[0;32mI (1442) app_init: ELF file SHA256:  b309b72ea...[0m
+[0;32mI (1446) app_init: ESP-IDF:          v6.0[0m
+[0;32mI (1450) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (1454) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (1458) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (1462) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1469) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (1474) heap_init: At 3FFBBFE0 len 00024020 (144 KiB): DRAM[0m
+[0;32mI (1479) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (1484) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (1490) heap_init: At 40099404 len 00006BFC (26 KiB): IRAM[0m
+[0;32mI (1496) esp_psram: Adding pool of 4096K of PSRAM memory to heap allocator[0m
+[0;33mW (1503) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig[0m
+[0;32mI (1515) spi_flash: detected chip: generic[0m
+[0;32mI (1519) spi_flash: flash io: dio[0m
+[0;33mW (1522) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (1536) main_task: Started on CPU0[0m
+[0;32mI (1546) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1546) main_task: Calling app_main()[0m
+[0;32mI (1596) wifi:wifi driver task: 3ffc3a50, prio:23, stack:6656, core=0[0m
+[0;32mI (1606) wifi:wifi firmware version: 44738b4[0m
+[0;32mI (1606) wifi:wifi certification version: v7.0[0m
+[0;32mI (1606) wifi:config NVS flash: enabled[0m
+[0;32mI (1606) wifi:config nano formatting: disabled[0m
+[0;32mI (1616) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1616) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1616) wifi:Init management short buffer num: 32[0m
+[0;32mI (1626) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1626) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1636) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1636) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1646) wifi_init: rx ba win: 6[0m
+[0;32mI (1646) wifi_init: accept mbox: 6[0m
+[0;32mI (1646) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1646) wifi_init: udp mbox: 6[0m
+[0;32mI (1656) wifi_init: tcp mbox: 6[0m
+[0;32mI (1656) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1656) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1666) wifi_init: tcp mss: 1440[0m
+[0;32mI (1666) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1666) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;33mW (1676) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (1686) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06[0m
+[0;32mI (1766) wifi:mode : sta (a4:f0:0f:73:f0:30)[0m
+[0;32mI (1766) wifi:enable tsf[0m
+[0;33mW (4196) wifi: Disconnected, retrying in 1000 ms...[0m
+[0;33mW (7606) wifi: Disconnected, retrying in 2000 ms...[0m
+[0;33mW (12016) wifi: Disconnected, retrying in 4000 ms...[0m
+[0;33mW (18426) wifi: Disconnected, retrying in 8000 ms...[0m
+[0;32mI (26436) wifi:new:<11,0>, old:<1,0>, ap:<255,255>, sta:<11,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (26436) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (26466) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (26476) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (26526) wifi:connected with KAUSHIK25, aid = 2, channel 11, BW20, bssid = e6:c7:67:fd:4a:5d[0m
+[0;32mI (26526) wifi:security: WPA2-PSK, phy: bgn, rssi: -50[0m
+[0;32mI (26536) wifi:pm start, type: 1[0m
+
+[0;32mI (26536) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (26546) wifi:AP's beacon interval = 102400 us, DTIM period = 3[0m
+[0;32mI (43146) esp_netif_handlers: sta ip: 192.168.137.26, mask: 255.255.255.0, gw: 192.168.137.1[0m
+[0;32mI (43146) wifi: WiFi connected[0m
+[0;32mI (43146) cam_hal: cam init ok[0m
+[0;32mI (43146) sccb-ng: pin_sda 26 pin_scl 27[0m
+[0;32mI (43146) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (43186) camera: Camera PID=0x26 VER=0x42 MIDL=0x7f MIDH=0xa2[0m
+[0;32mI (43186) camera: Detected OV2640 camera[0m
+[0;32mI (43186) camera: Detected camera at address=0x30[0m
+[0;32mI (43266) cam_hal: PSRAM DMA mode disabled[0m
+[0;32mI (43266) cam_hal: buffer_size: 32768, half_buffer_size: 4096, node_buffer_size: 2048, node_cnt: 16, total_cnt: 3[0m
+[0;32mI (43276) cam_hal: Allocating 15360 Byte frame buffer in PSRAM[0m
+[0;32mI (43276) cam_hal: Allocating 15360 Byte frame buffer in PSRAM[0m
+[0;32mI (43286) cam_hal: cam config ok[0m
+[0;32mI (43286) ov2640: Set PLL: clk_2x: 0, clk_div: 0, pclk_auto: 0, pclk_div: 8[0m
+[0;32mI (43366) main_task: Returned from app_main()[0m
+[0;32mI (43396) main: Frame: 7658 bytes, 320x240[0m
+[1;31mE (48416) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (48416) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (48416) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (48416) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (48426) main: Frame: 7658 bytes, 320x240[0m
+[1;31mE (53446) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (53446) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (53446) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (53446) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (53456) main: Frame: 5718 bytes, 320x240[0m
+[1;31mE (58476) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (58476) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (58476) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (58476) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (58486) main: Frame: 5718 bytes, 320x240[0m
+[1;31mE (63506) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (63506) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (63506) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (63506) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (63516) main: Frame: 5718 bytes, 320x240[0m
+[1;31mE (68536) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (68536) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (68536) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (68536) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (68546) main: Frame: 5718 bytes, 320x240[0m
+[1;31mE (73566) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (73566) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (73566) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (73566) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (73576) main: Frame: 5718 bytes, 320x240[0m
+[1;31mE (78596) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (78596) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (78596) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (78596) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (78606) main: Frame: 5718 bytes, 320x240[0m
+[1;31mE (83626) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (83626) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (83626) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (83626) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (83636) main: Frame: 6286 bytes, 320x240[0m
+[1;31mE (88656) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (88656) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (88656) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (88656) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (88666) main: Frame: 5569 bytes, 320x240[0m
+[1;31mE (93686) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (93686) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (93686) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (93686) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (93696) main: Frame: 5553 bytes, 320x240[0m
+[1;31mE (98716) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (98716) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (98716) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (98716) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (98726) main: Frame: 5592 bytes, 320x240[0m
+[1;31mE (103746) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (103746) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (103746) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (103746) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (103756) main: Frame: 5583 bytes, 320x240[0m
+[1;31mE (108776) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (108776) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (108776) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (108776) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (108786) main: Frame: 5606 bytes, 320x240[0m
+[1;31mE (113806) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (113806) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (113806) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (113806) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (113816) main: Frame: 5619 bytes, 320x240[0m
+[1;31mE (118836) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (118836) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (118836) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (118836) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (118846) main: Frame: 5619 bytes, 320x240[0m
+[1;31mE (123866) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (123866) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (123866) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (123866) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (123876) main: Frame: 5619 bytes, 320x240[0m
+[1;31mE (128896) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (128896) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (128896) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (128896) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (128906) main: Frame: 5619 bytes, 320x240[0m
+[1;31mE (133926) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (133926) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (133926) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (133926) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (133936) main: Frame: 5619 bytes, 320x240[0m
+[1;31mE (138956) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (138956) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (138956) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (138956) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (138966) main: Frame: 5619 bytes, 320x240[0m
+[1;31mE (143986) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (143986) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (143986) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (143986) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (143996) main: Frame: 5619 bytes, 320x240[0m
+[1;31mE (149016) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (149016) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (149016) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (149016) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (149026) main: Frame: 5729 bytes, 320x240[0m
+[1;31mE (154046) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (154046) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (154046) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (154046) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (154056) main: Frame: 5729 bytes, 320x240[0m
+[1;31mE (159076) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (159076) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (159076) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (159076) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (159086) main: Frame: 5729 bytes, 320x240[0m
+[1;31mE (164106) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (164106) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (164106) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (164106) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (164116) main: Frame: 6971 bytes, 320x240[0m
+[1;31mE (169136) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (169136) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (169136) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (169136) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (169146) main: Frame: 5754 bytes, 320x240[0m
+[1;31mE (174166) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (174166) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (174166) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (174166) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (174176) main: Frame: 5804 bytes, 320x240[0m
+[1;31mE (179196) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (179196) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (179196) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (179196) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (179206) main: Frame: 5804 bytes, 320x240[0m
+[1;31mE (184226) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (184226) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (184226) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (184226) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (184236) main: Frame: 6971 bytes, 320x240[0m
+[1;31mE (189256) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (189256) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (189256) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (189256) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (189266) main: Frame: 5636 bytes, 320x240[0m
+[1;31mE (194286) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (194286) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (194286) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (194286) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (194296) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (199316) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (199316) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (199316) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (199316) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (199326) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (204346) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (204346) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (204346) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (204346) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (204356) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (209376) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (209376) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (209376) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (209376) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (209386) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (214406) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (214406) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (214406) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (214406) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (214416) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (219436) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (219436) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (219436) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (219436) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (219446) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (224466) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (224466) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (224466) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (224466) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (224476) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (229496) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (229496) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (229496) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (229496) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (229506) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (234526) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (234526) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (234526) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (234526) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (234536) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (239556) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (239556) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (239556) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (239556) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (239566) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (244586) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (244586) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (244586) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (244586) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (244596) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (249616) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (249616) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (249616) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (249616) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (249626) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (254646) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (254646) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (254646) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (254646) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (254656) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (259676) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (259676) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (259676) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (259676) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (259686) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (264706) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (264706) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (264706) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (264706) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (264716) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (269736) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (269736) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (269736) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (269736) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (269746) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (274766) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (274766) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (274766) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (274766) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (274776) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (279796) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (279796) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (279796) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (279796) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (279806) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (284826) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (284826) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (284826) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (284826) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (284836) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (289856) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (289856) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (289856) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (289856) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (289866) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (294886) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (294886) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (294886) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (294886) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (294896) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (299916) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (299916) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (299916) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (299916) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (299926) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (304946) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (304946) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (304946) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (304946) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (304956) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (309976) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (309976) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (309976) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (309976) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (309986) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (315006) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (315006) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (315006) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (315006) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (315016) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (320036) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (320036) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (320036) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (320036) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (320046) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (325066) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (325066) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (325066) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (325066) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (325076) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (330096) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (330096) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (330096) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (330096) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (330106) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (335126) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (335126) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (335126) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (335126) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (335136) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (340156) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (340156) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (340156) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (340156) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (340166) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (345186) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (345186) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (345186) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (345186) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (345196) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (350216) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (350216) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (350216) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (350216) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (350226) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (355246) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (355246) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (355246) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (355246) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (355256) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (360276) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (360276) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (360276) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (360276) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (360286) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (365306) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (365306) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (365306) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (365306) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (365316) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (370336) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (370336) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (370336) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (370336) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (370346) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (375366) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (375366) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (375366) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (375366) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (375376) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (380396) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (380396) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (380396) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (380396) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (380406) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (385426) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (385426) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (385426) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (385426) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (385436) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (390456) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (390456) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (390456) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (390456) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (390466) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (395486) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (395486) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (395486) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (395486) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (395496) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (400516) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (400516) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (400516) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (400516) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (400526) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (405546) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (405546) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (405546) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (405546) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (405556) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (410576) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (410576) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (410576) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (410576) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (410586) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (415606) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (415606) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (415606) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (415606) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (415616) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (420636) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (420636) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (420636) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (420636) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (420646) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (425666) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (425666) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (425666) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (425666) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (425676) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (430696) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (430696) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (430696) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (430696) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (430706) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (435726) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (435726) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (435726) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (435726) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (435736) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (440756) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (440756) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (440756) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (440756) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (440766) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (445786) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (445786) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (445786) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (445786) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (445796) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (450816) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (450816) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (450816) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (450816) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (450826) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (455846) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (455846) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (455846) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (455846) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (455856) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (460876) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (460876) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (460876) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (460876) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (460886) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (465906) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (465906) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (465906) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (465906) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (465916) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (470936) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (470936) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (470936) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (470936) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (470946) main: Frame: 5781 bytes, 320x240[0m
+[1;31mE (475966) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (475966) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (475966) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (475966) http_sender: HTTP POST failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (475976) main: Frame: 5781 bytes, 320x240[0m
