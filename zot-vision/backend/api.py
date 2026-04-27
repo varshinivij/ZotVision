@@ -10,6 +10,18 @@ app = Flask(__name__)
 CORS(app)
 
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "..", "datasets", "results", "model_weights.pth")
+
+LABEL_VISUALS = {
+    "null":   "[ ]",
+    "hazard": "[!]",
+    "person": "[P]",
+    "both":   "[!P]",
+}
+
+DIRECTION_VISUALS = {
+    "left":  "<--",
+    "right": "-->",
+}
 NUM_FIREFIGHTERS = 5
 UPLOAD_DIR = os.path.join(os.path.dirname(__file__), "uploads")
 os.makedirs(UPLOAD_DIR, exist_ok=True)
@@ -93,6 +105,7 @@ def get_state():
             "lon": s["lon"],
             "alt": s["alt"],
             "label": s["label"],
+            "visual": LABEL_VISUALS.get(s["label"]),
         })
 
     return jsonify({"firefighters": firefighters})
@@ -109,6 +122,19 @@ def serve_image(fid):
             data = f.read()
     return Response(data, mimetype="image/jpeg")
 
+@app.route("/api/arrow", methods=["POST"])
+def send_visual():
+    """Receive a visual arrow command from the frontend to send to a firefighter device.
+    Expects JSON: { "firefighter_id": 0, "direction": "N" }
+    """
+    data = request.get_json(force=True)
+    fid = int(data.get("firefighter_id", 0))
+    direction = data.get("direction", "N")
+
+    visual = DIRECTION_VISUALS.get(direction)
+    if visual is None:
+        return jsonify({"status": "error", "firefighter_id": fid, "visual": None}), 400
+    return jsonify({"status": "ok", "firefighter_id": fid, "visual": visual})
 
 if __name__ == "__main__":
     if os.path.exists(MODEL_PATH):
@@ -118,3 +144,4 @@ if __name__ == "__main__":
         print("Running without ML inference — images will stream but labels will be None.")
         print("Train the model first: python transformer.py")
     app.run(host="0.0.0.0", debug=False)
+
