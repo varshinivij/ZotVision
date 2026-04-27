@@ -30,20 +30,19 @@ def load_model(pkl_path, device):
     return model.to(device).eval()
 
 
-def enhance_image(img_bgr, level=1):
-    """CLAHE on the L channel + gamma correction. Level 2 adds a brightness bump."""
+_BASE_CLIP_LIMIT = 2.0  # multiplied by iteration index to scale contrast each pass
+_GAMMA = 1.3
+
+
+def enhance_image(img_bgr, clip_limit):
+    """CLAHE on the L channel + gamma correction."""
     lab = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2LAB)
     l, a, b = cv2.split(lab)
-    clip_limit = 2.0 if level == 1 else 4.0 #higher: more contrast boost
-    clahe = cv2.createCLAHE(clipLimit=clip_limit, tileGridSize=(8, 8)) #contrast on brightness alg
+    clahe = cv2.createCLAHE(clipLimit=clip_limit, tileGridSize=(8, 8))  # contrast on brightness channel
     out = cv2.merge([clahe.apply(l), a, b])
     out = cv2.cvtColor(out, cv2.COLOR_LAB2BGR)
-    gamma = 1.3 if level == 1 else 1.6
-    lut = np.array([(i / 255.0) ** (1.0 / gamma) * 255 for i in range(256)], dtype=np.uint8)
-    out = cv2.LUT(out, lut)
-    if level == 2:
-        out = cv2.convertScaleAbs(out, alpha=1.0, beta=30)
-    return out
+    lut = np.array([(i / 255.0) ** (1.0 / _GAMMA) * 255 for i in range(256)], dtype=np.uint8)
+    return cv2.LUT(out, lut)
 
 
 def _run_inference(model, img_bgr, device):
@@ -87,18 +86,13 @@ def predict_low_visibility(model, image_path, uncertainty_threshold=0.4, device=
         return entry
 
     def _pipeline():
-        # Pass 0 — raw image, no enhancement
-        entry = _record(*_run_inference(model, img, device), level=0)
-        if entry["uncertainty"] < uncertainty_threshold:
-            return entry
-
-        # Pass 1 — mild CLAHE + gamma 1.3; only runs if uncertainty >= threshold
-        entry = _record(*_run_inference(model, enhance_image(img, level=1), device), level=1)
-        if entry["uncertainty"] < uncertainty_threshold:
-            return entry
-
-        # Pass 2 — aggressive CLAHE + gamma 1.6 + brightness boost; only runs if still >= threshold
-        return _record(*_run_inference(model, enhance_image(img, level=2), device), level=2)
+        i = 0
+        while True:
+            img_input = img if i == 0 else enhance_image(img, clip_limit=_BASE_CLIP_LIMIT * i)
+            entry = _record(*_run_inference(model, img_input, device), level=i)
+            if entry["uncertainty"] < uncertainty_threshold:
+                return entry
+            i += 1
 
     with ThreadPoolExecutor(max_workers=1) as executor:
         future = executor.submit(_pipeline)
@@ -106,7 +100,7 @@ def predict_low_visibility(model, image_path, uncertainty_threshold=0.4, device=
             return future.result(timeout=timeout)
         except FuturesTimeoutError:
             if best_so_far:
-                best_so_far[0]["error"] = True
+                best_so_far[0]["timeout"] = True
                 return best_so_far[0]
             return {
                 "result": None,
@@ -114,11 +108,11 @@ def predict_low_visibility(model, image_path, uncertainty_threshold=0.4, device=
                 "uncertainty": 1.0,
                 "enhancement_level": None,
                 "all_probs": {},
-                "error": True,
+                "timeout": True,
             }
 
 
-def main(model_path, image_path, uncertainty_threshold=0.4, timeout=10.0, device=None):
+def prediction_loop(model_path, image_path, uncertainty_threshold=0.4, timeout=10.0, device=None):
     device = torch.device(device) if isinstance(device, str) else (
         device or torch.device("cuda" if torch.cuda.is_available() else "cpu")
     )
@@ -128,4 +122,4 @@ def main(model_path, image_path, uncertainty_threshold=0.4, timeout=10.0, device
 
 
 if __name__ == "__main__":
-    main()
+    prediction_loop()
