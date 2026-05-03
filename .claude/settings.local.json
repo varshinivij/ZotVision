@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(C:\\\\Users\\\\kaush\\\\scoop\\\\shims\\\\python3.exe -m pip install flask flask-cors)"
+    ]
+  }
+}

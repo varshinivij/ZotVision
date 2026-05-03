@@ -25,6 +25,12 @@ state = {
     for i in range(NUM_FIREFIGHTERS)
 }
 
+# Per-firefighter OLED command ("none" | "left" | "right" | "warning")
+commands = {i: "none" for i in range(NUM_FIREFIGHTERS)}
+
+# Per-firefighter chat message (max 20 chars, empty = no message)
+messages = {i: "" for i in range(NUM_FIREFIGHTERS)}
+
 
 # ── Ingest endpoints (called by firefighter devices) ────────────────────────
 
@@ -69,6 +75,50 @@ def receive_gps():
     state[fid]["live"] = True
 
     return jsonify({"status": "ok", "firefighter_id": fid})
+
+
+# ── Control endpoints (web → device) ────────────────────────────────────────
+
+VALID_COMMANDS = {"none", "left", "right", "warning"}
+
+@app.route("/api/control/<int:fid>", methods=["POST"])
+def set_control(fid):
+    """Called by the web UI when a direction/warning button is pressed.
+    Body: { "command": "left" | "right" | "warning" | "none" }
+    """
+    if fid not in commands:
+        return jsonify({"error": "unknown firefighter"}), 404
+    data = request.get_json(force=True)
+    cmd = data.get("command", "none")
+    if cmd not in VALID_COMMANDS:
+        return jsonify({"error": f"invalid command '{cmd}'"}), 400
+    commands[fid] = cmd
+    return jsonify({"status": "ok", "firefighter_id": fid, "command": cmd})
+
+
+@app.route("/api/control/<int:fid>", methods=["GET"])
+def get_control(fid):
+    """Polled by the GPS tracker firmware to receive the latest OLED command and message."""
+    if fid not in commands:
+        return jsonify({"error": "unknown firefighter"}), 404
+    return jsonify({
+        "command": commands.get(fid, "none"),
+        "message": messages.get(fid, ""),
+    })
+
+
+@app.route("/api/message/<int:fid>", methods=["POST"])
+def set_message(fid):
+    """Send a chat message to a firefighter's OLED display.
+    Body: { "message": "up to 20 chars" }
+    Send an empty string to clear the message.
+    """
+    if fid not in messages:
+        return jsonify({"error": "unknown firefighter"}), 404
+    data = request.get_json(force=True)
+    msg = str(data.get("message", ""))[:20]  # enforce limit server-side too
+    messages[fid] = msg
+    return jsonify({"status": "ok", "firefighter_id": fid, "message": msg})
 
 
 # ── Frontend endpoints ──────────────────────────────────────────────────────
