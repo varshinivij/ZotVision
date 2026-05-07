@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import FramePlayer from './FramePlayer.jsx'
+import MapView from './MapView.jsx'
 import './App.css'
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <div className="dashboard-badge">ZOT VISION</div>
         <h1 className="dashboard-title">Live Camera Feeds</h1>
       </div>
+      <MapView firefighters={firefighters} />
       <div className="feeds-grid">
         {firefighters.map((ff) => (
           <FramePlayer
