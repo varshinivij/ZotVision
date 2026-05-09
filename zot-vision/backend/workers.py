@@ -1,11 +1,8 @@
 import multiprocessing
 import queue
 import torch
-import cv2
 from transformer import CNNViTHybrid, predict
 from image_difference import ImageDifference
-
-LABELS = {0: "none", 1: "hazard", 2: "person", 3: "both"}
 
 
 class FireFighterWorker:

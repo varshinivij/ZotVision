@@ -9,13 +9,19 @@ from workers import FireFighterManager
 app = Flask(__name__)
 CORS(app)
 
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "..", "datasets", "results", "model_weights.pth")
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "model_run5_best.pth")
 
 LABEL_VISUALS = {
     "null":   "[ ]",
     "hazard": "[!]",
     "person": "[P]",
-    "both":   "[!P]",
+}
+
+# Map inference label → OLED command sent back to device
+LABEL_COMMANDS = {
+    "null":   "none",
+    "hazard": "warning",
+    "person": "warning",
 }
 
 DIRECTION_VISUALS = {
@@ -142,7 +148,9 @@ def get_state():
         for i in range(NUM_FIREFIGHTERS):
             result = manager.get_result(worker_id=i)
             if result is not None:
-                state[i]["label"] = result[1]
+                label = result[1]
+                state[i]["label"] = label
+                commands[i] = LABEL_COMMANDS.get(label, "none")
 
     firefighters = []
     for i in range(NUM_FIREFIGHTERS):
