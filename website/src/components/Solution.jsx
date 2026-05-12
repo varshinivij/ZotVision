@@ -16,13 +16,12 @@ const CARDS = [
 
 export default function Solution() {
   const [current, setCurrent] = useState(0);
-  const [images, setImages] = useState([null, null, null, null]);
-
-  const handlePhoto = (e, idx) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    setImages(prev => { const n = [...prev]; n[idx] = URL.createObjectURL(file); return n; });
-  };
+  const [images] = useState([
+    '/photos/sol-1.png',
+    '/photos/sol-2.png',
+    '/photos/sol-3.png',
+    null,
+  ]);
 
   const step = (dir) => setCurrent(c => (c + dir + 4) % 4);
 
@@ -46,15 +45,13 @@ export default function Solution() {
         <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--bg3)', border: '0.5px solid var(--border)' }}>
           <div style={{ display: 'flex', transition: 'transform 0.4s cubic-bezier(0.4,0,0.2,1)', transform: `translateX(-${current * 100}%)` }}>
             {[0, 1, 2, 3].map(idx => (
-              <div className="sol-slide" key={idx} onClick={() => document.getElementById(`sol-file-${idx}`).click()}>
+              <div className="sol-slide" key={idx}>
                 <div className="sol-slide-inner">
-                  <input type="file" id={`sol-file-${idx}`} accept="image/*" style={{ display: 'none' }} onChange={e => handlePhoto(e, idx)} />
                   {images[idx]
-                    ? <img src={images[idx]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', inset: 0 }} />
+                    ? <img src={images[idx]} alt={`SOL ${idx + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', inset: 0 }} />
                     : <div className="sol-slide-placeholder">
                         <div className="sol-slide-icon"><SlideIcon /></div>
-                        <div style={{ fontSize: '0.72rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--muted)' }}>Add Photo</div>
-                        <div style={{ fontSize: '0.65rem', color: 'var(--muted2)', marginTop: '0.2rem' }}>Photo {idx + 1} of 4</div>
+                        <div style={{ fontSize: '0.72rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--muted)' }}>Coming Soon</div>
                       </div>
                   }
                 </div>
