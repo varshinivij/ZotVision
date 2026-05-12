@@ -16,10 +16,11 @@ const CARDS = [
 
 export default function Solution() {
   const [current, setCurrent] = useState(0);
+  const base = import.meta.env.BASE_URL;
   const [images] = useState([
-    '/photos/sol-1.png',
-    '/photos/sol-2.png',
-    '/photos/sol-3.png',
+    `${base}photos/sol-1.png`,
+    `${base}photos/sol-2.png`,
+    `${base}photos/sol-3.png`,
     null,
   ]);
 
