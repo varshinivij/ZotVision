@@ -1,4 +1,4 @@
-# ZotVision
+npm# ZotVision
 
 Real-time firefighter monitoring system. ESP32-CAM modules stream live video, an ESP32-C3 GPS tracker reports location, a Python Flask backend runs ML inference, and a React dashboard displays everything.
 
